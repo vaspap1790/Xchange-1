@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>additem</title>
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" type="text/css" href="css/addItem.css">
+
+
+    <div class="main-wrapper">
+        <div class="another-wrapper">
+            <h1 class="title">Add Item</h1>
+            <div class="dark-hr"></div>
+            <div class="card-wrapper">
+                <div class="card">
+                    <div class="container">
+                        <div class="card-header">
+                            <h2>Item Image</h2>
+                            <div class="header-controls">
+                                <input type="file" name="file" id="file" class="inputfile" />
+                                <label for="file" class="upload-label"><i class="material-icons image-add-icon"></i><i class="form-button">+</i></label>
+                                <!--               <i class="material-icons image-delete-icon">delete</i> -->
+                            </div>
+
+                        </div>
+                        <div class="dark-hr"></div>
+                        <div class="image-container">
+                            <label class="no-image-text">No image selected</label>
+                            <img src="" alt="" class="upload-img">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card details-card">
+                    <div class="container">
+                        <div class="card-header">
+                            <h2>Item Details</h2>
+                        </div>
+                        <div class="dark-hr"></div>
+                        <form action="">
+                            <div class="form-control-container">
+                                <input type="text" placeholder=" Title" class="form-input">
+                                <input type="text" placeholder=" Type" class="form-input">
+                                <textarea type="text" placeholder=" Description" class="form-input"></textarea>
+
+                            </div>
+                            <div class="form-button-container">
+                                <input type="submit" class="form-button" value="Save ">
+                                <a href="" class="back-button">Back</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/addItem.js"></script>
+    </body>
+
+</html>
