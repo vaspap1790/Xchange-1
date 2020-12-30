@@ -1,3 +1,7 @@
+<?php require_once("includes/db.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+<?php require_once("includes/sessions.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +23,7 @@
 <body>
 
     <!---Navbar -->
-    <div id="nav-placeholder"></div>
+    <?php require_once("nav.php"); ?>
 
     <!--- Start of SearchBar -->
     <form class="form-inline active-pink-4">
@@ -42,7 +46,7 @@
     <!--- End of SearchBar -->
 
     <!--- Footer -->
-    <div id="footer-placeholder"></div>
+    <?php require_once("footer.php"); ?>
 
     <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>

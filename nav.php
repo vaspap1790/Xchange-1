@@ -26,20 +26,18 @@
           aria-expanded="false">Categories
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="#">Books</a>
-          <a class="dropdown-item" href="#">Business and Industrial</a>
-          <a class="dropdown-item" href="#">Clothing, Shoes & Accesories</a>
-          <a class="dropdown-item" href="#">Collectibles</a>
-          <a class="dropdown-item" href="#">Consumer Electronics</a>
-          <a class="dropdown-item" href="#">Crafts</a>
-          <a class="dropdown-item" href="#">Dolls & Bears</a>
-          <a class="dropdown-item" href="#">Home & Garden</a>
-          <a class="dropdown-item" href="#">Motors</a>
-          <a class="dropdown-item" href="#">Pets</a>
-          <a class="dropdown-item" href="#">Sports Mem, Cards, Fan Shop</a>
-          <a class="dropdown-item" href="#">Toys & Hobbies</a>
-          <a class="dropdown-item" href="#">Antiques</a>
-          <a class="dropdown-item" href="#">Computer/Tables & Networking</a>
+
+        <?php
+          //Fetchinng all the categories from category table
+          $sql = "SELECT categoryId,name FROM category";
+          $stmt = $ConnectingDB->query($sql);
+          while ($DataRows = $stmt->fetch()) {
+            $id = $DataRows["categoryId"];
+            $categoryName = $DataRows["name"];
+          ?>
+          <a class="dropdown-item" href="items?id=<?php echo $id; ?>"> <?php echo $categoryName; ?> </a>
+          <?php } ?>
+
         </div>
       </li>
       <li class="nav-item">
