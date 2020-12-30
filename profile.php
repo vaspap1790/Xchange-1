@@ -1,3 +1,8 @@
+<?php require_once("includes/db.php"); ?>
+<?php require_once("includes/functions.php"); ?>
+<?php require_once("includes/sessions.php"); ?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,7 +23,7 @@
 <body>
 
     <!---Navbar -->
-    <div id="nav-placeholder"></div>
+    <?php require_once("nav.php"); ?>
 
     <!-- Add your content of header -->
     <!-- <header class="">
@@ -170,7 +175,7 @@
     </main>
 
     <!--- Footer -->
-    <div id="footer-placeholder"></div>
+    <?php require_once("footer.php"); ?>
 
     <!--- Script Source Files -->
     <!-- <script>

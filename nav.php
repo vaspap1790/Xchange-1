@@ -36,7 +36,7 @@
             $categoryName = $DataRows["name"];
           ?>
           <a class="dropdown-item" href="items?id=<?php echo $id; ?>"> <?php echo $categoryName; ?> </a>
-          <?php } ?>
+        <?php } ?>
 
         </div>
       </li>
@@ -66,7 +66,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
           aria-labelledby="navbarDropdownMenuLink-55">
-          <a class="dropdown-item" href="#">My Profile</a>
+          <a class="dropdown-item" href="profile.php">My Profile</a>
           <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
             data-target="#logoutModal">Logout</a>
           <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
