@@ -60,7 +60,7 @@ ul ul a {
     background: #c9c3a7;
 }
 
-.wrapper {
+.customWrapper {
     display: flex;
     align-items: stretch;
 }
