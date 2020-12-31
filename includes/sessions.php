@@ -44,4 +44,32 @@
     }
   }
 
+  function errorSettingsMessage(){
+    if(isset($_SESSION["settingsErrorMessage"])){
+
+      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output .= htmlentities($_SESSION["settingsErrorMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["settingsErrorMessage"] = null;
+      $_SESSION["settingsMessage"] = true;
+
+      return $Output;
+    }
+  }
+  
+  function successSettingsMessage(){
+    if(isset($_SESSION["settingsSuccessMessage"])){
+
+      $Output = "<div class=\"alert alert-success\">" ;
+      $Output .= htmlentities($_SESSION["settingsSuccessMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["settingsSuccessMessage"] = null;
+      $_SESSION["settingsMessage"] = true;
+      
+      return $Output;
+    }
+  }
+
 ?>

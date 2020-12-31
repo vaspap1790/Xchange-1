@@ -69,6 +69,12 @@ if (isset($_POST["submitLogin"])) {
       $Execute=$stmt->execute();
 
       if($Execute){
+
+        $id = $ConnectingDB->lastInsertId();
+        $sqlAvatar = "INSERT INTO `PHOTO` (`name`, `userId`, `categoryId`, `itemId`, `datetime_`) VALUES
+        ('defaultAvatar.png', '$id', null, null, '$dateTime')";
+        $ExecuteAvatar = $ConnectingDB->query($sqlAvatar);
+
         $_SESSION["registerSuccessMessage"] = "New User added successfully! Now you can login";
         redirect_to("index.php");
       }else {
@@ -76,6 +82,57 @@ if (isset($_POST["submitLogin"])) {
         redirect_to("index.php");
       }
     }
+  }
+?>
+
+<?php 
+  if (isset($_POST["submitSettings"])) {
+
+    $firstname = $_POST["firstname"];
+    $lastname  = $_POST["lastname"];
+    $username  = $_POST["sUsername"];
+    $email     = $_POST["sEmail"];
+    $image     = $_FILES["image"]["name"];
+    $target    = "images/uploaded/".basename($_FILES["image"]["name"]);
+
+    date_default_timezone_set("Europe/Athens");
+    $currentTime = time();
+    $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
+
+    global $ConnectingDB;
+
+    $sqlUser = "UPDATE user
+    SET firstname=:firstname, lastname=:lastname, username=:username, email=:email
+    WHERE userId=" . $_SESSION["userId"];
+
+    $stmtUser = $ConnectingDB->prepare($sqlUser);
+    $stmtUser->bindValue(':firstname', $firstname);
+    $stmtUser->bindValue(':lastname', $lastname);
+    $stmtUser->bindValue(':username', $username);
+    $stmtUser->bindValue(':email', $email);
+
+    $ExecuteUser= $stmtUser->execute();
+
+    if (!empty($_FILES["image"]["name"])) {
+      $sqlPhoto = "UPDATE photo
+              SET name =:image
+              WHERE userId=" . $_SESSION["userId"];
+
+      $stmtPhoto = $ConnectingDB->prepare($sqlPhoto);
+      $stmtPhoto->bindValue(':image',$image);
+
+      $ExecutePhoto = $stmtPhoto->execute();
+      move_uploaded_file($_FILES["image"]["tmp_name"],$target);
+    }
+  
+    if($ExecuteUser){
+      $_SESSION["settingsSuccessMessage"] = "Settings updated successfully";
+      redirect_to("index.php");
+    }else {
+      $_SESSION["settingsErrorMessage"] = "Something went wrong. Try Again !";
+      redirect_to("index.php");
+    }
+
   }
 ?>
 
@@ -136,6 +193,9 @@ if (isset($_POST["submitLogin"])) {
     <?php } ?>
     <?php if (isset($_SESSION["registerMessage"]) && $_SESSION["registerMessage"] == true) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#registerModal").modal("show"); }) </script>
+    <?php } ?>
+    <?php if (isset($_SESSION["settingsMessage"]) && $_SESSION["settingsMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#settingsModal").modal("show"); }) </script>
     <?php } ?>
     <!--- End of Script Source Files -->
 

@@ -10,4 +10,8 @@
         $_SESSION['registerMessage'] = false; 
     }
 
+    if(isset($_POST['settingsMessage']) ) { 
+        $_SESSION['settingsMessage'] = false; 
+    }
+
 ?>

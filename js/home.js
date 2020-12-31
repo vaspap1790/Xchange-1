@@ -96,12 +96,10 @@ $(document).ready(function () {
         rules: {
             firstname: {
                 required: true,
-                minlength: 5,
                 maxlength: 50
             },
             lastname: {
                 required: true,
-                minlength: 5,
                 maxlength: 50
             },
             sUsername: {
@@ -118,12 +116,10 @@ $(document).ready(function () {
         messages: {
             firstname: {
                 required: "Please enter a Firstname",
-                minlength: "Firstname must be at least 5 characters long",
                 maxlength: "Firstname must be 50 characters long maximum"
             },
             lastname: {
                 required: "Please enter a Lastname",
-                minlength: "Lastname must be at least 5 characters long",
                 maxlength: "Lastname must be 50 characters long maximum"
             },
             sUsername: {
@@ -164,5 +160,14 @@ $('#registerModal').on('hidden.bs.modal', function () {
         url: 'unsetVariables.php',
         dataType: 'json',
         data: { registerMessage: 'registerMessage' }
+    });
+})
+
+$('#settingsModal').on('hidden.bs.modal', function () {
+    $.ajax({
+        type: "POST",
+        url: 'unsetVariables.php',
+        dataType: 'json',
+        data: { settingsMessage: 'settingsMessage' }
     });
 })

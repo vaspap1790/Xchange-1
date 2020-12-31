@@ -259,7 +259,12 @@
           ?>
 
           <div class="modal-body">
-            <form id="settingsForm">
+            <form id="settingsForm" action="index.php" method="post" enctype="multipart/form-data">
+             
+              <?php
+                echo errorSettingsMessage();
+                echo successSettingsMessage();
+              ?>
 
               <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
 
@@ -274,7 +279,11 @@
                 <?php } ?> 
 
                 <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                  <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Upload</b></button>
+                  <p>Accepted file type .png. Less than 1MB</p> 
+                  <div style="white-space:nowrap">
+                    <label for="imageSelect" class="btn btn-primary">Upload</label>
+                    <input class="custom-file-input" type="File" name="image" id="imageSelect" value="">
+                  </div>
                 </div>
 
               </div>
