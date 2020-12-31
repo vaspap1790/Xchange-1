@@ -57,7 +57,7 @@ $(document).ready(function () {
                 required: true,
                 minlength: 5,
                 maxlength: 50,
-                equalTo: "#password"
+                equalTo: "#rPassword"
             }
         },
         messages: {
@@ -147,3 +147,22 @@ $(document).ready(function () {
     });
 
 });
+
+//Unset session variables
+$('#loginModal').on('hidden.bs.modal', function () {
+    $.ajax({
+        type: "POST",
+        url: 'unsetVariables.php',
+        dataType: 'json',
+        data: { loginMessage: 'loginMessage' }
+    });
+})
+
+$('#registerModal').on('hidden.bs.modal', function () {
+    $.ajax({
+        type: "POST",
+        url: 'unsetVariables.php',
+        dataType: 'json',
+        data: { registerMessage: 'registerMessage' }
+    });
+})

@@ -84,7 +84,7 @@
 
     <!-- Avatar -->
             <?php  
-              if(confirm_Login()){  
+              if(confirm_Login() && !empty(getUserAvatar($_SESSION['userId']))){  
             ?> 
             <img src="images/uploaded/<?php echo getUserAvatar($_SESSION['userId']) ?>" width="100px" height="100px" class="rounded-circle z-depth-0" alt="avatar image">
             <?php  
@@ -139,7 +139,7 @@
       <div class="modal-body">
         <form id="loginForm" action="index.php" method="post">
         <?php
-            echo ErrorMessage();
+            echo errorLoginMessage();
         ?>
         <div class="form-group">
             <label for="username">Username</label>
@@ -197,7 +197,11 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="registerForm">
+        <form id="registerForm" action="index.php" method="post">
+          <?php
+            echo errorRegisterMessage();
+            echo successRegisterMessage();
+          ?>
           <div class="form-group">
             <label for="rUsername">Username</label>
             <input type="text" class="form-control" id="rUsername" name="rUsername" placeholder="Enter Username">
@@ -260,7 +264,7 @@
               <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
 
                 <?php  
-                  if($imageToBeUpdated != null){  
+                  if(!empty($imageToBeUpdated)){  
                 ?> 
                 <img src="images/uploaded/<?php echo $imageToBeUpdated ?>" width="100px" height="100px" class="rounded-circle z-depth-0" alt="avatar image">
                 <?php  

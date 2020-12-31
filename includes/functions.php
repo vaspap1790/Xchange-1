@@ -43,7 +43,21 @@
     $sql  = "SELECT p.name FROM user u inner join photo p on u.userId = p.userId WHERE u.userId = '$userId'";
     $stmt = $ConnectingDB->query($sql);
     $result= $stmt->fetch();
-    return $result["name"];
+    return $result['name'] ?? '';
+  }
+
+  function checkUsernameAvailability($username){
+    global $ConnectingDB;
+    $sql    = "SELECT username FROM user WHERE username=:username";
+    $stmt   = $ConnectingDB->prepare($sql);
+    $stmt->bindValue(':username',$username);
+    $stmt->execute();
+    $Result = $stmt->rowcount();
+    if ($Result == 1) {
+      return true;
+    }else {
+      return false;
+    }
   }
  
 ?>
