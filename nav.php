@@ -81,9 +81,20 @@
         <li class="nav-item avatar dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-            <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0"
-              alt="avatar image">
+
+    <!-- Avatar -->
+            <?php  
+              if(confirm_Login()){  
+            ?> 
+            <img src="images/uploaded/<?php echo getUserAvatar($_SESSION['userId']) ?>" width="100px" height="100px" class="rounded-circle z-depth-0" alt="avatar image">
+            <?php  
+              } else {  
+            ?>  
+            <img src="images/profile/defaultAvatar.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+            <?php } ?> 
+          
           </a>
+
           <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
             aria-labelledby="navbarDropdownMenuLink-55">
             <a class="dropdown-item" href="profile.php">My Profile</a>
@@ -96,8 +107,7 @@
                 <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#settingsModal">Settings</a>
             <?php  
-              }  
-              else{  
+              } else {  
             ?>  
               <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#loginModal">Login</a>
@@ -227,38 +237,71 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <div class="d-flex align-items-start py-3 mb-4 border-bottom"> <img
-            src="https://images.pexels.com/photos/1037995/pexels-photo-1037995.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            class="img" alt="">
-          <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-            <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Upload</b></button>
+
+          <?php
+          // Fetching Existing Content
+          if(confirm_Login()){
+
+              $sql  = "SELECT * FROM user WHERE userId =".$_SESSION["userId"];
+              $stmt = $ConnectingDB ->query($sql);
+              $imageToBeUpdated    = getUserAvatar($_SESSION['userId']);
+
+              while ($DataRows=$stmt->fetch()) {
+                $firstnameToBeUpdated    = $DataRows['firstname'];
+                $lastnameToBeUpdated    = $DataRows['lastname'];
+                $usernameToBeUpdated    = $DataRows['username'];
+                $emailToBeUpdated    = $DataRows['email'];
+              }
+          ?>
+
+          <div class="modal-body">
+            <form id="settingsForm">
+
+              <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
+
+                <?php  
+                  if($imageToBeUpdated != null){  
+                ?> 
+                <img src="images/uploaded/<?php echo $imageToBeUpdated ?>" width="100px" height="100px" class="rounded-circle z-depth-0" alt="avatar image">
+                <?php  
+                  } else {  
+                ?>  
+                <img src="images/profile/defaultAvatar.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+                <?php } ?> 
+
+                <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+                  <p>Accepted file type .png. Less than 1MB</p> <button class="btn button border"><b>Upload</b></button>
+                </div>
+
+              </div>
+
+                <div class="form-group">
+                  <label for="firstname">Firstname</label>
+                  <input type="text" class="form-control" id="firstname" name="firstname" value="<?php echo $firstnameToBeUpdated;?>">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Lastname</label>
+                  <input type="text" class="form-control" id="lastname" name="lastname" value="<?php echo $lastnameToBeUpdated;?>">
+                </div>
+                <div class="form-group">
+                  <label for="sUsername">Username</label>
+                  <input type="text" class="form-control" id="sUsername" name="sUsername" value="<?php echo $usernameToBeUpdated;?>">
+                </div>
+                <div class="form-group">
+                  <label for="sEmail">Email Address</label>
+                  <input type="email" class="form-control" id="sEmail" aria-describedby="emailHelp" name="sEmail" value="<?php echo $emailToBeUpdated;?>">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" name="submitSettings" id="submitSettings" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
           </div>
-        </div>
-        <form id="settingsForm">
-          <div class="form-group">
-            <label for="firstname">Firstname</label>
-            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Firstname">
-          </div>
-          <div class="form-group">
-            <label for="lastName">Lastname</label>
-            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Lastname">
-          </div>
-          <div class="form-group">
-            <label for="sUsername">Username</label>
-            <input type="text" class="form-control" id="sUsername" name="sUsername" placeholder="Enter Username">
-          </div>
-          <div class="form-group">
-            <label for="sEmail">Email Address</label>
-            <input type="email" class="form-control" id="sEmail" aria-describedby="emailHelp" name="sEmail"
-              placeholder="Enter Email">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="submitSettings" id="submitSettings" class="btn btn-primary">Submit</button>
-          </div>
-        </form>
-      </div>
+
+          <?php } else { ?>
+            <div class="modal-body"></div>
+          <?php } ?>
+      
     </div>
   </div>
 </div>

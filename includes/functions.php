@@ -34,77 +34,16 @@
     $stmt = $ConnectingDB->prepare($sql);
     $stmt->bindValue(':userId',$userId);
     $stmt->execute();
-    $Result = $stmt->rowcount();
-    echo $Result;
+    $result = $stmt->rowcount();
+    echo $result;
   }
 
-  // function CheckUserNameExistsOrNot($UserName){
-  //   global $ConnectingDB;
-  //   $sql    = "SELECT username FROM admins WHERE username=:userName";
-  //   $stmt   = $ConnectingDB->prepare($sql);
-  //   $stmt->bindValue(':userName',$UserName);
-  //   $stmt->execute();
-  //   $Result = $stmt->rowcount();
-  //   if ($Result==1) {
-  //     return true;
-  //   }else {
-  //     return false;
-  //   }
-  // }
-
-  // function TotalPosts(){
-  //   global $ConnectingDB;
-  //   $sql = "SELECT COUNT(*) FROM posts";
-  //   $stmt = $ConnectingDB->query($sql);
-  //   $TotalRows= $stmt->fetch();
-  //   $TotalPosts=array_shift($TotalRows);
-  //   echo $TotalPosts;
-  // }
-
-  // function TotalCategories(){
-  //   global $ConnectingDB;
-  //   $sql = "SELECT COUNT(*) FROM category";
-  //   $stmt = $ConnectingDB->query($sql);
-  //   $TotalRows= $stmt->fetch();
-  //   $TotalCategories=array_shift($TotalRows);
-  //   echo $TotalCategories;
-  // }
-
-  // function TotalAdmins(){
-  //   global $ConnectingDB;
-  //   $sql = "SELECT COUNT(*) FROM admins";
-  //   $stmt = $ConnectingDB->query($sql);
-  //   $TotalRows= $stmt->fetch();
-  //   $TotalAdmins=array_shift($TotalRows);
-  //   echo $TotalAdmins;
-
-  // }
-
-  // function TotalComments(){
-  //   global $ConnectingDB;
-  //   $sql = "SELECT COUNT(*) FROM comments";
-  //   $stmt = $ConnectingDB->query($sql);
-  //   $TotalRows= $stmt->fetch();
-  //   $TotalComments=array_shift($TotalRows);
-  //   echo $TotalComments;
-  // }
-
-  // function ApproveCommentsAccordingtoPost($PostId){
-  //   global $ConnectingDB;
-  //   $sqlApprove = "SELECT COUNT(*) FROM comments WHERE post_id='$PostId' AND status='ON'";
-  //   $stmtApprove =$ConnectingDB->query($sqlApprove);
-  //   $RowsTotal = $stmtApprove->fetch();
-  //   $Total = array_shift($RowsTotal);
-  //   return $Total;
-  // }
-
-  // function DisApproveCommentsAccordingtoPost($PostId){
-  //   global $ConnectingDB;
-  //   $sqlDisApprove = "SELECT COUNT(*) FROM comments WHERE post_id='$PostId' AND status='OFF'";
-  //   $stmtDisApprove =$ConnectingDB->query($sqlDisApprove);
-  //   $RowsTotal = $stmtDisApprove->fetch();
-  //   $Total = array_shift($RowsTotal);
-  //   return $Total;
-  // }
+  function getUserAvatar($userId){
+    global $ConnectingDB;
+    $sql  = "SELECT p.name FROM user u inner join photo p on u.userId = p.userId WHERE u.userId = '$userId'";
+    $stmt = $ConnectingDB->query($sql);
+    $result= $stmt->fetch();
+    return $result["name"];
+  }
  
 ?>
