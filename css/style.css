@@ -208,3 +208,8 @@ select:focus {
     line-height: 18px
   }
 }
+
+.error {
+  color: #F00;
+  background-color: #FFF;
+}

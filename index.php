@@ -1,6 +1,43 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
-<?php require_once("includes/sessions.php"); ?>
+<?php require_once("Includes/Sessions.php"); ?>
+
+
+<?php 
+if (isset($_POST["submitLogin"])) {
+
+    $UserName = $_POST["username"];
+    $Password = $_POST["password"];
+
+    if (empty($UserName)||empty($Password)) {
+
+      $_SESSION["ErrorMessage"]= "All fields must be filled out";
+      redirect_to("index.php");
+    }else {
+
+      // code for checking username and password from Database
+      $Found_Account = login_Attempt($UserName,$Password);
+      if ($Found_Account) {
+        $_SESSION["userId"]=$Found_Account["userId"];
+        $_SESSION["username"]=$Found_Account["username"];
+        $_SESSION["loginErrorMessage"] = false;
+
+      }else {
+        $_SESSION["ErrorMessage"]="Incorrect Username/Password";
+        redirect_to("index.php");
+      }
+    }
+  }
+
+  if (isset($_POST["submitLogout"])) {
+
+    $_SESSION["userId"] = null;
+    $_SESSION["username"] = null;
+
+    session_destroy();
+    redirect_to("index.php");
+  }
+?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +80,7 @@
             </form>
         </div>
     </div>
-    <!--- End of SearchBar -->
+    <!--- End of SearchBar --> 
 
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
@@ -52,7 +89,11 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/custom.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <script src="js/home.js"></script>
+    <?php if ((isset($_SESSION["loginErrorMessage"]) && $_SESSION["loginErrorMessage"] == true)) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#loginModal").modal("show"); }) </script>
+    <?php } ?>
     <!--- End of Script Source Files -->
 
 </body>

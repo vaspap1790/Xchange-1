@@ -8,6 +8,7 @@
       $Output .= htmlentities($_SESSION["ErrorMessage"]);
       $Output .= "</div>";
       $_SESSION["ErrorMessage"] = null;
+      $_SESSION["loginErrorMessage"] = true;
       return $Output;
     }
   }
