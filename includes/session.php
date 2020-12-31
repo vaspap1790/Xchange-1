@@ -1,6 +1,7 @@
-<?php
+<?php session_start(); ?>
 
-  session_start();
+<!-- Messages -->
+<?php
 
   function errorLoginMessage(){
     if(isset($_SESSION["loginErrorMessage"])){

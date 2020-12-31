@@ -5,12 +5,12 @@
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="xchange/home.html" target="_blank">About US</a>
+                    <a href="index.php" target="_blank">About US</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="xchange/items.html" target="_blank">Items</a>
+                    <a href="items.php">Items</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">

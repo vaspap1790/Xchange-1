@@ -7,7 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home
+        <a class="nav-link" href="index.php">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
@@ -50,17 +50,17 @@
 
     <div>
     <div class="text-right small">
-
-    <!-- Welcome message -->
+        <!-- Welcome message -->
         <?php  
           if(confirm_Login()){  
           ?>  
             <span style="color:white;">Welcome <?php echo $_SESSION['username']; ?> <span>
           <?php } ?>
       </div>
+
       <ul class="navbar-nav ml-auto nav-flex-icons">
 
-    <!-- Notify for Requests -->
+        <!-- Notify for Requests -->
         <?php  
           if(confirm_Login()){  
         ?> 
@@ -73,16 +73,11 @@
           <li class="nav-item"></li>
         <?php } ?>
 
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
-            <i class="fas fa-heart"></i>
-          </a>
-        </li>
+        <!-- Avatar -->
         <li class="nav-item avatar dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
 
-    <!-- Avatar -->
             <?php  
               if(confirm_Login() && !empty(getUserAvatar($_SESSION['userId']))){  
             ?> 
@@ -90,18 +85,19 @@
             <?php  
               } else {  
             ?>  
-            <img src="images/profile/defaultAvatar.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+            <img src="images/uploaded/defaultAvatar.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
             <?php } ?> 
           
           </a>
 
           <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
             aria-labelledby="navbarDropdownMenuLink-55">
-            <a class="dropdown-item" href="profile.php">My Profile</a>
-
+            
+            <!-- Login-Register or MyProfile-Logout-Setings -->
             <?php  
               if(confirm_Login()){  
             ?>  
+            <a class="dropdown-item" href="profile.php">My Profile</a>
             <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#logoutModal">Logout</a>
                 <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"

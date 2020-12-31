@@ -148,7 +148,7 @@ $(document).ready(function () {
 $('#loginModal').on('hidden.bs.modal', function () {
     $.ajax({
         type: "POST",
-        url: 'unsetVariables.php',
+        url: 'includes/ajax.php',
         dataType: 'json',
         data: { loginMessage: 'loginMessage' }
     });
@@ -157,7 +157,7 @@ $('#loginModal').on('hidden.bs.modal', function () {
 $('#registerModal').on('hidden.bs.modal', function () {
     $.ajax({
         type: "POST",
-        url: 'unsetVariables.php',
+        url: 'includes/ajax.php',
         dataType: 'json',
         data: { registerMessage: 'registerMessage' }
     });
@@ -166,7 +166,7 @@ $('#registerModal').on('hidden.bs.modal', function () {
 $('#settingsModal').on('hidden.bs.modal', function () {
     $.ajax({
         type: "POST",
-        url: 'unsetVariables.php',
+        url: 'includes/ajax.php',
         dataType: 'json',
         data: { settingsMessage: 'settingsMessage' }
     });
