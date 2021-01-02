@@ -101,7 +101,9 @@
 
                 <div class="row d-flex flex-row justify-content-start">
 
-                    <div class="card text-center col-3 p-1">
+                <?php require_once("includes/itemsPHP.php"); ?>
+
+                    <!-- <div class="card text-center col-3 p-1">
                         <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
                         <div class="card-body">
                             <div><small>Uploaded in 17/12/2020</small></div>
@@ -329,7 +331,7 @@
                                 Exchange
                             </button>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
                 <!-- End of Row -->
@@ -357,7 +359,6 @@
                 <div class="col-md-12">
                     <div class="os-animation" data-animation="fadeInUp">
                         <div id="team-slider" class="owl-carousel owl-theme">
-
                             <div class="card text-center p-1">
                                 <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
                                 <div class="card-body">
