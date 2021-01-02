@@ -100,244 +100,50 @@
             <div class="container-fluid px-4 py-3">
 
                 <div class="row d-flex flex-row justify-content-start">
-
-                <?php require_once("includes/itemsPHP.php"); ?>
-
-                    <!-- <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="card text-center col-3 p-1">
-                        <img class="card-img-top" src="images/items/used-guitar.jpg" alt="">
-                        <div class="card-body">
-                            <div><small>Uploaded in 17/12/2020</small></div>
-                            <div>by <a>Username</a></div>
-                            <div class="rating">
-                                <span style="font-size: x-small; margin-top: 1.6%;">(32) </span>
-                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                <input type="radio" name="rating" value="1" id="a1"><label for="1">☆</label>
-                            </div>
-                            <hr style="margin-top: 0;">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur.
-                            </p>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#requestModal">
-                                Exchange
-                            </button>
-                        </div>
-                    </div> -->
-
+                    <?php require_once("includes/itemsPHP.php"); ?>
                 </div>
                 <!-- End of Row -->
 
             </div>
             <!-- End of Container -->
+
+            <!-- Pagination -->
+            <nav class="mt-2">
+                <ul class="pagination pagination-lg">
+
+                    <!-- Backward Button -->
+                    <?php if( isset($page) ) {
+                    if ( $page > 1 ) { ?>
+                        <li class="page-item">
+                            <a href="items.php?page=<?php  echo $page - 1; ?>" class="page-link">&laquo;</a>
+                        </li>
+                    <?php } }?>
+
+                    <?php
+                        $pagination = ceil($countItems / $numberOfItemsForEachPage);
+                        for ($i=1; $i <=$pagination ; $i++) {
+                            if( isset($page) ){
+                                if ($i == $page) {  ?>
+                                    <li class="page-item active">
+                                        <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                                    </li>
+                    <?php } else { ?>  
+                        <li class="page-item">
+                            <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                        </li>
+                    <?php  } } } ?>
+
+                    <!-- Forward Button -->
+                    <?php 
+                        if ( isset($page) && !empty($page) ) {
+                            if ( $page + 1 <= $pagination ) {?>
+                                <li class="page-item">
+                                    <a href="items.php?page=<?php  echo $page + 1; ?>" class="page-link">&raquo;</a>
+                                </li>
+                    <?php } }?>
+                    
+                </ul>
+            </nav>
 
         </div>
         <!-- End of Content -->
@@ -538,7 +344,7 @@
         </div>
 
     </div>
-    <!--- Start Recently Visited Section -->
+    <!--- End Recently Visited Section -->
 
     <!-- Modals -->
     <div class="modal fade" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="requestModalLabel"

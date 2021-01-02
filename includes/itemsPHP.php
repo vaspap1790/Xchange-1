@@ -1,6 +1,14 @@
 <?php
     global $ConnectingDB;
 
+    $sqlCount = "SELECT COUNT(*) FROM item i
+    INNER JOIN category c
+    ON i.categoryId = c.categoryId
+    INNER JOIN user u
+    ON i.userId = u.userId
+    INNER JOIN photo p
+    ON i.itemId = p.itemId ";
+
     $sql = "SELECT i.itemId as itemId, i.description as description,
     i.dateTime_ as dateTime, c.categoryId as categoryId, c.name as categoryName,
     u.userId as userId, u.username as username, p.name as photoName
@@ -12,7 +20,8 @@
     INNER JOIN photo p
     ON i.itemId = p.itemId ";
 
-    $pagination = "ORDER BY i.itemId desc ";
+    $sorting = "ORDER BY i.itemId desc ";
+    $pagination = "";
 
     // Query when pagination is active
     if (isset($_GET["page"])) {
@@ -35,10 +44,20 @@
 
         $search = $_GET["search"];
 
+        // Count query before pagination
+        $sqlCount .= "WHERE i.description LIKE :search
+        OR c.name LIKE :search
+        OR u.username LIKE :search ";
+        $stmtCount = $ConnectingDB->prepare($sqlCount);
+        $stmtCount->bindValue(':search', '%' . $search . '%');
+        $stmtCount->execute();
+        $countItems = $stmtCount->rowcount();
+
+        // Fetch Data query with pagination
         $sql .= "WHERE i.description LIKE :search
         OR c.name LIKE :search
         OR u.username LIKE :search ";
-
+        $sql .= $sorting;
         $sql .= $pagination;
 
         $stmt = $ConnectingDB->prepare($sql);
@@ -51,8 +70,16 @@
 
         $categoryId = $_GET["categoryId"];
 
-        $sql .= "WHERE c.categoryId LIKE :categoryId ";
+        // Count query before pagination
+        $sqlCount .= "WHERE c.categoryId LIKE :categoryId ";
+        $stmtCount = $ConnectingDB->prepare($sqlCount);
+        $stmtCount->bindValue(':categoryId', $categoryId);
+        $stmtCount->execute();
+        $countItems = $stmtCount->rowcount();
 
+        // Fetch Data query with pagination
+        $sql .= "WHERE c.categoryId LIKE :categoryId ";
+        $sql .= $sorting;
         $sql .= $pagination;
 
         $stmt = $ConnectingDB->prepare($sql);
@@ -60,13 +87,23 @@
         $stmt->execute();
     }
 
-    // No paging no filters
+    // No filters
     else{
+
+        // Count query before pagination
+        $stmtCount = $ConnectingDB->query($sqlCount);
+        $totalRows= $stmtCount->fetch();
+        $countItems = array_shift($totalRows);
+
+        // Fetch Data query with pagination
+        $sql .= $sorting;
         $sql .= $pagination;
-        $stmt=$ConnectingDB->query($sql);
+        $stmt = $ConnectingDB->query($sql);
     }
 
     while ($dataRows = $stmt->fetch()) {
+
+        $countItems++;
 
         $itemId         = $dataRows["itemId"];
         $description    = $dataRows["description"];
@@ -77,16 +114,16 @@
         $username       = $dataRows["username"];
         $photoName      = $dataRows["photoName"];
 
-        $sqlRatings   = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
-        $stmtRatings  = $ConnectingDB->query($sqlRatings);
+        $sqlRatings     = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
+        $stmtRatings    = $ConnectingDB->query($sqlRatings);
         $sum = 0;
-        $count = 0;
+        $countRatings = 0;
 
-        while($ratingRows    = $stmtRatings->fetch()){
+        while($ratingRows = $stmtRatings->fetch()){
             $sum += $ratingRows["rating"];
-            $count += 1;
+            $countRatings++;
         }
-        $rating = ceil( $sum / $count);
+        $rating = ceil( $sum / $countRatings);
 
 ?>
 
@@ -96,7 +133,7 @@
 			<div><small>Uploaded in <?php echo $dateTime ?></small></div>
 			<div>by <a> <?php echo $username ?> </a></div>
 			<div class="rating">
-				<span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $count; ?>) </span>
+				<span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
 
                 <?php  for( $i=5; $i>$rating; $i-- ){  ?>
                     <input type="radio" name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
