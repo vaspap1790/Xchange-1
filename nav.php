@@ -35,7 +35,7 @@
             $id = $DataRows["categoryId"];
             $categoryName = $DataRows["name"];
           ?>
-          <a class="dropdown-item" href="items?categoryId=<?php echo $id; ?>"> <?php echo $categoryName; ?> </a>
+          <a class="dropdown-item" href="items.php?categoryId=<?php echo $id; ?>&page=1"> <?php echo $categoryName; ?> </a>
         <?php } ?>
 
         </div>

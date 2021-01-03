@@ -120,9 +120,9 @@
                     <?php } }?>
 
                     <?php
-                        $pagination = ceil($countItems / $numberOfItemsForEachPage);
-                        for ($i=1; $i <=$pagination ; $i++) {
-                            if( isset($page) ){
+                        if( isset($page) ){
+                            $pagination = ceil($countItems / $numberOfItemsForEachPage);
+                            for ($i=1; $i <=$pagination ; $i++) {
                                 if ($i == $page) {  ?>
                                     <li class="page-item active">
                                         <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>

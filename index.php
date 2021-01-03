@@ -27,20 +27,17 @@
     <?php require_once("nav.php"); ?>
 
     <!--- Start of SearchBar -->
-    <form class="form-inline active-pink-4">
-        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search" aria-label="Search">
-        <i class="fas fa-search" aria-hidden="true"></i>
-    </form>
-
     <div class="search-wrapper">
         <div>
             <h2>Find whatever the weather</h2>
         </div>
         <div>
-            <form class="form-inline active-pink-4">
+            <form id="searchForm" action="index.php" method="post" class="form-inline active-pink-4">
                 <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                    aria-label="Search">
-                <i class="fas fa-search" aria-hidden="true"></i>
+                    aria-label="Search" name="search">
+                    <button type="submit" name="submitSearch" id="submitSearch" class="btn btn-primary">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
             </form>
         </div>
     </div>
