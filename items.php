@@ -112,35 +112,82 @@
                 <ul class="pagination pagination-lg">
 
                     <!-- Backward Button -->
-                    <?php if( isset($page) ) {
-                    if ( $page > 1 ) { ?>
-                        <li class="page-item">
-                            <a href="items.php?page=<?php  echo $page - 1; ?>" class="page-link">&laquo;</a>
-                        </li>
-                    <?php } }?>
+                    <?php 
+                        $searchParameters = explode("&", $_SERVER['QUERY_STRING']);
 
+                        if( isset($page) ) {
+
+                            if ( $page > 1 ) { 
+
+                                if ($searchParameters[1]){ ?>
+
+                                    <li class="page-item">
+                                        <a href="items.php?<?php  echo $searchParameters[0]; ?>&page=<?php  echo $page - 1; ?>" class="page-link">&laquo;</a>
+                                    </li>
+
+                                <?php } else { ?>
+
+                                    <li class="page-item">
+                                        <a href="items.php?page=<?php  echo $page - 1; ?>" class="page-link">&laquo;</a>
+                                    </li>
+                    <?php } } } ?>
+
+                    <!-- Page Numbers -->
                     <?php
                         if( isset($page) ){
                             $pagination = ceil($countItems / $numberOfItemsForEachPage);
+
                             for ($i=1; $i <=$pagination ; $i++) {
-                                if ($i == $page) {  ?>
-                                    <li class="page-item active">
-                                        <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
-                                    </li>
-                    <?php } else { ?>  
-                        <li class="page-item">
-                            <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
-                        </li>
-                    <?php  } } } ?>
+
+                                if ($i == $page) {  
+
+                                    if ($searchParameters[1]){ ?>
+
+                                        <li class="page-item active">
+                                            <a href="items.php?<?php  echo $searchParameters[0]; ?>&page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                                        </li>
+
+                                    <?php } else { ?>
+
+                                        <li class="page-item active">
+                                            <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                                        </li>
+
+                    <?php } } else {   
+
+                                    if ($searchParameters[1]){ ?>
+
+                                        <li class="page-item">
+                                            <a href="items.php?<?php  echo $searchParameters[0]; ?>&page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                                        </li>
+
+                                        <?php } else { ?>
+
+                                        <li class="page-item">
+                                            <a href="items.php?page=<?php  echo $i; ?>" class="page-link"><?php  echo $i; ?></a>
+                                        </li>
+
+                    <?php  } } } } ?>
 
                     <!-- Forward Button -->
                     <?php 
                         if ( isset($page) && !empty($page) ) {
-                            if ( $page + 1 <= $pagination ) {?>
-                                <li class="page-item">
-                                    <a href="items.php?page=<?php  echo $page + 1; ?>" class="page-link">&raquo;</a>
-                                </li>
-                    <?php } }?>
+
+                            if ( $page + 1 <= $pagination ) {
+
+                                if ($searchParameters[1]){ ?>
+
+                                    <li class="page-item">
+                                        <a href="items.php?<?php  echo $searchParameters[0]; ?>&page=<?php  echo $page + 1; ?>" class="page-link">&raquo;</a>
+                                    </li>
+
+                                <?php } else { ?>
+
+                                    <li class="page-item">
+                                        <a href="items.php?page=<?php  echo $page + 1; ?>" class="page-link">&raquo;</a>
+                                    </li>
+                                    
+                    <?php } } }?>
                     
                 </ul>
             </nav>
