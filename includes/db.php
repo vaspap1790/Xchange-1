@@ -1,7 +1,7 @@
 <?php
     $username = "root";
     $password = ""; 
-    $host = "127.0.0.1:3307";
+    $host = "127.0.0.1:3306";
     $db_name = "xchangeDB";
     $dsn = "mysql:host=" . $host . "; dbname=" . $db_name;
 

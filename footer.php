@@ -10,17 +10,7 @@
             </div>
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="items.php">Items</a>
-                </h6>
-            </div>
-            <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!" target="_blank">developers</a>
-                </h6>
-            </div>
-            <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!" target="_blank">Help</a>
+                    <a href="#!" target="_blank">Faq</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
