@@ -1,6 +1,13 @@
 <?php
     global $ConnectingDB;
 
+    $sqlFavorites  = "SELECT f.itemId FROM favorite f WHERE f.userId=" . $_SESSION["userId"];
+    $stmtFavorites = $ConnectingDB->query($sqlFavorites);
+    $favorites = array();
+    while ($favoritesRows = $stmtFavorites->fetch()) {
+        array_push($favorites, $favoritesRows["itemId"]);
+    }
+
     $sqlCount = "SELECT COUNT(*) FROM item i
     INNER JOIN category c
     ON i.categoryId = c.categoryId
@@ -92,7 +99,7 @@
 
         // Count query before pagination
         $stmtCount = $ConnectingDB->query($sqlCount);
-        $totalRows= $stmtCount->fetch();
+        $totalRows = $stmtCount->fetch();
         $countItems = array_shift($totalRows);
 
         // Fetch Data query with pagination
@@ -129,7 +136,20 @@
 
 	<div class="card text-center col-3 p-1">
 		<img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
-		<div class="card-body">        
+		<div class="card-body">   
+
+            <?php 
+                if(in_array($itemId, $favorites)){       
+            ?>    
+
+                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
+
+            <?php } else { ?>
+  
+                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
+
+            <?php } ?>    
+
 			<div><small>Uploaded in <?php echo $dateTime ?></small></div>
 			<div>by <a> <?php echo $username ?> </a></div>
 			<div class="rating">

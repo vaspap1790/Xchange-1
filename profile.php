@@ -24,155 +24,228 @@
 
     <!---Navbar -->
     <?php require_once("nav.php"); ?>
-
-    <!-- Add your content of header -->
-    <!-- <header class="">
-        <div class="navbar navbar-default visible-xs">
-            <button type="button" class="navbar-toggle collapsed">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-
-            </button>
-            <a href="./index.html" class="navbar-brand">Helen Dark</a>
-        </div>
-
-        <nav class="sidebar">
-            <div class="navbar-collapse" id="navbar-collapse">
-                <div class="site-header hidden-xs">
-                    <a class="site-brand" href="./index.html" title="">
-                        <img class="img-responsive site-logo" style="border-radius: 50%" alt=""
-                            src="images/profile/profile1.jpg"> Helen Dark
-                    </a>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                    </p>
-                    <hr>
-                    <div class="rate">
-
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
+    
+    <div class="w3-sidebar w3-bar-block" style="width:25%">
+    <div class="container">
+    <div class="card" style="width:250px">
+    <img class="card-img-top" src="images/uploaded/avatarVP.png" alt="Card image" style="width:100%">
+    <div class="card-body">
+      <h4 class="card-title"><h3>vaspap1790<br></h3>
+      <p class="card-text">Vasilis Papadimitrakopoulos<br>vaspap1790@gmail.com<br>
+      <h3>About Me</h3>Lorem ipsum dolor sit amet.</p>
+      
+                           
+                        <hr>
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        <hr>
+                        <a href="#" class="btn btn-primary">Add New Item</a>
+   </div>
+</div> 
+</div>
+</div>
+  
+    <!---Item Card -->
+ 
 
 
-                    <hr>
-                    <a href="./addItem.html" class=" btn btn-info" title=""> Add Items</a>
-
+  
+<div class="container" style="margin-left:25%">
+  <div class="row">
+     <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
                 </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+    </div>
+    <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+    </div>
+    <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+    </div>
+    <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+    </div>
+
+    <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+    </div>
+    <div class="col-sm-4">
+    <img class="card-img-top" src="images/uploaded/book2.jpg" alt="" width="260" height="195">
+            <div class="card-body">        
+                <div><small>Uploaded in 01.01.2021</small></div>
+                <div>by <a> eefe1 </a></div>
+                <div class="rating">
+                    <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
+                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                </div>
+                <hr style="margin-top: 0;">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit, consequuntur. </p>                            
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Exchange
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Edit
+                </button>
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#requestModal">
+                    Delete
+                </button>
+                </div>
+                
+    </div>
+  </div>
+</div>
+</div>
 
 
-            </div>
-        </nav>
-    </header> -->
-
-    <main class="" id="main-collapse">
-
-        <div class="row">
-            <div class="col-xs-12 section-container-spacer">
-                <h1></h1>
-                <hr>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/1 (2).jpg">
-                <h3>Colorfull Shoes</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/1 (4).jpg">
-                <h3>Shoes</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/1 (3).jpg">
-                <h3>Shoes</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (1).jpg">
-                <h3>Flower Pot</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (2).jpg">
-                <h3>Termos</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (3).jpg">
-                <h3>Lamp</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (4).jpg">
-                <h3>Lamp</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (5).jpg">
-                <h3>Camera Lens</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/1 (2).jpg">
-                <h3>Shoes</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/1 (3).jpg">
-                <h3>Shoes</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-
-            <div class="col-xs-12 col-md-4 section-container-spacer">
-                <img class="img-responsive" alt="" src="./images/profile/2 (4).jpg">
-                <h3>Lamp</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit.</p>
-                <a href="./contact.html" class="btn btn-primary" title=""> Ask</a>
-            </div>
-        </div>
-
-    </main>
+    
+     
+<!---Item Card Finish-->
 
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
@@ -187,7 +260,7 @@
     <!-- <script type="text/javascript" src="./main.85741bff.js"></script> -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> -->
+    <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> 
     <script src="js/custom.js"></script>
     <script src="js/profile.js"></script>
     <!--- End of Script Source Files -->
