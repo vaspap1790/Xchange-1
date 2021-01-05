@@ -172,6 +172,11 @@ $('#settingsModal').on('hidden.bs.modal', function () {
     });
 })
 
+$('#exchangeModal').on('hidden.bs.modal', function () {
+    $('#message').val("");
+})
+
+
 $('.openItemModal').click(function () {
 
     var fetch_item_id = $(this).attr('id').split("_")[1];
@@ -182,14 +187,41 @@ $('.openItemModal').click(function () {
         dataType: 'json',
         data: { fetch_item_id: fetch_item_id },
         success: function (response) {
-            console.log(response)
-            $('#item_id').text(response[0].itemId);
+            $('#item_toExchange_id').text(response[0].itemId);
+            $('#owner_id').text(response[0].userId);
             $('#itemModalTitle').text(response[0].itemName);
             $('#itemCategoryName').text(response[0].categoryName);
             $('#dateUploaded').text(response[0].dateTime);
             $('#uploadedBy').text(response[0].username);
             $('#item_description').text(response[0].description);
             $('#itemPhoto').attr("src", "images/uploaded/" + response[0].photoName);
+        }
+    });
+})
+
+$('#submitConfirmExchange').click(function () {
+
+    var item_toExchange_id = $('#item_toExchange_id').text().trim();
+    var owner_id = $('#owner_id').text().trim();
+    var user_item_id = $('#selectUserItem').val().trim().split("_")[1];
+    var message = $('#message').val().trim();
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { item_toExchange_id: item_toExchange_id, user_item_id: user_item_id, owner_id: owner_id, message: message },
+        success: function (response) {
+            console.log(response);
+            if (response[0]["response"] == "Inserted") {
+                $('#messageModalTitle').text("Confirm");
+                $('#messageContent').text("Your request is sent successfully.");
+            }
+            else if (response[0]["response"] == "Error") {
+                $('#messageModalTitle').text("Error");
+                $('#messageContent').text("Something went wrong. Try again.");
+            }
+
         }
     });
 })

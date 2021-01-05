@@ -58,33 +58,103 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
                 <div class="modal-body">
-                    <form id="itemForm" action="index.php" method="post">
+                    <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
+                        <img id="itemPhoto" width="100px" height="100px" alt="item image">
+                    </div>
 
-                        <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
-                            <img id="itemPhoto" width="100px" height="100px" alt="item image">
-                        </div>
+                    <div><small>Uploaded in <span id="dateUploaded"> </span> by <a><span id="uploadedBy"></span></small></div>
+                    <br>
+                    <div>Category: <span id="itemCategoryName"></span></div> 
+                    <br>
+                    <div><span id="item_description"></span></div> 
+                    <div style="display:none"><span id="item_toExchange_id"></span></div> 
+                    <div style="display:none"><span id="owner_id"></span></div> 
 
-                        <div><small>Uploaded in <span id="dateUploaded"> </span> by <a><span id="uploadedBy"></span></small></div>
-                        <br>
-                        <div>Category: <span id="itemCategoryName"></span></div> 
-                        <br>
-                        <div><span id="item_description"></span></div> 
-                        <div style="display:none"><span id="item_id"></span></div> 
-
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" name="submitExchange" id="submitExchange" class="btn btn-primary">Exchange</button>
-                        </div>
-
-                    </form>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="requestExchange" data-dismiss="modal" data-toggle="modal" class="btn btn-primary" data-target="#exchangeModal">Ask</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Message Modal -->
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span id="messageContent"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exchange Modal -->
+    <div class="modal fade" id="exchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exchangeModalTitle">Exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label for="selectUserItem">Select item to offer for exchange</label>
+                        <select class="form-control" id="selectUserItem">
+
+                            <?php
+                                //Fetchinng user items
+                                $sqlUserItems = "SELECT i.itemId as itemId, i.name as name, p.name as photoName 
+                                FROM item i 
+                                INNER JOIN photo p ON i.itemId = p.itemId  
+                                WHERE i.userId=" . $_SESSION["userId"];
+                                $stmtUserItems = $ConnectingDB->query($sqlUserItems);
+
+                                while ($userItemsRows = $stmtUserItems->fetch()) {
+                                    $user_item_id = $userItemsRows["itemId"];
+                                    $user_item_name = $userItemsRows["name"];
+                                    $user_item_photo = $userItemsRows["photoName"];
+                                ?>
+
+                                <option value="userItemModal_<?php echo $user_item_id; ?>">
+                                    <?php echo $user_item_name; ?> &nbsp;&nbsp;&nbsp; 
+                                    <img src="images/uploaded/<?php echo $user_item_photo; ?>" width="auto" height="50px"/>
+                                </option>
+
+                            <?php } ?>
+
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control rounded-0" id="message" name="message" rows="5"></textarea>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button  name="submitConfirmExchange" id="submitConfirmExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Exchange</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- End of Modals -->
 

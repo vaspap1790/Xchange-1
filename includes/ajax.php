@@ -85,4 +85,41 @@
         exit;
     
     }
+
+    if(isset($_POST['item_toExchange_id']) ) { 
+
+        global $ConnectingDB;
+
+        date_default_timezone_set("Europe/Athens");
+        $currentTime = time();
+        $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
+
+        $sql = "INSERT INTO request(dateTime_, itemOfferedId, itemRequestedId, requesterId, ownerId, status) 
+        VALUES('" . $dateTime . "',". $_POST['user_item_id'] . "," . $_POST['item_toExchange_id'] 
+        . "," . $_SESSION['userId'] . "," . $_POST['owner_id'] . ",'pending')";
+        $execute = $ConnectingDB->query($sql);  
+
+        if ($execute){
+            $_POST['item_toExchange_id'] = null;
+            $_POST['user_item_id']   = null;
+            $_POST['owner_id']   = null;
+            $_POST['message']   = null;
+            $response = array();
+            $response["response"]         = "Inserted";
+            header('Content-Type: application/json');
+            echo json_encode(array($response));
+            exit;
+        }else{
+            $_POST['item_toExchange_id'] = null;
+            $_POST['user_item_id']   = null;
+            $_POST['owner_id']   = null;
+            $_POST['message']   = null;
+            $response = array();
+            $response["response"]         = "Error";
+            header('Content-Type: application/json');
+            echo json_encode(array($response));
+            exit;
+        }
+
+    }
 ?>
