@@ -171,3 +171,25 @@ $('#settingsModal').on('hidden.bs.modal', function () {
         data: { settingsMessage: 'settingsMessage' }
     });
 })
+
+$('.openItemModal').click(function () {
+
+    var fetch_item_id = $(this).attr('id').split("_")[1];
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { fetch_item_id: fetch_item_id },
+        success: function (response) {
+            console.log(response)
+            $('#item_id').text(response[0].itemId);
+            $('#itemModalTitle').text(response[0].itemName);
+            $('#itemCategoryName').text(response[0].categoryName);
+            $('#dateUploaded').text(response[0].dateTime);
+            $('#uploadedBy').text(response[0].username);
+            $('#item_description').text(response[0].description);
+            $('#itemPhoto').attr("src", "images/uploaded/" + response[0].photoName);
+        }
+    });
+})

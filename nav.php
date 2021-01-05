@@ -11,16 +11,18 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Watchlist
-        </a>
-        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
 
-          <?php  
-            if(confirm_Login()){  
+      <?php  if(confirm_Login()){  ?>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">Watchlist
+          </a>
+          <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+
+            <?php
               //Fetchinng favorite items
-              $sqlFavoriteItems = "SELECT i.itemId as itemId, i.description as description, p.name as photoName 
+              $sqlFavoriteItems = "SELECT i.itemId as itemId, i.name as name, p.name as photoName 
               FROM favorite f 
               INNER JOIN item i ON f.itemId = i.itemId
               INNER JOIN photo p ON i.itemId = p.itemId  
@@ -29,14 +31,20 @@
 
               while ($favoriteItemsRows = $stmtFavoriteItems->fetch()) {
                 $item_id = $favoriteItemsRows["itemId"];
-                $item_description = $favoriteItemsRows["description"];
+                $item_name = $favoriteItemsRows["name"];
                 $item_photo = $favoriteItemsRows["photoName"];
               ?>
-              <a class="dropdown-item" href="#"> <?php echo $item_description; ?> &nbsp;&nbsp;&nbsp; <img src="images/uploaded/<?php echo $item_photo ; ?>" width="auto" height="50px"/> </a>
-            <?php } } ?>
 
-        </div>
-      </li>
+              <a class="dropdown-item openItemModal" type="button" data-toggle="modal" id="openItemModal_<?php echo $item_id; ?>" data-target="#itemModal">
+                <?php echo $item_name; ?> &nbsp;&nbsp;&nbsp; <img src="images/uploaded/<?php echo $item_photo; ?>" width="auto" height="50px"/>
+              </a>
+            <?php } ?>
+          
+          </div>
+        </li>
+        
+      <?php } ?>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">Categories

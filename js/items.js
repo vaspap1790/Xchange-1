@@ -47,10 +47,7 @@ function toggleFavorite(itemId, userId, action) {
             type: "POST",
             url: 'includes/ajax.php',
             dataType: 'json',
-            data: { favorite: 'favorite', itemId: itemId, userId: userId },
-            success: function (data) {
-                alert(data);
-            }
+            data: { favorite: 'favorite', itemId: itemId, userId: userId }
         });
 
     } else if (action == "unfavorite") {
@@ -65,10 +62,7 @@ function toggleFavorite(itemId, userId, action) {
             type: "POST",
             url: 'includes/ajax.php',
             dataType: 'json',
-            data: { unfavorite: 'unfavorite', itemId: itemId, userId: userId },
-            success: function (data) {
-                alert(data);
-            }
+            data: { unfavorite: 'unfavorite', itemId: itemId, userId: userId }
         });
 
     }

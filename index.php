@@ -46,6 +46,48 @@
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 
+    <!-- Modals -->
+
+    <!-- Item Modal -->
+    <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="itemModalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="itemForm" action="index.php" method="post">
+
+                        <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
+                            <img id="itemPhoto" width="100px" height="100px" alt="item image">
+                        </div>
+
+                        <div><small>Uploaded in <span id="dateUploaded"> </span> by <a><span id="uploadedBy"></span></small></div>
+                        <br>
+                        <div>Category: <span id="itemCategoryName"></span></div> 
+                        <br>
+                        <div><span id="item_description"></span></div> 
+                        <div style="display:none"><span id="item_id"></span></div> 
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="submitExchange" id="submitExchange" class="btn btn-primary">Exchange</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- End of Modals -->
+
     <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

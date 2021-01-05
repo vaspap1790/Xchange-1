@@ -16,7 +16,7 @@
     INNER JOIN photo p
     ON i.itemId = p.itemId ";
 
-    $sql = "SELECT i.itemId as itemId, i.description as description,
+    $sql = "SELECT i.itemId as itemId, i.name as itemName, i.description as description,
     i.dateTime_ as dateTime, c.categoryId as categoryId, c.name as categoryName,
     u.userId as userId, u.username as username, p.name as photoName
     FROM item i
@@ -53,6 +53,7 @@
 
         // Count query before pagination
         $sqlCount .= "WHERE i.description LIKE :search
+        OR i.name LIKE :search
         OR c.name LIKE :search
         OR u.username LIKE :search ";
         $stmtCount = $ConnectingDB->prepare($sqlCount);
@@ -62,6 +63,7 @@
 
         // Fetch Data query with pagination
         $sql .= "WHERE i.description LIKE :search
+        OR i.name LIKE :search
         OR c.name LIKE :search
         OR u.username LIKE :search ";
         $sql .= $sorting;
@@ -113,6 +115,7 @@
         $countItems++;
 
         $itemId         = $dataRows["itemId"];
+        $itemName       = $dataRows["itemName"];
         $description    = $dataRows["description"];
         $dateTime       = $dataRows["dateTime"];
         $categoryId     = $dataRows["categoryId"];
@@ -167,7 +170,7 @@
 
 			</div>
 			<hr style="margin-top: 0;">
-			<p><?php echo $description ?>
+			<p><?php echo $itemName ?>
 			</p>
 			<button type="button" class="btn btn-info btn-sm" data-toggle="modal"
 				data-target="#requestModal">
