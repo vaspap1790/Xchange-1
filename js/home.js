@@ -144,7 +144,7 @@ $(document).ready(function () {
 
 });
 
-//Unset session variables
+// Unset session variables
 $('#loginModal').on('hidden.bs.modal', function () {
     $.ajax({
         type: "POST",
@@ -176,7 +176,7 @@ $('#exchangeModal').on('hidden.bs.modal', function () {
     $('#message').val("");
 })
 
-
+// Item modal
 $('.openItemModal').click(function () {
 
     var fetch_item_id = $(this).attr('id').split("_")[1];
@@ -199,6 +199,7 @@ $('.openItemModal').click(function () {
     });
 })
 
+// Request Exchange
 $('#submitConfirmExchange').click(function () {
 
     var item_toExchange_id = $('#item_toExchange_id').text().trim();

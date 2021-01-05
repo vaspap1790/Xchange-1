@@ -3,18 +3,22 @@
 
 <?php
 
+    // Login
     if(isset($_POST['loginMessage']) ) { 
         $_SESSION['loginMessage'] = false; 
     }
 
+    // Register
     if(isset($_POST['registerMessage']) ) { 
         $_SESSION['registerMessage'] = false; 
     }
 
+    // Settings
     if(isset($_POST['settingsMessage']) ) { 
         $_SESSION['settingsMessage'] = false; 
     }
 
+    // Favorite
     if(isset($_POST['favorite']) ) { 
 
         global $ConnectingDB;
@@ -51,6 +55,7 @@
         $_POST['userId']   = null;    
     }
 
+    // Item fetch
     if(isset($_POST['fetch_item_id']) ) {
     
         global $ConnectingDB;
@@ -86,9 +91,12 @@
     
     }
 
+    //Request
     if(isset($_POST['item_toExchange_id']) ) { 
 
+        header('Content-Type: application/json');
         global $ConnectingDB;
+        $response = array();
 
         date_default_timezone_set("Europe/Athens");
         $currentTime = time();
@@ -99,27 +107,22 @@
         . "," . $_SESSION['userId'] . "," . $_POST['owner_id'] . ",'pending')";
         $execute = $ConnectingDB->query($sql);  
 
+        $_POST['item_toExchange_id'] = null;
+        $_POST['user_item_id']       = null;
+        $_POST['owner_id']           = null;
+        $_POST['message']            = null;
+
         if ($execute){
-            $_POST['item_toExchange_id'] = null;
-            $_POST['user_item_id']   = null;
-            $_POST['owner_id']   = null;
-            $_POST['message']   = null;
-            $response = array();
-            $response["response"]         = "Inserted";
-            header('Content-Type: application/json');
+            $response["response"] = "Inserted";
             echo json_encode(array($response));
             exit;
+
         }else{
-            $_POST['item_toExchange_id'] = null;
-            $_POST['user_item_id']   = null;
-            $_POST['owner_id']   = null;
-            $_POST['message']   = null;
-            $response = array();
             $response["response"]         = "Error";
-            header('Content-Type: application/json');
             echo json_encode(array($response));
             exit;
         }
 
     }
+
 ?>
