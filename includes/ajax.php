@@ -102,9 +102,9 @@
         $currentTime = time();
         $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
 
-        $sql = "INSERT INTO request(dateTime_, itemOfferedId, itemRequestedId, requesterId, ownerId, status) 
+        $sql = "INSERT INTO request(dateTime_, itemOfferedId, itemRequestedId, requesterId, ownerId, status, message) 
         VALUES('" . $dateTime . "',". $_POST['user_item_id'] . "," . $_POST['item_toExchange_id'] 
-        . "," . $_SESSION['userId'] . "," . $_POST['owner_id'] . ",'pending')";
+        . "," . $_SESSION['userId'] . "," . $_POST['owner_id'] . ",'pending','". $_POST['message'] ."')";
         $execute = $ConnectingDB->query($sql);  
 
         $_POST['item_toExchange_id'] = null;
@@ -113,12 +113,12 @@
         $_POST['message']            = null;
 
         if ($execute){
-            $response["response"] = "Inserted";
+            $response["response"] = "Success";
             echo json_encode(array($response));
             exit;
 
         }else{
-            $response["response"]         = "Error";
+            $response["response"] = "Error";
             echo json_encode(array($response));
             exit;
         }
@@ -134,8 +134,8 @@
         $ownedItem = array();
         $offeredItem = array();
 
-        $sqlOwnedItem = "SELECT i.name as itemName, i.description as description,
-        i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, p.name as photoName
+        $sqlOwnedItem = "SELECT i.name as itemName, i.description as description, i.dateTime_ as dateTime, 
+        c.name as categoryName, c.categoryId as categoryId, p.name as photoName, r.message as message
         FROM request r
         INNER JOIN item i
         ON r.itemRequestedId = i.itemId
@@ -154,6 +154,8 @@
         $ownedItem["categoryId"]     = $ownedItemRows["categoryId"];
         $ownedItem["categoryName"]   = $ownedItemRows["categoryName"];
         $ownedItem["photoName"]      = $ownedItemRows["photoName"];
+
+        $message                     = $ownedItemRows["message"];
 
         $sqlOfferedItem = "SELECT i.name as itemName, i.description as description,
         i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, u.username as username,
@@ -180,8 +182,9 @@
         $offeredItem["uploadedBy"]     = $offeredItemRows["username"];
         $offeredItem["photoName"]      = $offeredItemRows["photoName"];
 
-        $response["ownedItem"] = $ownedItem;
+        $response["ownedItem"]   = $ownedItem;
         $response["offeredItem"] = $offeredItem;
+        $response["message"]     = $message;
 
         echo json_encode(array($response));
         exit;

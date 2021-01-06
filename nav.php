@@ -291,7 +291,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="submitRegister" id="submitRegister" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submitRegister" id="submitRegister" class="btn btn-primary">Save</button>
           </div>
         </form>
       </div>
@@ -375,7 +375,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" name="submitSettings" id="submitSettings" class="btn btn-primary">Submit</button>
+                  <button type="submit" name="submitSettings" id="submitSettings" class="btn btn-primary">Save</button>
                 </div>
             </form>
           </div>

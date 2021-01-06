@@ -172,10 +172,6 @@ $('#settingsModal').on('hidden.bs.modal', function () {
     });
 })
 
-$('#exchangeModal').on('hidden.bs.modal', function () {
-    $('#message').val("");
-})
-
 $('#messageModal').on('hidden.bs.modal', function () {
     location.reload();
 })
@@ -206,7 +202,7 @@ $('.openItemModal').click(function () {
 })
 
 // Request Exchange
-$('#submitConfirmExchange').click(function () {
+$('#confirmExchange').click(function () {
 
     var item_toExchange_id = $('#item_toExchange_id').text().trim();
     var owner_id = $('#owner_id').text().trim();
@@ -220,7 +216,7 @@ $('#submitConfirmExchange').click(function () {
         data: { item_toExchange_id: item_toExchange_id, user_item_id: user_item_id, owner_id: owner_id, message: message },
         success: function (response) {
             console.log(response);
-            if (response[0]["response"] == "Inserted") {
+            if (response[0]["response"] == "Success") {
                 $('#messageModalTitle').text("Confirm");
                 $('#messageContent').text("Your request is sent successfully.");
             }
@@ -246,6 +242,8 @@ $('.openRequestModal').click(function () {
         data: { requestId: requestId },
         success: function (response) {
 
+            $('#fetch_message').text('"' + response[0].message + '"');
+
             $('#owned_itemName').text(response[0].ownedItem.itemName);
             $('#owned_dateUploaded').text(response[0].ownedItem.dateTime);
             $('#owned_itemCategoryName').text(response[0].ownedItem.categoryName);
@@ -253,6 +251,8 @@ $('.openRequestModal').click(function () {
             $('#owned_item_description').text(response[0].ownedItem.description);
             $('#owned_itemPhoto').attr("src", "images/uploaded/" + response[0].ownedItem.photoName);
 
+            $('#offered_uploadedBy_header').text(response[0].offeredItem.uploadedBy);
+            $('#offered_uploadedBy_header').attr("href", "profile.php?username=" + response[0].offeredItem.uploadedBy);
             $('#offered_itemName').text(response[0].offeredItem.itemName);
             $('#offered_dateUploaded').text(response[0].offeredItem.dateTime);
             $('#offered_uploadedBy').text(response[0].offeredItem.uploadedBy);
@@ -266,7 +266,7 @@ $('.openRequestModal').click(function () {
 })
 
 // Accept Request
-$('#acceptRequest').click(function () {
+$('#confirmAccept').click(function () {
 
     var requestToAcceptId = $('#requestToApproveId').text();
 
@@ -291,7 +291,7 @@ $('#acceptRequest').click(function () {
 })
 
 // Reject Request
-$('#rejectRequest').click(function () {
+$('#confirmReject').click(function () {
 
     var requestToRejectId = $('#requestToApproveId').text();
 

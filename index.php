@@ -43,7 +43,7 @@
     </div>
     <!--- End of SearchBar --> 
 
-        <!-- Modals -->
+    <!-- Modals -->
 
     <!-- Item Modal -->
     <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="py-3 mb-4 border-bottom d-flex justify-content-center"> 
-                        <img id="itemPhoto" width="440" alt="item image">
+                        <img id="itemPhoto" width="440" height="280" alt="item image">
                     </div>
 
                     <div><small>Uploaded in <span id="dateUploaded"> </span> by <a id="uploadedBy"></a></small></div>
@@ -102,7 +102,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="requestModalTitle">Request</h5>
+                    <div><a style="font-weight:bold !important;" id="offered_uploadedBy_header"></a> sent:</div> &nbsp;&nbsp;
+                    <div><small><i><span id="fetch_message"></span></i></small></div> 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -140,8 +141,52 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button  name="acceptRequest" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Accept</button>
-                    <button  name="rejectRequest" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Reject</button>
+                    <button  name="acceptRequest" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#confirmAcceptModal">Accept</button>
+                    <button  name="rejectRequest" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#confirmRejectModal">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--Confirm Accept Exchange Modal -->
+        <div class="modal fade" id="confirmAcceptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmExchangeModalTitle">Confirm Accept</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to Accept?
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button  name="confirmAccept" id="confirmAccept" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!--Confirm Reject Exchange Modal -->
+        <div class="modal fade" id="confirmRejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmRejectTitle">Confirm Reject</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to Reject?
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button  name="confirmReject" id="confirmReject" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
                 </div>
             </div>
         </div>
@@ -196,9 +241,31 @@
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button  name="submitConfirmExchange" id="submitConfirmExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Exchange</button>
+                        <button  name="submitExchange" id="submitExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmExchangeModal">Exchange</button>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Confirm Exchange Modal -->
+    <div class="modal fade" id="confirmExchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmExchangeModalTitle">Confirm Exchange</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to Exchange?
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button  name="confirmExchange" id="confirmExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
                 </div>
             </div>
         </div>
