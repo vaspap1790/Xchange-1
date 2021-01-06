@@ -28,16 +28,6 @@
     }
   }
 
-  function totalRequestsPending($userId){
-    global $ConnectingDB;
-    $sql = "SELECT requestId FROM request WHERE ownerId=:userId AND status='pending'";
-    $stmt = $ConnectingDB->prepare($sql);
-    $stmt->bindValue(':userId',$userId);
-    $stmt->execute();
-    $result = $stmt->rowcount();
-    echo $result;
-  }
-
   function getUserAvatar($userId){
     global $ConnectingDB;
     $sql  = "SELECT p.name FROM user u inner join photo p on u.userId = p.userId WHERE u.userId = '$userId'";

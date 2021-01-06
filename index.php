@@ -43,10 +43,7 @@
     </div>
     <!--- End of SearchBar --> 
 
-    <!--- Footer -->
-    <?php require_once("footer.php"); ?>
-
-    <!-- Modals -->
+        <!-- Modals -->
 
     <!-- Item Modal -->
     <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -117,8 +114,9 @@
                         <label for="selectUserItem">Select item to offer for exchange</label>
                         <select class="form-control" id="selectUserItem">
 
-                            <?php
-                                //Fetchinng user items
+                            <?php  
+                            if(confirm_Login()){ 
+
                                 $sqlUserItems = "SELECT i.itemId as itemId, i.name as name, p.name as photoName 
                                 FROM item i 
                                 INNER JOIN photo p ON i.itemId = p.itemId  
@@ -136,7 +134,7 @@
                                     <img src="images/uploaded/<?php echo $user_item_photo; ?>" width="auto" height="50px"/>
                                 </option>
 
-                            <?php } ?>
+                            <?php } }?>
 
                         </select>
                     </div>
@@ -157,6 +155,9 @@
     </div>
 
     <!-- End of Modals -->
+
+    <!--- Footer -->
+    <?php require_once("footer.php"); ?>
 
     <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>

@@ -1,27 +1,37 @@
+<!-- Start of Navbar -->
 <nav id="nav-placeholder" class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top ">
+
+  <!-- Start of Left Part of Navbar-->
   <a class="navbar-brand" href="#">Xchange</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <!-- End of Left Part of Navbar-->
+
+  <!-- Start Navbar Content-->
   <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+
+    <!-- Start of Central Part of Navbar -->
     <ul class="navbar-nav mr-auto">
+
+      <!-- Home -->
       <li class="nav-item active">
         <a class="nav-link" href="index.php">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
 
+      <!-- Watchlist -->
       <?php  if(confirm_Login()){  ?>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          <a class="nav-link dropdown-toggle" id="dropdownWatchlist" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">Watchlist
           </a>
-          <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <div class="dropdown-menu dropdown-default" aria-labelledby="dropdownWatchlist">
 
             <?php
-              //Fetchinng favorite items
               $sqlFavoriteItems = "SELECT i.itemId as itemId, i.name as name, p.name as photoName 
               FROM favorite f 
               INNER JOIN item i ON f.itemId = i.itemId
@@ -42,40 +52,45 @@
           
           </div>
         </li>
-        
+
       <?php } ?>
 
+      <!-- Categories -->
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+        <a class="nav-link dropdown-toggle" id="dropdownCategories" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">Categories
         </a>
-        <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+        <div class="dropdown-menu dropdown-default" aria-labelledby="dropdownCategories">
 
         <?php
-          //Fetchinng all the categories from category table
-          $sql = "SELECT categoryId,name FROM category";
-          $stmt = $ConnectingDB->query($sql);
-          while ($DataRows = $stmt->fetch()) {
-            $id = $DataRows["categoryId"];
+          $sqlCategories = "SELECT categoryId,name FROM category";
+          $stmtCategories = $ConnectingDB->query($sqlCategories);
+          while ($DataRows = $stmtCategories->fetch()) {
+            $categoryId = $DataRows["categoryId"];
             $categoryName = $DataRows["name"];
           ?>
-          <a class="dropdown-item" href="items.php?categoryId=<?php echo $id; ?>&page=1"> <?php echo $categoryName; ?> </a>
+          <a class="dropdown-item" href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"> <?php echo $categoryName; ?> </a>
         <?php } ?>
 
         </div>
       </li>
+
+      <!-- Forum -->
       <li class="nav-item">
         <a class="nav-link" href="#">Forum</a>
       </li>
     </ul>
+    <!-- End of Central Part of Navbar -->
 
+
+    <!-- Start of Right Part of Navbar -->
     <div>
-    <div class="text-right small">
-        <!-- Welcome message -->
-        <?php  
-          if(confirm_Login()){  
-          ?>  
-            <span style="color:white;">Welcome <?php echo $_SESSION['username']; ?> <span>
+      <!-- Welcome message -->
+      <div class="text-right small">
+          <?php  
+            if(confirm_Login()){  
+            ?>  
+              <span style="color:white;">Welcome <?php echo $_SESSION['username']; ?> <span>
           <?php } ?>
       </div>
 
@@ -84,19 +99,39 @@
         <!-- Notify for Requests -->
         <?php  
           if(confirm_Login()){  
+            global $ConnectingDB;
+            $sqlPendingRequests = "SELECT * FROM request WHERE ownerId=:userId AND status='pending'";
+            $stmtPendingRequests = $ConnectingDB->prepare($sqlPendingRequests);
+            $stmtPendingRequests->bindValue(':userId',$_SESSION['userId']);
+            $stmtPendingRequests->execute();
+            $pendingRequestsCount = $stmtPendingRequests->rowcount();
         ?> 
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light"><?php totalRequestsPending($_SESSION['userId']) ?>
-            <i class="fas fa-envelope"></i>
-          </a>
-        </li>
+        
+          <li class="nav-item">
+            <div class="btn-group dropleft">
+                <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuRequests" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?php echo $pendingRequestsCount ?>
+                  <i class="fas fa-envelope"></i>
+                </a>
+                <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuRequests">
+                  <?php
+                    while ($pendingRequestsRows = $stmtPendingRequests->fetch()) {
+                      $requestId = $pendingRequestsRows["requestId"];
+                      $dateTimeRequest = $pendingRequestsRows["dateTime_"];
+                    ?>
+                    <a class="dropdown-item" href="#"> <?php echo $requestId; ?> </a>
+                  <?php } ?>
+                </div>
+              </div> 
+          </li>
+
         <?php } else { ?>
           <li class="nav-item"></li>
         <?php } ?>
 
-        <!-- Avatar -->
+        <!-- Avatar - Dropdown -->
         <li class="nav-item avatar dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
+          <a class="nav-link dropdown-toggle" id="avatarDropdown" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
 
             <?php  
@@ -111,13 +146,10 @@
           
           </a>
 
-          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary"
-            aria-labelledby="navbarDropdownMenuLink-55">
-            
-            <!-- Login-Register or MyProfile-Logout-Setings -->
-            <?php  
-              if(confirm_Login()){  
-            ?>  
+          <!-- Login-Register or MyProfile-Logout-Setings -->
+          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="avatarDropdown">
+
+            <?php  if(confirm_Login()){  ?>  
             <a class="dropdown-item" href="profile.php">My Profile</a>
             <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#logoutModal">Logout</a>
@@ -134,11 +166,15 @@
 
           </div>
         </li>
+
       </ul>
     </div>
+    <!-- End of Rifht Part of Navbar -->
 
   </div>
+  <!-- End of Navbar Content -->
 </nav>
+<!-- End of Navbar -->
 
 <!-- Modals -->
 
