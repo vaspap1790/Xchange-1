@@ -176,6 +176,10 @@ $('#exchangeModal').on('hidden.bs.modal', function () {
     $('#message').val("");
 })
 
+$('#messageModal').on('hidden.bs.modal', function () {
+    location.reload();
+})
+
 // Item modal
 $('.openItemModal').click(function () {
 
@@ -231,20 +235,20 @@ $('#submitConfirmExchange').click(function () {
 $('.openRequestModal').click(function () {
 
     var requestId = $(this).attr('id').split("_")[1];
-    console.log(requestId);
+    $('#requestToApproveId').text(requestId);
+
     $.ajax({
         type: "POST",
         url: 'includes/ajax.php',
         dataType: 'json',
         data: { requestId: requestId },
         success: function (response) {
-            console.log(response)
+
             $('#owned_itemName').text(response[0].ownedItem.itemName);
             $('#owned_dateUploaded').text(response[0].ownedItem.dateTime);
             $('#owned_itemCategoryName').text(response[0].ownedItem.categoryName);
             $('#owned_item_description').text(response[0].ownedItem.description);
             $('#owned_itemPhoto').attr("src", "images/uploaded/" + response[0].ownedItem.photoName);
-
 
             $('#offered_itemName').text(response[0].offeredItem.itemName);
             $('#offered_dateUploaded').text(response[0].offeredItem.dateTime);
@@ -252,6 +256,56 @@ $('.openRequestModal').click(function () {
             $('#offered_itemCategoryName').text(response[0].offeredItem.categoryName);
             $('#offered_item_description').text(response[0].offeredItem.description);
             $('#offered_itemPhoto').attr("src", "images/uploaded/" + response[0].offeredItem.photoName);
+        }
+    });
+})
+
+// Accept Request
+$('#acceptRequest').click(function () {
+
+    var requestToAcceptId = $('#requestToApproveId').text();
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { requestToAcceptId: requestToAcceptId },
+        success: function (response) {
+
+            if (response[0]["response"] == "Success") {
+                $('#messageModalTitle').text("Confirm");
+                $('#messageContent').text("The request is accepted successfully.");
+            }
+            else {
+                $('#messageModalTitle').text("Error");
+                $('#messageContent').text("Something went wrong. Try again.");
+            }
+
+        }
+    });
+})
+
+// Reject Request
+$('#rejectRequest').click(function () {
+
+    var requestToRejectId = $('#requestToApproveId').text();
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { requestToRejectId: requestToRejectId },
+        success: function (response) {
+
+            if (response[0]["response"] == "Success") {
+                $('#messageModalTitle').text("Confirm");
+                $('#messageContent').text("The request is rejected successfully.");
+            }
+            else {
+                $('#messageModalTitle').text("Error");
+                $('#messageContent').text("Something went wrong. Try again.");
+            }
+
         }
     });
 })

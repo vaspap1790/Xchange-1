@@ -125,7 +125,7 @@
 
     }
 
-    //Request
+    //Fetch Request
     if(isset($_POST['requestId']) ) { 
 
         header('Content-Type: application/json');
@@ -185,4 +185,65 @@
         exit;
 
     }
+
+    //Accept Request
+    if(isset($_POST['requestToAcceptId']) ) { 
+
+        header('Content-Type: application/json');
+        global $ConnectingDB;
+        $response = array();
+
+        try{
+            $sqlFetchRequest   = "SELECT * FROM request WHERE requestId = " . $_POST['requestToAcceptId'];
+            $stmtFetchRequest  = $ConnectingDB->query($sqlFetchRequest);
+            $fetchedRequest    = $stmtFetchRequest->fetch();
+    
+            $ownerId           = $fetchedRequest["ownerId"];
+            $itemRequestedId   = $fetchedRequest["itemRequestedId"];
+            $requesterId       = $fetchedRequest["requesterId"];
+            $itemOfferedId      = $fetchedRequest["itemOfferedId"];
+
+            $sqlUpdateRequest = "UPDATE request SET status ='accepted' WHERE requestId =" . $_POST['requestToAcceptId'];
+            $executeUpdateRequest = $ConnectingDB->query($sqlUpdateRequest);
+
+            $sqlUpdateRequestedId = "UPDATE item SET userId ='$requesterId' WHERE itemId =" . $itemRequestedId;
+            $executeUpdateRequestedId = $ConnectingDB->query($sqlUpdateRequestedId);
+
+            $sqlUpdateOfferedId = "UPDATE item SET userId ='$ownerId' WHERE itemId =" . $itemOfferedId;
+            $executeUpdateOfferedId = $ConnectingDB->query($sqlUpdateOfferedId);
+
+            $response["response"] = "Success";
+            echo json_encode(array($response));
+            exit;
+
+        }catch(Exception $e){
+            $response["response"] = $e->getMessage();
+            echo json_encode(array($response));
+            exit;
+        }
+    }
+
+    //Reject Request
+    if(isset($_POST['requestToRejectId']) ) { 
+        
+        header('Content-Type: application/json');
+        global $ConnectingDB;
+        $response = array();
+
+        try{
+
+            $sqlUpdateRequest = "UPDATE request SET status ='rejected' WHERE requestId =" . $_POST['requestToRejectId'];
+            $executeUpdateRequest = $ConnectingDB->query($sqlUpdateRequest);
+
+            $response["response"] = "Success";
+            echo json_encode(array($response));
+            exit;
+
+        }catch(Exception $e){
+            $response["response"] = $e->getMessage();
+            echo json_encode(array($response));
+            exit;
+        }
+    }
+
 ?>

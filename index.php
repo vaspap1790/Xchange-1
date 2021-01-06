@@ -121,7 +121,7 @@
                                 <div><small><span id="owned_item_description"></span></small></div> 
                             </div> 
                         </div>
-
+                        
                         <h6>Offered Item</h6>
                         <div class="d-flex py-3 mb-4">
                             <div class="mr-3">
@@ -134,6 +134,8 @@
                                 <div><small><span id="offered_item_description"></span></small></div> 
                             </div> 
                         </div>
+
+                        <div style="display:none" id="requestToApproveId"></div>
 
                 </div>
                 <div class="modal-footer">
