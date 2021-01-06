@@ -1,6 +1,9 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
+<?php require_once("includes/indexPHP.php"); ?> 
+<?php require_once("includes/modals.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +73,7 @@
             <div class="pl-3">
                 <h3>
                     <span class="btn-group">
-                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <button type="button" id="sidebarCollapse" class="btn peach-gradient">
                             <i class="fas fa-align-left"></i>
                         </button>
                     </span>

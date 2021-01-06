@@ -2,6 +2,7 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/indexPHP.php"); ?> 
+<?php require_once("includes/modals.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,13 +30,13 @@
     <!--- Start of SearchBar -->
     <div class="search-wrapper">
         <div>
-            <h2>Find whatever the weather</h2>
+            <h1><b>Find whatever the weather!</h1>
         </div>
         <div>
             <form id="searchForm" action="index.php" method="post" class="form-inline active-pink-4">
                 <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
                     aria-label="Search" name="search">
-                    <button type="submit" name="submitSearch" id="submitSearch" class="btn btn-primary">
+                    <button type="submit" name="submitSearch" id="submitSearch" class="btn peach-gradient">
                         <i class="fas fa-search" aria-hidden="true"></i>
                     </button>
             </form>
@@ -43,244 +44,14 @@
     </div>
     <!--- End of SearchBar --> 
 
-    <!-- Modals -->
-
-    <!-- Item Modal -->
-    <div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="itemModalTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="py-3 mb-4 border-bottom d-flex justify-content-center"> 
-                        <img id="itemPhoto" width="440" height="280" alt="item image">
-                    </div>
-
-                    <div><small>Uploaded in <span id="dateUploaded"> </span> by <a id="uploadedBy"></a></small></div>
-                    <div>Category: <a id="itemCategoryName"></a></div> 
-                    <br>
-                    <div><span id="item_description"></span></div> 
-                    <div style="display:none"><span id="item_toExchange_id"></span></div> 
-                    <div style="display:none"><span id="owner_id"></span></div> 
-                    <br>
-
-                    <div class="modal-footer mt-2">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="requestExchange" data-dismiss="modal" data-toggle="modal" class="btn btn-primary" data-target="#exchangeModal">Ask</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Message Modal -->
-    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="messageModalTitle"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span id="messageContent"></span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Request Modal -->
-    <div class="modal fade bd-example-modal-lg" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div><a style="font-weight:bold !important;" id="offered_uploadedBy_header"></a> sent:</div> &nbsp;&nbsp;
-                    <div><small><i><span id="fetch_message"></span></i></small></div> 
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                        <h6>Your Item</h6>
-                        <div class="d-flex py-3 mb-4 border-bottom">
-                            <div class="mr-3">
-                                <img id="owned_itemPhoto" width="120px;" height="100px" alt="item image">
-                                <div style="text-align:center;"><small><i>Category: <a id="owned_itemCategoryName"></a></i></small></div>
-                            </div> 
-                            <div>
-                                <div id="owned_itemName"></div>
-                                <div><small><b>Uploaded in <span id="owned_dateUploaded"></span></b></small></div>
-                                <div><small><span id="owned_item_description"></span></small></div> 
-                            </div> 
-                        </div>
-                        
-                        <h6>Offered Item</h6>
-                        <div class="d-flex py-3 mb-4">
-                            <div class="mr-3">
-                                <img id="offered_itemPhoto" width="120px;" height="100px" alt="item image">
-                                <div style="text-align:center;"><small><i>Category: <a id="offered_itemCategoryName"></a></i></small></div>
-                            </div> 
-                            <div>
-                                <div id="offered_itemName"></div>
-                                <div><small><b>Uploaded in <span id="offered_dateUploaded"></span> by <a id="offered_uploadedBy"></a></b></small></div>
-                                <div><small><span id="offered_item_description"></span></small></div> 
-                            </div> 
-                        </div>
-
-                        <div style="display:none" id="requestToApproveId"></div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button  name="acceptRequest" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#confirmAcceptModal">Accept</button>
-                    <button  name="rejectRequest" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#confirmRejectModal">Reject</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <!--Confirm Accept Exchange Modal -->
-        <div class="modal fade" id="confirmAcceptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmExchangeModalTitle">Confirm Accept</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to Accept?
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button  name="confirmAccept" id="confirmAccept" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-        <!--Confirm Reject Exchange Modal -->
-        <div class="modal fade" id="confirmRejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmRejectTitle">Confirm Reject</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to Reject?
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button  name="confirmReject" id="confirmReject" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Exchange Modal -->
-    <div class="modal fade" id="exchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exchangeModalTitle">Exchange</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="selectUserItem">Select item to offer for exchange</label>
-                        <select class="form-control" id="selectUserItem">
-
-                            <?php  
-                            if(confirm_Login()){ 
-
-                                $sqlUserItems = "SELECT i.itemId as itemId, i.name as name, p.name as photoName 
-                                FROM item i 
-                                INNER JOIN photo p ON i.itemId = p.itemId  
-                                WHERE i.userId=" . $_SESSION["userId"];
-                                $stmtUserItems = $ConnectingDB->query($sqlUserItems);
-
-                                while ($userItemsRows = $stmtUserItems->fetch()) {
-                                    $user_item_id = $userItemsRows["itemId"];
-                                    $user_item_name = $userItemsRows["name"];
-                                    $user_item_photo = $userItemsRows["photoName"];
-                                ?>
-
-                                <option value="userItemModal_<?php echo $user_item_id; ?>">
-                                    <?php echo $user_item_name; ?> &nbsp;&nbsp;&nbsp; 
-                                    <img src="images/uploaded/<?php echo $user_item_photo; ?>" width="auto" height="50px"/>
-                                </option>
-
-                            <?php } }?>
-
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea class="form-control rounded-0" id="message" name="message" rows="5"></textarea>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button  name="submitExchange" id="submitExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#confirmExchangeModal">Exchange</button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--Confirm Exchange Modal -->
-    <div class="modal fade" id="confirmExchangeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="confirmExchangeModalTitle">Confirm Exchange</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to Exchange?
-                    <br>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button  name="confirmExchange" id="confirmExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- End of Modals -->
-
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 
     <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/custom.js"></script>
     <script src="js/jquery.validate.js"></script>
+    <script src="js/custom.js"></script>
     <script src="js/home.js"></script>
     <?php if (isset($_SESSION["loginMessage"]) && $_SESSION["loginMessage"] == true) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#loginModal").modal("show"); }) </script>
