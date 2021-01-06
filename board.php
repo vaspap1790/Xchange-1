@@ -12,58 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board</title>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" type="text/css" href="css/forms.css">
+    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/board.css">
-
-    <style>
-        body {
-            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            font: 400 15px Lato, sans-serif;
-            line-height: 1.8;
-        }
-
-        h2 {
-            font-size: 72px;
-            color: black;
-            text-shadow: 5px 7px 1px white;
-            font-size: 24px;
-            text-transform: uppercase;
-            font-weight: 1000;
-            margin-bottom: 150px;
-            margin-top: 50px;
-        }
-
-        .accordion-section .panel-default>.panel-heading {
-            border: 0;
-            background: #f4f4f4;
-            padding: 0;
-        }
-
-        .accordion-section .panel-default .panel-title a {
-            display: block;
-            font-style: italic;
-            font-size: 1.5rem;
-        }
-
-        .accordion-section .panel-default .panel-title a:after {
-            font-family: 'FontAwesome';
-            font-style: normal;
-            font-size: 3rem;
-            content: "\f106";
-            color: #f9f9f9;
-            float: right;
-            margin-top: -12px;
-        }
-
-        .accordion-section .panel-default .panel-title a.collapsed:after {
-            content: "\f107";
-        }
-
-        .accordion-section .panel-default .panel-body {
-            font-size: 1.2rem;
-        }
-    </style>
 </head>
 
 <body>

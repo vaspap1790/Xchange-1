@@ -1,0 +1,36 @@
+body {
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+}
+
+container-fluid {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+h3 {
+    font-size: 72px;
+    color: black;
+    text-shadow: 5px 7px 1px white;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 1000;
+    margin-bottom: 100px;
+}
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 100px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+}

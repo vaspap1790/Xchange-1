@@ -12,45 +12,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AboutUs</title>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <style>
-        body {
-            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
-            font: 400 15px Lato, sans-serif;
-            line-height: 1.8;
-        }
-
-        container-fluid {
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-        }
-
-        h3 {
-            font-size: 72px;
-            color: black;
-            text-shadow: 5px 7px 1px white;
-            font-size: 24px;
-            text-transform: uppercase;
-            font-weight: 1000;
-            margin-bottom: 100px;
-        }
-
-        .item h4 {
-            font-size: 19px;
-            line-height: 1.375em;
-            font-weight: 400;
-            font-style: italic;
-            margin: 100px 0;
-        }
-
-        @media screen and (max-width: 768px) {
-            .col-sm-4 {
-                text-align: center;
-                margin: 25px 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/mdb.min.css">
+    <link rel="stylesheet" type="text/css" href="css/forms.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/aboutUs.css">
 </head>
 
 <body>
@@ -58,6 +27,8 @@
     <!---Navbar -->
     <?php require_once("nav.php"); ?>
 
+    <br><br><br><br><br><br>
+    
     <!-- Container (About Section) -->
     <div id="about" class="container-fluid">
         <div class="row">
