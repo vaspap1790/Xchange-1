@@ -91,7 +91,7 @@
     
     }
 
-    //Request
+    //Exchange
     if(isset($_POST['item_toExchange_id']) ) { 
 
         header('Content-Type: application/json');
@@ -125,4 +125,64 @@
 
     }
 
+    //Request
+    if(isset($_POST['requestId']) ) { 
+
+        header('Content-Type: application/json');
+        global $ConnectingDB;
+        $response = array();
+        $ownedItem = array();
+        $offeredItem = array();
+
+        $sqlOwnedItem = "SELECT i.name as itemName, i.description as description,
+        i.dateTime_ as dateTime, c.name as categoryName, p.name as photoName
+        FROM request r
+        INNER JOIN item i
+        ON r.itemRequestedId = i.itemId
+        INNER JOIN category c
+        ON i.categoryId = c.categoryId
+        INNER JOIN photo p
+        ON i.itemId = p.itemId 
+        WHERE r.requestId = " . $_POST['requestId'];
+
+        $stmtOwnedItem = $ConnectingDB->query($sqlOwnedItem);
+        $ownedItemRows = $stmtOwnedItem->fetch();
+
+        $ownedItem["itemName"]       = $ownedItemRows["itemName"];
+        $ownedItem["description"]    = $ownedItemRows["description"];
+        $ownedItem["dateTime"]       = $ownedItemRows["dateTime"];
+        $ownedItem["categoryName"]   = $ownedItemRows["categoryName"];
+        $ownedItem["photoName"]      = $ownedItemRows["photoName"];
+
+        $sqlOfferedItem = "SELECT i.name as itemName, i.description as description,
+        i.dateTime_ as dateTime, c.name as categoryName, u.username as username,
+        p.name as photoName
+        FROM request r
+        INNER JOIN item i
+        ON r.itemOfferedId = i.itemId
+        INNER JOIN category c
+        ON i.categoryId = c.categoryId
+        INNER JOIN user u
+        ON r.requesterId = u.userId 
+        INNER JOIN photo p
+        ON i.itemId = p.itemId 
+        WHERE r.requestId = " . $_POST['requestId'];
+
+        $stmtOfferedItem = $ConnectingDB->query($sqlOfferedItem);
+        $offeredItemRows = $stmtOfferedItem->fetch();
+
+        $offeredItem["itemName"]       = $offeredItemRows["itemName"];
+        $offeredItem["description"]    = $offeredItemRows["description"];
+        $offeredItem["dateTime"]       = $offeredItemRows["dateTime"];
+        $offeredItem["categoryName"]   = $offeredItemRows["categoryName"];
+        $offeredItem["uploadedBy"]     = $offeredItemRows["username"];
+        $offeredItem["photoName"]      = $offeredItemRows["photoName"];
+
+        $response["ownedItem"] = $ownedItem;
+        $response["offeredItem"] = $offeredItem;
+
+        echo json_encode(array($response));
+        exit;
+
+    }
 ?>

@@ -100,7 +100,14 @@
         <?php  
           if(confirm_Login()){  
             global $ConnectingDB;
-            $sqlPendingRequests = "SELECT * FROM request WHERE ownerId=:userId AND status='pending'";
+            $sqlPendingRequests = "SELECT r.requestId as requestId, r.dateTime_ as requestDateTime, 
+            u.username as requester, i.name as requestedItemName, p.name as requestedItemPhotoName 
+            FROM request r 
+            INNER JOIN user u ON r.requesterId = u.userId 
+            INNER JOIN item i ON i.itemId = r.itemRequestedId
+            INNER JOIN photo p ON i.itemId = p.itemId
+            WHERE r.ownerId = :userId 
+            AND r.status = 'pending'";
             $stmtPendingRequests = $ConnectingDB->prepare($sqlPendingRequests);
             $stmtPendingRequests->bindValue(':userId',$_SESSION['userId']);
             $stmtPendingRequests->execute();
@@ -116,10 +123,18 @@
                 <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuRequests">
                   <?php
                     while ($pendingRequestsRows = $stmtPendingRequests->fetch()) {
-                      $requestId = $pendingRequestsRows["requestId"];
-                      $dateTimeRequest = $pendingRequestsRows["dateTime_"];
+                      $requestId              = $pendingRequestsRows["requestId"];
+                      $requestDateTime        = $pendingRequestsRows["requestDateTime"];
+                      $requester              = $pendingRequestsRows["requester"];
+                      $requestedItemName      = $pendingRequestsRows["requestedItemName"];
+                      $requestedItemPhotoName = $pendingRequestsRows["requestedItemPhotoName"];
                     ?>
-                    <a class="dropdown-item" href="#"> <?php echo $requestId; ?> </a>
+                    <a class="dropdown-item openRequestModal" type="button" id="request_<?php echo $requestId; ?>" data-toggle="modal" data-target="#requestModal">
+                      <i><?php echo $requestedItemName; ?></i> &nbsp;&nbsp;&nbsp; 
+                      <img src="images/uploaded/<?php echo $requestedItemPhotoName; ?>" width="auto" height="50px"/> 
+                      requested by <span style="font-weight: bold !important;"><?php echo $requester; ?></span> on <small><?php echo $requestDateTime; ?></small>
+                    </a>
+                    <div class="dropdown-divider"></div>
                   <?php } ?>
                 </div>
               </div> 

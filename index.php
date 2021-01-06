@@ -56,8 +56,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
-                        <img id="itemPhoto" width="100px" height="100px" alt="item image">
+                    <div class="py-3 mb-4 border-bottom"> 
+                        <img id="itemPhoto" width="auto" alt="item image">
                     </div>
 
                     <div><small>Uploaded in <span id="dateUploaded"> </span> by <a><span id="uploadedBy"></span></small></div>
@@ -92,6 +92,54 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Modal -->
+    <div class="modal fade bd-example-modal-lg" id="requestModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestModalTitle">Request</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                        <h6>Your Item</h6>
+                        <div class="d-flex py-3 mb-4 border-bottom">
+                            <div class="mr-3">
+                                <img id="owned_itemPhoto" width="120px;" height="100px" alt="item image">
+                                <div style="text-align:center;"><small><i>Category: <span id="owned_itemCategoryName"></span></i></small></div>
+                            </div> 
+                            <div>
+                                <div id="owned_itemName"></div>
+                                <div><small><b>Uploaded in <span id="owned_dateUploaded"></span></b></small></div>
+                                <div><small><span id="owned_item_description"></span></small></div> 
+                            </div> 
+                        </div>
+
+                        <h6>Offered Item</h6>
+                        <div class="d-flex py-3 mb-4">
+                            <div class="mr-3">
+                                <img id="offered_itemPhoto" width="120px;" height="100px" alt="item image">
+                                <div style="text-align:center;"><small><i>Category: <span id="offered_itemCategoryName"></span></i></small></div>
+                            </div> 
+                            <div>
+                                <div id="offered_itemName"></div>
+                                <div><small><b>Uploaded in <span id="offered_dateUploaded"></span> by <span id="offered_uploadedBy"></span></b></small></div>
+                                <div><small><span id="offered_item_description"></span></small></div> 
+                            </div> 
+                        </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button  name="acceptRequest" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Accept</button>
+                    <button  name="rejectRequest" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Reject</button>
                 </div>
             </div>
         </div>

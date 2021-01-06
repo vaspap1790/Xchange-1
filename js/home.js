@@ -226,3 +226,32 @@ $('#submitConfirmExchange').click(function () {
         }
     });
 })
+
+// Populate Request Modal
+$('.openRequestModal').click(function () {
+
+    var requestId = $(this).attr('id').split("_")[1];
+    console.log(requestId);
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { requestId: requestId },
+        success: function (response) {
+            console.log(response)
+            $('#owned_itemName').text(response[0].ownedItem.itemName);
+            $('#owned_dateUploaded').text(response[0].ownedItem.dateTime);
+            $('#owned_itemCategoryName').text(response[0].ownedItem.categoryName);
+            $('#owned_item_description').text(response[0].ownedItem.description);
+            $('#owned_itemPhoto').attr("src", "images/uploaded/" + response[0].ownedItem.photoName);
+
+
+            $('#offered_itemName').text(response[0].offeredItem.itemName);
+            $('#offered_dateUploaded').text(response[0].offeredItem.dateTime);
+            $('#offered_uploadedBy').text(response[0].offeredItem.uploadedBy);
+            $('#offered_itemCategoryName').text(response[0].offeredItem.categoryName);
+            $('#offered_item_description').text(response[0].offeredItem.description);
+            $('#offered_itemPhoto').attr("src", "images/uploaded/" + response[0].offeredItem.photoName);
+        }
+    });
+})
