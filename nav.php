@@ -100,7 +100,7 @@
         <?php  
           if(confirm_Login()){  
             global $ConnectingDB;
-            $sqlPendingRequests = "SELECT r.requestId as requestId, r.dateTime_ as requestDateTime, 
+            $sqlPendingRequests = "SELECT r.requestId as requestId, r.dateTime_ as requestDateTime, r.requesterId as requesterId,
             u.username as requester, i.name as requestedItemName, p.name as requestedItemPhotoName 
             FROM request r 
             INNER JOIN user u ON r.requesterId = u.userId 
@@ -126,6 +126,7 @@
                       $requestId              = $pendingRequestsRows["requestId"];
                       $requestDateTime        = $pendingRequestsRows["requestDateTime"];
                       $requester              = $pendingRequestsRows["requester"];
+                      $requesterId            = $pendingRequestsRows["requesterId"];
                       $requestedItemName      = $pendingRequestsRows["requestedItemName"];
                       $requestedItemPhotoName = $pendingRequestsRows["requestedItemPhotoName"];
                     ?>

@@ -56,19 +56,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="py-3 mb-4 border-bottom"> 
-                        <img id="itemPhoto" width="auto" alt="item image">
+                    <div class="py-3 mb-4 border-bottom d-flex justify-content-center"> 
+                        <img id="itemPhoto" width="440" alt="item image">
                     </div>
 
-                    <div><small>Uploaded in <span id="dateUploaded"> </span> by <a><span id="uploadedBy"></span></small></div>
-                    <br>
-                    <div>Category: <span id="itemCategoryName"></span></div> 
+                    <div><small>Uploaded in <span id="dateUploaded"> </span> by <a id="uploadedBy"></a></small></div>
+                    <div>Category: <a id="itemCategoryName"></a></div> 
                     <br>
                     <div><span id="item_description"></span></div> 
                     <div style="display:none"><span id="item_toExchange_id"></span></div> 
                     <div style="display:none"><span id="owner_id"></span></div> 
+                    <br>
 
-                    <div class="modal-footer">
+                    <div class="modal-footer mt-2">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button id="requestExchange" data-dismiss="modal" data-toggle="modal" class="btn btn-primary" data-target="#exchangeModal">Ask</button>
                     </div>
@@ -113,7 +113,7 @@
                         <div class="d-flex py-3 mb-4 border-bottom">
                             <div class="mr-3">
                                 <img id="owned_itemPhoto" width="120px;" height="100px" alt="item image">
-                                <div style="text-align:center;"><small><i>Category: <span id="owned_itemCategoryName"></span></i></small></div>
+                                <div style="text-align:center;"><small><i>Category: <a id="owned_itemCategoryName"></a></i></small></div>
                             </div> 
                             <div>
                                 <div id="owned_itemName"></div>
@@ -126,11 +126,11 @@
                         <div class="d-flex py-3 mb-4">
                             <div class="mr-3">
                                 <img id="offered_itemPhoto" width="120px;" height="100px" alt="item image">
-                                <div style="text-align:center;"><small><i>Category: <span id="offered_itemCategoryName"></span></i></small></div>
+                                <div style="text-align:center;"><small><i>Category: <a id="offered_itemCategoryName"></a></i></small></div>
                             </div> 
                             <div>
                                 <div id="offered_itemName"></div>
-                                <div><small><b>Uploaded in <span id="offered_dateUploaded"></span> by <span id="offered_uploadedBy"></span></b></small></div>
+                                <div><small><b>Uploaded in <span id="offered_dateUploaded"></span> by <a id="offered_uploadedBy"></a></b></small></div>
                                 <div><small><span id="offered_item_description"></span></small></div> 
                             </div> 
                         </div>

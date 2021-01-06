@@ -39,7 +39,7 @@
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
+                <!-- <p>Dummy Heading</p>
                 <li>
                     <a href="#">About</a>
                 </li>
@@ -60,7 +60,7 @@
                 </li>
                 <li>
                     <a href="#">Portfolio</a>
-                </li>
+                </li> -->
             </ul>
         </nav>
 
@@ -74,11 +74,25 @@
                             <i class="fas fa-align-left"></i>
                         </button>
                     </span>
-                    Category Items
+                    <?php 
+                        try{
+                            $searchParameters    = explode("&", $_SERVER['QUERY_STRING']);
+                            $categorySearchParameter = explode("=", $searchParameters[0]);
+                            $categoryId = $categorySearchParameter[1];
+
+                            $sqlFetchCategoryName = "SELECT name FROM CATEGORY WHERE categoryId = " . $categoryId;
+                            $stmtFetchCategoryName = $ConnectingDB->query($sqlFetchCategoryName);
+                            $row= $stmtFetchCategoryName->fetch();
+                            
+                            echo $row["name"];
+                        }catch(Exception $e){
+
+                        }
+                    ?>
                 </h3>
             </div>
 
-            <div class="px-3 py-1 d-flex flex-row justify-content-between align-items-center">
+            <!-- <div class="px-3 py-1 d-flex flex-row justify-content-between align-items-center">
                 <div class="d-flex flex-row  align-items-center">
                     <span class="mr-2">Sorting</span>
                     <select class="browser-default custom-select">
@@ -95,7 +109,7 @@
                         <option value="3">50</option>
                     </select>
                 </div>
-            </div>
+            </div> -->
 
             <div class="container-fluid px-4 py-3">
 

@@ -141,20 +141,15 @@
 		<img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
 		<div class="card-body">   
 
-            <?php 
-                if(in_array($itemId, $favorites)){       
-            ?>    
-
+            <?php if(in_array($itemId, $favorites)){ ?>    
                 <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
-
             <?php } else { ?>
-  
                 <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
-
             <?php } ?>    
 
+			<div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
 			<div><small>Uploaded in <?php echo $dateTime ?></small></div>
-			<div>by <a> <?php echo $username ?> </a></div>
+			<div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
 			<div class="rating">
 				<span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
 

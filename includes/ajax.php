@@ -135,7 +135,7 @@
         $offeredItem = array();
 
         $sqlOwnedItem = "SELECT i.name as itemName, i.description as description,
-        i.dateTime_ as dateTime, c.name as categoryName, p.name as photoName
+        i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, p.name as photoName
         FROM request r
         INNER JOIN item i
         ON r.itemRequestedId = i.itemId
@@ -151,11 +151,12 @@
         $ownedItem["itemName"]       = $ownedItemRows["itemName"];
         $ownedItem["description"]    = $ownedItemRows["description"];
         $ownedItem["dateTime"]       = $ownedItemRows["dateTime"];
+        $ownedItem["categoryId"]     = $ownedItemRows["categoryId"];
         $ownedItem["categoryName"]   = $ownedItemRows["categoryName"];
         $ownedItem["photoName"]      = $ownedItemRows["photoName"];
 
         $sqlOfferedItem = "SELECT i.name as itemName, i.description as description,
-        i.dateTime_ as dateTime, c.name as categoryName, u.username as username,
+        i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, u.username as username,
         p.name as photoName
         FROM request r
         INNER JOIN item i
@@ -174,6 +175,7 @@
         $offeredItem["itemName"]       = $offeredItemRows["itemName"];
         $offeredItem["description"]    = $offeredItemRows["description"];
         $offeredItem["dateTime"]       = $offeredItemRows["dateTime"];
+        $offeredItem["categoryId"]     = $offeredItemRows["categoryId"];
         $offeredItem["categoryName"]   = $offeredItemRows["categoryName"];
         $offeredItem["uploadedBy"]     = $offeredItemRows["username"];
         $offeredItem["photoName"]      = $offeredItemRows["photoName"];

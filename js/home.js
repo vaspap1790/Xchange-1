@@ -195,8 +195,10 @@ $('.openItemModal').click(function () {
             $('#owner_id').text(response[0].userId);
             $('#itemModalTitle').text(response[0].itemName);
             $('#itemCategoryName').text(response[0].categoryName);
+            $('#itemCategoryName').attr("href", "items.php?categoryId=" + response[0].categoryId + "&page=1");
             $('#dateUploaded').text(response[0].dateTime);
             $('#uploadedBy').text(response[0].username);
+            $('#uploadedBy').attr("href", "profile.php?username=" + response[0].username);
             $('#item_description').text(response[0].description);
             $('#itemPhoto').attr("src", "images/uploaded/" + response[0].photoName);
         }
@@ -247,13 +249,16 @@ $('.openRequestModal').click(function () {
             $('#owned_itemName').text(response[0].ownedItem.itemName);
             $('#owned_dateUploaded').text(response[0].ownedItem.dateTime);
             $('#owned_itemCategoryName').text(response[0].ownedItem.categoryName);
+            $('#owned_itemCategoryName').attr("href", "items.php?categoryId=" + response[0].ownedItem.categoryId + "&page=1");
             $('#owned_item_description').text(response[0].ownedItem.description);
             $('#owned_itemPhoto').attr("src", "images/uploaded/" + response[0].ownedItem.photoName);
 
             $('#offered_itemName').text(response[0].offeredItem.itemName);
             $('#offered_dateUploaded').text(response[0].offeredItem.dateTime);
             $('#offered_uploadedBy').text(response[0].offeredItem.uploadedBy);
+            $('#offered_uploadedBy').attr("href", "profile.php?username=" + response[0].offeredItem.uploadedBy);
             $('#offered_itemCategoryName').text(response[0].offeredItem.categoryName);
+            $('#offered_itemCategoryName').attr("href", "items.php?categoryId=" + response[0].offeredItem.categoryId + "&page=1");
             $('#offered_item_description').text(response[0].offeredItem.description);
             $('#offered_itemPhoto').attr("src", "images/uploaded/" + response[0].offeredItem.photoName);
         }
