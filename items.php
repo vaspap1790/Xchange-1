@@ -76,18 +76,22 @@
                     </span>
                     <?php 
                         try{
-                            $searchParameters    = explode("&", $_SERVER['QUERY_STRING']);
-                            $categorySearchParameter = explode("=", $searchParameters[0]);
-                            $categoryId = $categorySearchParameter[1];
+                            $searchParameters        = explode("&", $_SERVER['QUERY_STRING']);
+                            $firstSearchParameter = explode("=", $searchParameters[0]);
+                            $firstSearchParameterKey = $firstSearchParameter[0];
 
-                            $sqlFetchCategoryName = "SELECT name FROM CATEGORY WHERE categoryId = " . $categoryId;
-                            $stmtFetchCategoryName = $ConnectingDB->query($sqlFetchCategoryName);
-                            $row= $stmtFetchCategoryName->fetch();
-                            
-                            echo $row["name"];
-                        }catch(Exception $e){
+                            if($firstSearchParameterKey == "categoryId"){
 
-                        }
+                                $categoryId = $firstSearchParameter[1];
+
+                                $sqlFetchCategoryName = "SELECT name FROM CATEGORY WHERE categoryId = " . $categoryId;
+                                $stmtFetchCategoryName = $ConnectingDB->query($sqlFetchCategoryName);
+                                $row= $stmtFetchCategoryName->fetch();
+                                
+                                echo $row["name"];
+                            }
+
+                        }catch(Exception $e){}
                     ?>
                 </h3>
             </div>

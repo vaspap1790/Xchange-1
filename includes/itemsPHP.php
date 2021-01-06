@@ -1,11 +1,14 @@
 <?php
+
+    $favorites = array();
     global $ConnectingDB;
 
-    $sqlFavorites  = "SELECT f.itemId FROM favorite f WHERE f.userId=" . $_SESSION["userId"];
-    $stmtFavorites = $ConnectingDB->query($sqlFavorites);
-    $favorites = array();
-    while ($favoritesRows = $stmtFavorites->fetch()) {
-        array_push($favorites, $favoritesRows["itemId"]);
+    if (confirm_Login()){
+        $sqlFavorites  = "SELECT f.itemId FROM favorite f WHERE f.userId=" . $_SESSION["userId"];
+        $stmtFavorites = $ConnectingDB->query($sqlFavorites);
+        while ($favoritesRows = $stmtFavorites->fetch()) {
+            array_push($favorites, $favoritesRows["itemId"]);
+        }
     }
 
     $sqlCount = "SELECT COUNT(*) FROM item i
@@ -141,11 +144,12 @@
 		<img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
 		<div class="card-body">   
 
-            <?php if(in_array($itemId, $favorites)){ ?>    
+            <?php if (confirm_Login()){ 
+                if(in_array($itemId, $favorites)){ ?>    
                 <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
             <?php } else { ?>
                 <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
-            <?php } ?>    
+            <?php } }?>    
 
 			<div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
 			<div><small>Uploaded in <?php echo $dateTime ?></small></div>
