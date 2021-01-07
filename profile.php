@@ -124,9 +124,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#tab2" data-toggle="tab">Ratings</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab3" data-toggle="tab">Charts</a>
+                </li>
                 <?php if (check_if_logged_user_profile()){ ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tab3" data-toggle="tab">Requests</a>
+                        <a class="nav-link" href="#tab4" data-toggle="tab">Requests</a>
                     </li>
                 <?php } ?>
             </ul>
@@ -190,9 +193,15 @@
                     </div>
                 </div>
 
+                <div class="tab-pane" id="tab3">
+                    <div>
+                        <canvas id="myChart"></canvas>               
+                    </div>
+                </div>
+
                 <?php if (check_if_logged_user_profile()){ ?>
 
-                    <div class="tab-pane" id="tab3">
+                    <div class="tab-pane" id="tab4">
 
                         <section class="container py-2 mb-4">
 
@@ -296,7 +305,7 @@
                             </div><!--  Ending row -->
                         </section>
 
-                    </div> <!--  Ending of tab3 -->
+                    </div> <!--  Ending of tab4 -->
                 <?php } ?>
 
             </div> <!--  Ending tab content -->
@@ -317,8 +326,60 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/custom.js"></script>
     <script src="js/profile.js"></script>
+
+    <script>
+    $(document).ready(function () {
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        ctx.height = 80;
+        ctx.width = 100;
+
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['accepted', 'pending', 'rejected'],
+                datasets: [{
+                    label: '# of Requests',
+                    data: [
+                        <?php echo totalRequestsAccepted(getProfileUserId()); ?>,
+                        <?php echo totalRequestsPending(getProfileUserId()); ?>,
+                        <?php echo totalRequestsRejected(getProfileUserId()); ?>
+                          ],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Requests Chart'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    });
+    
+    </script>
     <!--- End of Script Source Files -->
 
 </body>
