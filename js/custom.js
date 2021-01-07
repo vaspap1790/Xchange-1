@@ -247,7 +247,11 @@ $('.openRequestModal').click(function () {
         data: { requestId: requestId },
         success: function (response) {
 
-            $('#fetch_message').text('"' + response[0].message + '"');
+            if (response[0].message != null) {
+                $('#fetch_message').text('"' + response[0].message + '"');
+            } else {
+                $('#fetch_message').text('Nothing');
+            }
 
             $('#owned_itemName').text(response[0].ownedItem.itemName);
             $('#owned_dateUploaded').text(response[0].ownedItem.dateTime);

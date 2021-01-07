@@ -124,6 +124,7 @@
                 </ul>
 
                 <div class="tab-content">
+
                     <div class="tab-pane active" id="tab1">
                         <div class="container-fluid px-4 py-3 mt-3">
                             <div class="row d-flex flex-row justify-content-start">
@@ -131,10 +132,100 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="tab-pane" id="tab2">
-                        <h3>Notice the gap between the content and tab after applying a background color</h3>
-                    </div>
-                </div>
+
+                        <section class="container py-2 mb-4">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <table class="table table-striped table-hover">
+
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Requested Item</th>
+                                                <th>Photo</th>
+                                                <th>DateTime</th>
+                                                <th>Requester</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+
+                                            <?php
+                                                global $ConnectingDB;
+
+                                                $sqlFetchRequests = "SELECT r.requestId as requestId, r.dateTime_ as requestDateTime, r.requesterId as requesterId,
+                                                u.username as requester, i.name as requestedItemName, p.name as requestedItemPhotoName, r.status as status 
+                                                FROM request r 
+                                                INNER JOIN user u ON r.requesterId = u.userId 
+                                                INNER JOIN item i ON i.itemId = r.itemRequestedId
+                                                INNER JOIN photo p ON i.itemId = p.itemId
+                                                WHERE r.ownerId =". $_SESSION["userId"] ." ORDER BY r.requestId desc";                                               
+
+                                                $stmtFetchRequests = $ConnectingDB->query($sqlFetchRequests);
+                                                $sr = 0;
+
+                                                while ($fetchRequestsRows = $stmtFetchRequests->fetch()) {
+                                                    $profile_requestId              = $fetchRequestsRows["requestId"];
+                                                    $profile_requestDateTime        = $fetchRequestsRows["requestDateTime"];
+                                                    $profile_requester              = $fetchRequestsRows["requester"];
+                                                    $profile_requesterId            = $fetchRequestsRows["requesterId"];
+                                                    $profile_requestedItemName      = $fetchRequestsRows["requestedItemName"];
+                                                    $profile_requestedItemPhotoName = $fetchRequestsRows["requestedItemPhotoName"];
+                                                    $profile_status                 = $fetchRequestsRows["status"];
+                                                    $sr++;
+                                            ?>
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <?php echo $sr; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php
+                                                            if(strlen($profile_requestedItemName)>20){$profile_requestedItemName= substr($profile_requestedItemName,0,18).'..';}
+                                                            echo $profile_requestedItemName;
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <img src="images/uploaded/<?php echo $profile_requestedItemPhotoName; ?>" width="auto" height="50px"/> 
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $profile_requestDateTime; ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="profile.php?username=<?php echo $profile_requester; ?>">
+                                                            <?php
+                                                                if(strlen($profile_requester)>10){$profile_requester= substr($profile_requester,0,10).'..';}
+                                                                    echo $profile_requester ;
+                                                            ?>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo $profile_status; ?>
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-info btn-sm openRequestModal" type="button" 
+                                                        id="requestTable_<?php echo $profile_requestId; ?>" 
+                                                        data-toggle="modal" data-target="#requestModal">View
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                        <?php } ?>   <!--  Ending of While loop -->
+                                    </table>
+
+                                </div><!--  Ending col-12 -->
+                            </div><!--  Ending row -->
+                        </section>
+
+                    </div> <!--  Ending of tab2 -->
+
+                </div> <!--  Ending tab content -->
 
             <?php } else { ?>
 
@@ -148,11 +239,6 @@
                 </div>
 
             <?php } ?>
-
-                
-
-
-
 
         </div>
         <!-- End of Content -->
