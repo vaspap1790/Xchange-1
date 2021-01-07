@@ -70,11 +70,11 @@
             <?php } else { ?>
                 <div> 
                 <button type="button" class="btn btn-info btn-sm openEditItemModal" id="editItem_<?php echo $itemId; ?>" data-toggle="modal"
-				data-target="#requestModal">
+				data-target="#editItemModal">
                     Edit
                 </button>
                 <button type="button" class="btn btn-info btn-sm openDeleteItemModal" id="deleteItem_<?php echo $itemId; ?>" data-toggle="modal"
-                    data-target="#requestModal">
+                    data-target="#deleteModal">
                     Delete
                 </button>
                 </div>

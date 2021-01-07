@@ -100,9 +100,9 @@
             <p><?php echo $profileDescription; ?></p>
 
             <?php if (check_if_logged_user_profile()){ ?>
-                <h3><a href="#" class="btn btn-danger">Add New Item</a></h3>
+                <h3><a data-toggle="modal" data-target="#addItemModal" class="btn btn-danger">Add New Item</a></h3>
             <?php } else { ?>
-                <h3><a href="#" class="btn btn-danger">Leave a Rating</a></h3>
+                <h3><a data-toggle="modal" data-target="#ratingModal" class="btn btn-danger">Leave a Rating</a></h3>
             <?php } ?>
         </div>
         <!---End of Sidebar -->

@@ -422,3 +422,194 @@
     </div>
   </div>
 </div>
+
+<!-- Add Item Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addItemLabel">Add Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="itemForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post" enctype="multipart/form-data">
+
+          <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
+
+            <img src="images/uploaded/noPhoto.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+
+            <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+              <p>Accepted file type .png. Less than 1MB</p> 
+              <div style="white-space:nowrap">
+                <label for="imageSelect" class="btn btn-primary">Upload</label>
+                <input class="custom-file-input" type="File" name="imageItem" id="imageItem" value="">
+              </div>
+            </div>
+
+          </div>
+
+            <div class="form-group">
+              <label for="item_name">Title</label>
+              <input type="text" class="form-control" id="item_name" name="item_name" value="">
+            </div>
+            <div class="form-group">
+            <label for="selectItemCategory">Select item to offer for exchange</label>
+                <select class="form-control" id="selectItemCategory" name="selectItemCategory">
+
+                    <?php  
+                      $sqlItemCategories = "SELECT categoryId,name FROM category";
+                      $stmtItemCategories = $ConnectingDB->query($sqlItemCategories);
+                      while ($itemCategoriesRows = $stmtItemCategories->fetch()) {
+                        $itemCategoryId   = $itemCategoriesRows["categoryId"];
+                        $itemCategoryName = $itemCategoriesRows["name"];
+                    ?>
+
+                      <option value="itemCategory_<?php echo $itemCategoryId; ?>">
+                          <?php echo $itemCategoryName; ?>
+                      </option>
+                      <?php } ?>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="iDescription">Description</label>
+                <textarea class="form-control rounded-0" id="iDescription" name="iDescription" rows="5"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="addItem" id="addItem" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Item Modal -->
+<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editItemLabel">Edit Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="editItemForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post" enctype="multipart/form-data">
+
+          <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
+
+            <img src="images/uploaded/noPhoto.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+
+            <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+              <p>Accepted file type .png. Less than 1MB</p> 
+              <div style="white-space:nowrap">
+                <label for="imageSelect" class="btn btn-primary">Upload</label>
+                <input class="custom-file-input" type="File" name="editImageItem" id="imageItem" value="">
+              </div>
+            </div>
+
+          </div>
+
+            <div class="form-group">
+              <label for="edit_item_name">Title</label>
+              <input type="text" class="form-control" id="edit_item_name" name="edit_item_name" value="">
+            </div>
+            <div class="form-group">
+            <label for="selectItemCategory">Select item to offer for exchange</label>
+                <select class="form-control" id="edit_selectItemCategory" name="edit_selectItemCategory">
+
+                    <?php  
+                      $sqlEditItemCategories = "SELECT categoryId,name FROM category";
+                      $stmtEditItemCategories = $ConnectingDB->query($sqlEditItemCategories);
+                      while ($itemEditCategoriesRows = $stmtEditItemCategories->fetch()) {
+                        $itemEditCategoryId   = $itemEditCategoriesRows["categoryId"];
+                        $itemEditCategoryName = $itemEditCategoriesRows["name"];
+                    ?>
+
+                      <option value="edit_itemCategory_<?php echo $itemEditCategoryId; ?>">
+                          <?php echo $itemEditCategoryName; ?>
+                      </option>
+                      <?php } ?>
+
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="edit_iDescription">Description</label>
+                <textarea class="form-control rounded-0" id="edit_iDescription" name="edit_iDescription" rows="5"></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="editItem" id="editItem" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Item</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          Are you sure you want to delete the item?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" name="deleteItem" id="deleteItem" class="btn btn-primary">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rating Modal -->
+<div class="modal fade" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Leave a Rating</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="ratingForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post">
+        <div class="form-group">
+          Leave a Rating for <?php echo getProfileUsername();?>
+        </div>
+        <div class="rating">
+            <input type="radio" name="rating" value="5" id="5"><label style="font-size: 2vw;" for="5">☆</label>
+            <input type="radio" name="rating" value="4" id="4"><label style="font-size: 2vw;" for="4">☆</label>
+            <input type="radio" name="rating" value="3" id="3"><label style="font-size: 2vw;" for="3">☆</label>
+            <input type="radio" name="rating" value="2" id="2"><label style="font-size: 2vw;" for="2">☆</label>
+            <input type="radio" name="rating" value="1" id="1"><label style="font-size: 2vw;" for="1">☆</label>
+        </div>
+        <div class="form-group">
+                <label for="comments">Description</label>
+                <textarea class="form-control rounded-0" id="comments" name="comments" rows="5"></textarea>
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" name="rate" id="rate" class="btn btn-primary">Rate</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
