@@ -158,12 +158,12 @@
 				<span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
 
                 <?php  for( $i=5; $i>$rating; $i-- ){  ?>
-                    <input type="radio" name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
+                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
                     id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
                 <?php } ?>
 
                 <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
-                    <input type="radio" name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
                     id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
                 <?php } ?>
 

@@ -38,22 +38,72 @@
 
         <!---Sidebar -->
         <div class="w3-container w3-padding-64" id="about">
-            <h4 class="w3-border-bottom w3-border-light-grey w3-padding-16">eefe1</h4>
-            <h4>Ezgi Efe</h4>
-            <h4>esgiefe@gmail.com</h4>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, ipsa.
-            </p>
-            <h7>Reviews</h7><br>
-            <div class="rating">
-                <span style="font-size: x-small; margin-top: 1.6%;">(25) </span>
-                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
-                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+            <?php
+
+                $sqlFetchProfile  = "SELECT u.*, p.name as photoName 
+                FROM user u
+                INNER JOIN photo p
+                ON u.userId = p.userId
+                WHERE u.username='" . getProfileUsername() . "'";
+
+                $stmtFetchProfile = $ConnectingDB ->query($sqlFetchProfile);
+
+                while ($profileRows = $stmtFetchProfile->fetch()) {
+                    $profileUserId             = $profileRows['userId'];
+                    $profileFirstname          = $profileRows['firstname'];
+                    $profileLastname           = $profileRows['lastname'];
+                    $profileUsername           = $profileRows['username'];
+                    $profileEmail              = $profileRows['email'];
+                    $profileDescription        = $profileRows['description'];
+                    $profilePhotoName          = $profileRows['photoName'];
+                  }
+
+                $sqlProfileRatings     = "SELECT rating FROM rating WHERE userRatedId = '$profileUserId'";
+                $stmtProfileRatings    = $ConnectingDB->query($sqlProfileRatings);
+                $sumProfile = 0;
+                $countProfileRatings = 0;
+        
+                while($ratingProfileRows = $stmtProfileRatings->fetch()){
+                    $sumProfile += $ratingProfileRows["rating"];
+                    $countProfileRatings++;
+                }
+                $ratingProfile = ceil( $sumProfile / $countProfileRatings);
+            ?>
+
+            <?php if (!check_if_logged_user_profile()){ ?>
+                <div class="d-flex justify-content-center">
+                    <img src="images/uploaded/<?php echo $profilePhotoName; ?>" width="100px" height="100px" class="rounded-circle z-depth-0" alt="avatar image">
+                </div>
+            <?php } ?>
+
+
+            <h4 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">
+                <?php echo $profileUsername; ?>
+                <div class="rating d-flex row-reverse justify-content-center" style="display:inline">
+				<span style="font-size: medium; margin-top: 2.7%;">(<?php echo $countProfileRatings; ?>) </span>
+
+                <?php  for( $i=5; $i>$ratingProfile; $i-- ){  ?>
+                    <input type="radio" disabled name="rating<?php echo $i; ?>" value="<?php echo $i; ?>" 
+                    id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
+                <?php } ?>
+
+                <?php  for( $i=$ratingProfile; $i>=1; $i-- ){  ?>
+                    <input type="radio" disabled name="rating<?php echo $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                    id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
+                <?php } ?>
             </div>
-            <h3><a href="#" class="btn btn-danger">Add New Item</a></h3>
+            </h4>
+            <h4><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
+            <h4><?php echo $profileEmail; ?></h4>
+
+            <p><?php echo $profileDescription; ?></p>
+
+            <?php if (check_if_logged_user_profile()){ ?>
+                <h3><a href="#" class="btn btn-danger">Add New Item</a></h3>
+            <?php } else { ?>
+                <h3><a href="#" class="btn btn-danger">Leave a Rating</a></h3>
+            <?php } ?>
         </div>
         <!---End of Sidebar -->
 
