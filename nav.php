@@ -166,7 +166,7 @@
           <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="avatarDropdown">
 
             <?php  if(confirm_Login()){  ?>  
-            <a class="dropdown-item" href="profile.php">My Profile</a>
+            <a class="dropdown-item" href="profile.php?username=<?php echo $_SESSION['username']; ?>">My Profile</a>
             <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"
                 data-target="#logoutModal">Logout</a>
                 <a class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal"

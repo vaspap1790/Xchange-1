@@ -350,10 +350,11 @@
               $imageToBeUpdated    = getUserAvatar($_SESSION['userId']);
 
               while ($DataRows=$stmt->fetch()) {
-                $firstnameToBeUpdated    = $DataRows['firstname'];
-                $lastnameToBeUpdated    = $DataRows['lastname'];
-                $usernameToBeUpdated    = $DataRows['username'];
-                $emailToBeUpdated    = $DataRows['email'];
+                $firstnameToBeUpdated      = $DataRows['firstname'];
+                $lastnameToBeUpdated       = $DataRows['lastname'];
+                $usernameToBeUpdated       = $DataRows['username'];
+                $emailToBeUpdated          = $DataRows['email'];
+                $descriptionToBeUpdated    = $DataRows['description'];
               }
           ?>
 
@@ -402,6 +403,10 @@
                 <div class="form-group">
                   <label for="sEmail">Email Address</label>
                   <input type="email" class="form-control" id="sEmail" aria-describedby="emailHelp" name="sEmail" value="<?php echo $emailToBeUpdated;?>">
+                </div>
+                <div class="form-group">
+                    <label for="sDescription">Description</label>
+                    <textarea class="form-control rounded-0" id="sDescription" name="sDescription" rows="5"><?php echo $descriptionToBeUpdated;?></textarea>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

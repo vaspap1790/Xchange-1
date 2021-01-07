@@ -110,6 +110,9 @@ $(document).ready(function () {
                 required: true,
                 email: true,
                 maxlength: 50
+            },
+            sDescription: {
+                maxlength: 499
             }
         },
         messages: {
@@ -130,6 +133,9 @@ $(document).ready(function () {
                 required: "Please enter an email",
                 email: "Invalid email form",
                 maxlength: "Email must be 50 characters long maximum"
+            },
+            sDescription: {
+                maxlength: "Description must be 500 characters long maximum"
             }
         },
         errorClass: 'error',

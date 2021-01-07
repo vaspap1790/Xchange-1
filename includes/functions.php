@@ -1,3 +1,6 @@
+<?php require_once("includes/db.php"); ?>
+<?php require_once("includes/session.php"); ?>
+
 <?php
 
   function redirect_to($New_Location){
@@ -27,6 +30,23 @@
       return false;
     }
   }
+
+  function check_if_logged_user_profile(){
+    $searchParameters          = explode("&", $_SERVER['QUERY_STRING']);
+    $firstSearchParameter      = explode("=", $searchParameters[0]);
+    if(isset($firstSearchParameter[1]) ){
+        $firstSearchParameterValue = $firstSearchParameter[1];
+    }else{
+        $firstSearchParameterValue = "No parameter";
+    }
+
+    if (confirm_Login() &&
+     (strcmp($_SESSION["username"], $firstSearchParameterValue) == 0)){
+        return true;
+    }  else {
+      return false;
+    }
+}
 
   function getUserAvatar($userId){
     global $ConnectingDB;
@@ -143,12 +163,13 @@
 <?php 
   if (isset($_POST["submitSettings"])) {
 
-    $firstname = $_POST["firstname"];
-    $lastname  = $_POST["lastname"];
-    $username  = $_POST["sUsername"];
-    $email     = $_POST["sEmail"];
-    $image     = $_FILES["image"]["name"];
-    $target    = "images/uploaded/".basename($_FILES["image"]["name"]);
+    $firstname     = $_POST["firstname"];
+    $lastname      = $_POST["lastname"];
+    $username      = $_POST["sUsername"];
+    $email         = $_POST["sEmail"];
+    $description   = $_POST["sDescription"];
+    $image         = $_FILES["image"]["name"];
+    $target        = "images/uploaded/".basename($_FILES["image"]["name"]);
 
     date_default_timezone_set("Europe/Athens");
     $currentTime = time();
@@ -157,7 +178,11 @@
     global $ConnectingDB;
 
     $sqlUser = "UPDATE user
-    SET firstname=:firstname, lastname=:lastname, username=:username, email=:email
+    SET firstname=:firstname,
+          lastname=:lastname, 
+          username=:username, 
+          email=:email, 
+          description=:description
     WHERE userId=" . $_SESSION["userId"];
 
     $stmtUser = $ConnectingDB->prepare($sqlUser);
@@ -165,6 +190,7 @@
     $stmtUser->bindValue(':lastname', $lastname);
     $stmtUser->bindValue(':username', $username);
     $stmtUser->bindValue(':email', $email);
+    $stmtUser->bindValue(':description', $description);
 
     $ExecuteUser= $stmtUser->execute();
 

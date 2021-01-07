@@ -76,21 +76,24 @@
                             <i class="fas fa-align-left"></i>
                         </button>
                     </span>
+                    <!-- Category Title -->
                     <?php 
                         try{
                             $searchParameters        = explode("&", $_SERVER['QUERY_STRING']);
-                            $firstSearchParameter = explode("=", $searchParameters[0]);
-                            $firstSearchParameterKey = $firstSearchParameter[0];
+                            $firstSearchParameter    = explode("=", $searchParameters[0]);
+                            if(isset($firstSearchParameter[0])){
+                                $firstSearchParameterKey = $firstSearchParameter[0];
 
-                            if($firstSearchParameterKey == "categoryId"){
-
-                                $categoryId = $firstSearchParameter[1];
-
-                                $sqlFetchCategoryName = "SELECT name FROM CATEGORY WHERE categoryId = " . $categoryId;
-                                $stmtFetchCategoryName = $ConnectingDB->query($sqlFetchCategoryName);
-                                $row= $stmtFetchCategoryName->fetch();
-                                
-                                echo $row["name"];
+                                if($firstSearchParameterKey == "categoryId"){
+    
+                                    $categoryId = $firstSearchParameter[1];
+    
+                                    $sqlFetchCategoryName = "SELECT name FROM CATEGORY WHERE categoryId = " . $categoryId;
+                                    $stmtFetchCategoryName = $ConnectingDB->query($sqlFetchCategoryName);
+                                    $row= $stmtFetchCategoryName->fetch();
+                                    
+                                    echo $row["name"];
+                                }
                             }
 
                         }catch(Exception $e){}
