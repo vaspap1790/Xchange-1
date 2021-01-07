@@ -81,18 +81,23 @@
             <h4 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">
                 <?php echo $profileUsername; ?>
                 <div class="rating d-flex row-reverse justify-content-center" style="display:inline">
-				<span style="font-size: medium; margin-top: 2.7%;">(<?php echo $countProfileRatings; ?>) </span>
+                    <span style="font-size: medium; margin-top: 2.7%;">(<?php echo $countProfileRatings; ?>) </span>
 
-                <?php  for( $i=5; $i>$ratingProfile; $i-- ){  ?>
-                    <input type="radio" disabled name="rating<?php echo $i; ?>" value="<?php echo $i; ?>" 
-                    id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
-                <?php } ?>
+                    <?php  for( $i=5; $i>$ratingProfile; $i-- ){  ?>
+                        <input type="radio" disabled name="rating<?php echo $i; ?>" value="<?php echo $i; ?>" 
+                        id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
+                    <?php } ?>
 
-                <?php  for( $i=$ratingProfile; $i>=1; $i-- ){  ?>
-                    <input type="radio" disabled name="rating<?php echo $i; ?>" checked="checked" value="<?php echo $i; ?>" 
-                    id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
-                <?php } ?>
-            </div>
+                    <?php  for( $i=$ratingProfile; $i>=1; $i-- ){  ?>
+                        <input type="radio" disabled name="rating<?php echo $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                        id="rating<?php echo $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $i; ?>">☆</label>
+                    <?php } ?>
+                </div>
+                <div>
+                    <span class="badge badge-pill badge-success"><?php echo totalRequestsAccepted(getProfileUserId()); ?></span> &nbsp;
+                    <span class="badge badge-pill badge-info"><?php echo totalRequestsPending(getProfileUserId()); ?></span> &nbsp;
+                    <span class="badge badge-pill badge-danger"><?php echo totalRequestsRejected(getProfileUserId()); ?></span> 
+                </div>
             </h4>
             <h4><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
             <h4><?php echo $profileEmail; ?></h4>
@@ -259,7 +264,21 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <?php echo $profile_status; ?>
+                                                        <span class=" 
+                                                            <?php 
+                                                                if ($profile_status == "pending"){
+                                                                    echo "badge badge-pill badge-info";
+                                                                }
+                                                                if ($profile_status == "accepted"){
+                                                                    echo "badge badge-pill badge-success";
+                                                                }
+                                                                if ($profile_status == "rejected"){
+                                                                    echo "badge badge-pill badge-danger";
+                                                                }
+                                                            ?>
+                                                        ">
+                                                            <?php echo $profile_status; ?>
+                                                        </span>
                                                     </td>
                                                     <td>
                                                         <button class="btn btn-info btn-sm openRequestModal" type="button" 

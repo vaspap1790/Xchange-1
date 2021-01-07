@@ -98,6 +98,33 @@ function getProfileUserId(){
       return false;
     }
   }
+
+  function totalRequestsPending($userId){
+    global $ConnectingDB;
+    $sql = "SELECT COUNT(*) FROM request WHERE ownerId =" . $userId . " AND status = 'pending'";
+    $stmt = $ConnectingDB->query($sql);
+    $totalRows= $stmt->fetch();
+    $totalPosts=array_shift($totalRows);
+    echo $totalPosts;
+  }
+
+  function totalRequestsAccepted($userId){
+    global $ConnectingDB;
+    $sql = "SELECT COUNT(*) FROM request WHERE ownerId =" . $userId . " AND status = 'accepted'";
+    $stmt = $ConnectingDB->query($sql);
+    $totalRows= $stmt->fetch();
+    $totalPosts=array_shift($totalRows);
+    echo $totalPosts;
+  }
+
+  function totalRequestsRejected($userId){
+    global $ConnectingDB;
+    $sql = "SELECT COUNT(*) FROM request WHERE ownerId =" . $userId . " AND status = 'rejected'";
+    $stmt = $ConnectingDB->query($sql);
+    $totalRows= $stmt->fetch();
+    $totalPosts=array_shift($totalRows);
+    echo $totalPosts;
+  }
  
 ?>
 
