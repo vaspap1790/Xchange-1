@@ -109,13 +109,56 @@
 
 
         <!-- Page Content -->
-        <div class="container-fluid px-4 py-3">
-            <div class="row d-flex flex-row justify-content-start">
-                <?php require_once("includes/profilePHP.php"); ?>
-            </div>
-            <!-- End of Row -->
+
+        <div class="container mt-5 p-1">
+            
+            <?php if (check_if_logged_user_profile()){ ?>
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#tab1" data-toggle="tab">Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tab2" data-toggle="tab">Requests</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <div class="container-fluid px-4 py-3 mt-3">
+                            <div class="row d-flex flex-row justify-content-start">
+                                <?php require_once("includes/profilePHP.php"); ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <h3>Notice the gap between the content and tab after applying a background color</h3>
+                    </div>
+                </div>
+
+            <?php } else { ?>
+
+                <div class="pl-2 d-flex justify-content-start">
+                    <h3 class="mb-4">Items</h3>
+                </div>
+                <div class="container-fluid px-4 py-1">
+                    <div class="row d-flex flex-row justify-content-start">
+                        <?php require_once("includes/profilePHP.php"); ?>
+                    </div>
+                </div>
+
+            <?php } ?>
+
+                
+
+
+
+
         </div>
         <!-- End of Content -->
+
+
+
 
     </div>
     <!-- End of Wrapper -->
@@ -126,6 +169,7 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> 
     <script src="js/custom.js"></script>
     <script src="js/profile.js"></script>

@@ -468,6 +468,7 @@
     <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.validate.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
     <script src="js/custom.js"></script>
     <script src="owl/owl.carousel.js"></script>

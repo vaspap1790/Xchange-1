@@ -63,17 +63,17 @@
             <p><?php echo $itemName ?></p>
             
             <?php if (!check_if_logged_user_profile()){ ?>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-				data-target="#requestModal">
+                <button type="button" class="btn btn-info btn-sm openItemModal" id="profileItem_<?php echo $itemId; ?>" data-toggle="modal"
+				data-target="#itemModal">
 				Exchange
 			</button>
             <?php } else { ?>
                 <div> 
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                <button type="button" class="btn btn-info btn-sm openEditItemModal" id="editItem_<?php echo $itemId; ?>" data-toggle="modal"
 				data-target="#requestModal">
                     Edit
                 </button>
-                <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                <button type="button" class="btn btn-info btn-sm openDeleteItemModal" id="deleteItem_<?php echo $itemId; ?>" data-toggle="modal"
                     data-target="#requestModal">
                     Delete
                 </button>
