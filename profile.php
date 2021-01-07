@@ -1,6 +1,11 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
+<?php
+    if (strcmp(getProfileUsername(), "No parameter") == 0){
+        redirect_to("404.php");
+    }
+?>
 <?php require_once("includes/modals.php"); ?>
 
 <!DOCTYPE html>

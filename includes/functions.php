@@ -48,6 +48,18 @@
     }
 }
 
+  function getProfileUsername(){
+    $searchParameters          = explode("&", $_SERVER['QUERY_STRING']);
+    $firstSearchParameter      = explode("=", $searchParameters[0]);
+    if(isset($firstSearchParameter[1]) ){
+        $firstSearchParameterValue = $firstSearchParameter[1];
+    }else{
+        $firstSearchParameterValue = "No parameter";
+    }
+
+    return $firstSearchParameterValue;
+}
+
   function getUserAvatar($userId){
     global $ConnectingDB;
     $sql  = "SELECT p.name FROM user u inner join photo p on u.userId = p.userId WHERE u.userId = '$userId'";
