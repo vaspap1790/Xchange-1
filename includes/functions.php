@@ -60,6 +60,23 @@
     return $firstSearchParameterValue;
 }
 
+function getProfileUserId(){
+  global $ConnectingDB;
+
+  $searchParameters          = explode("&", $_SERVER['QUERY_STRING']);
+  $firstSearchParameter      = explode("=", $searchParameters[0]);
+
+  if(isset($firstSearchParameter[1]) ){
+      $firstSearchParameterValue = $firstSearchParameter[1];
+      $sql    = "SELECT userId FROM user WHERE username='" . $firstSearchParameterValue . "'";
+      $stmt = $ConnectingDB->query($sql);
+      $result= $stmt->fetch();
+      $userId = $result['userId'];
+  }
+
+  return $userId;
+}
+
   function getUserAvatar($userId){
     global $ConnectingDB;
     $sql  = "SELECT p.name FROM user u inner join photo p on u.userId = p.userId WHERE u.userId = '$userId'";

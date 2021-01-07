@@ -111,29 +111,83 @@
         <!-- Page Content -->
 
         <div class="container mt-5 p-1">
-            
-            <?php if (check_if_logged_user_profile()){ ?>
-
-                <ul class="nav nav-tabs">
+        
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#tab1" data-toggle="tab">Items</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tab2" data-toggle="tab">Ratings</a>
+                </li>
+                <?php if (check_if_logged_user_profile()){ ?>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#tab1" data-toggle="tab">Items</a>
+                        <a class="nav-link" href="#tab3" data-toggle="tab">Requests</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#tab2" data-toggle="tab">Requests</a>
-                    </li>
-                </ul>
+                <?php } ?>
+            </ul>
 
-                <div class="tab-content">
+            <div class="tab-content">
 
-                    <div class="tab-pane active" id="tab1">
-                        <div class="container-fluid px-4 py-3 mt-3">
-                            <div class="row d-flex flex-row justify-content-start">
-                                <?php require_once("includes/profilePHP.php"); ?>
-                            </div>
+                <div class="tab-pane active" id="tab1">
+                    <div class="container-fluid px-4 py-3 mt-3">
+                        <div class="row d-flex flex-row justify-content-start">
+                            <?php require_once("includes/profilePHP.php"); ?>
                         </div>
                     </div>
+                </div>
 
-                    <div class="tab-pane" id="tab2">
+                <div class="tab-pane" id="tab2">
+                    <div class="container-fluid px-4 py-3 mt-3">
+                        <div class="row d-flex flex-row justify-content-start">
+                            <?php
+                                global $ConnectingDB;
+
+                                $sqlFetchRatings = "SELECT r.ratingId as ratingId, r.dateTime_ as ratingDateTime, r.rating as rating,
+                                u.username as rater, p.name as raterPhotoName, r.comments as comments
+                                FROM rating r 
+                                INNER JOIN user u ON r.userRatingId = u.userId 
+                                INNER JOIN photo p ON u.userId = p.userId
+                                WHERE r.userRatedId =". getProfileUserId() ." ORDER BY r.userRatingId desc";                                               
+
+                                $stmtFetchRatings = $ConnectingDB->query($sqlFetchRatings);
+
+                                while ($fetchRatingsRows = $stmtFetchRatings->fetch()) {
+                                    $ratingId             = $fetchRatingsRows["ratingId"];
+                                    $ratingDateTime       = $fetchRatingsRows["ratingDateTime"];
+                                    $rating               = $fetchRatingsRows["rating"];
+                                    $rater                = $fetchRatingsRows["rater"];
+                                    $raterPhotoName       = $fetchRatingsRows["raterPhotoName"];
+                                    $comments             = $fetchRatingsRows["comments"];
+                            ?>
+
+                            <div class="card col-3 p-1">
+                                <div class="card-body">
+                                    <div class="rating">
+                                        <input type="radio" name="rating" value="5" id="5"><label style="font-size: 1.5vw;" for="5">☆</label>
+                                        <input type="radio" name="rating" value="4" id="4"><label style="font-size: 1.5vw;" for="4">☆</label>
+                                        <input type="radio" name="rating" value="3" id="3"><label style="font-size: 1.5vw;" for="3">☆</label>
+                                        <input type="radio" name="rating" value="2" id="2"><label style="font-size: 1.5vw;" for="2">☆</label>
+                                        <input type="radio" name="rating" value="1" id="1"><label style="font-size: 1.5vw;" for="1">☆</label>
+                                    </div>
+                                    <div>
+                                        rated by 
+                                        <a href="profile.php?username=<?php echo $rater;?>"><?php echo $rater;?></a> &nbsp;&nbsp;
+                                        <img src="images/uploaded/<?php echo $raterPhotoName; ?>" width="50px" height="50px" class="rounded-circle z-depth-0" alt="avatar image">
+                                    </div>
+                                    <div>on <span class="text-muted"><?php echo $ratingDateTime;?></span></div>
+                                    <p><i>"<?php echo $comments;?>"</i></p>
+                                </div>
+                            </div>
+
+                            <?php } ?>   <!--  Ending of While loop -->
+
+                        </div>
+                    </div>
+                </div>
+
+                <?php if (check_if_logged_user_profile()){ ?>
+
+                    <div class="tab-pane" id="tab3">
 
                         <section class="container py-2 mb-4">
 
@@ -223,26 +277,13 @@
                             </div><!--  Ending row -->
                         </section>
 
-                    </div> <!--  Ending of tab2 -->
+                    </div> <!--  Ending of tab3 -->
+                <?php } ?>
 
-                </div> <!--  Ending tab content -->
-
-            <?php } else { ?>
-
-                <div class="pl-2 d-flex justify-content-start">
-                    <h3 class="mb-4">Items</h3>
-                </div>
-                <div class="container-fluid px-4 py-1">
-                    <div class="row d-flex flex-row justify-content-start">
-                        <?php require_once("includes/profilePHP.php"); ?>
-                    </div>
-                </div>
-
-            <?php } ?>
+            </div> <!--  Ending tab content -->
 
         </div>
         <!-- End of Content -->
-
 
 
 

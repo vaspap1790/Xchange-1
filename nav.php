@@ -40,8 +40,8 @@
               $stmtFavoriteItems = $ConnectingDB->query($sqlFavoriteItems);
 
               while ($favoriteItemsRows = $stmtFavoriteItems->fetch()) {
-                $item_id = $favoriteItemsRows["itemId"];
-                $item_name = $favoriteItemsRows["name"];
+                $item_id    = $favoriteItemsRows["itemId"];
+                $item_name  = $favoriteItemsRows["name"];
                 $item_photo = $favoriteItemsRows["photoName"];
               ?>
 

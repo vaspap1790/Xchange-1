@@ -583,7 +583,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Leave a Rating</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Rating</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -594,14 +594,14 @@
           Leave a Rating for <?php echo getProfileUsername();?>
         </div>
         <div class="rating">
-            <input type="radio" name="rating" value="5" id="5"><label style="font-size: 2vw;" for="5">☆</label>
-            <input type="radio" name="rating" value="4" id="4"><label style="font-size: 2vw;" for="4">☆</label>
-            <input type="radio" name="rating" value="3" id="3"><label style="font-size: 2vw;" for="3">☆</label>
-            <input type="radio" name="rating" value="2" id="2"><label style="font-size: 2vw;" for="2">☆</label>
-            <input type="radio" name="rating" value="1" id="1"><label style="font-size: 2vw;" for="1">☆</label>
+            <input type="radio" name="rating" value="5" id="5"><label style="font-size: 2.2vw;" for="5">☆</label>
+            <input type="radio" name="rating" value="4" id="4"><label style="font-size: 2.2vw;" for="4">☆</label>
+            <input type="radio" name="rating" value="3" id="3"><label style="font-size: 2.2vw;" for="3">☆</label>
+            <input type="radio" name="rating" value="2" id="2"><label style="font-size: 2.2vw;" for="2">☆</label>
+            <input type="radio" name="rating" value="1" id="1"><label style="font-size: 2.2vw;" for="1">☆</label>
         </div>
         <div class="form-group">
-                <label for="comments">Description</label>
+                <label for="comments">Comments</label>
                 <textarea class="form-control rounded-0" id="comments" name="comments" rows="5"></textarea>
             </div>
         <div class="modal-footer">
