@@ -202,9 +202,12 @@
                     </div>
                 </div>
 
-                <div class="tab-pane" id="tab3">
-                    <div>
-                        <canvas id="myChart"></canvas>               
+                <div class="tab-pane ml-2" id="tab3">
+                    <div class="chart-container" style="height:70vh; width:60vw">
+                        <canvas id="polarChart"></canvas>  
+                    </div>
+                    <div class="chart-container" style="height:70vh; width:60vw">
+                        <canvas id="barChart"></canvas>             
                     </div>
                 </div>
 
@@ -342,12 +345,51 @@
     <script>
     $(document).ready(function () {
 
-        var ctx = document.getElementById('myChart').getContext('2d');
-        ctx.height = 80;
-        ctx.width = 100;
+        var barChart = document.getElementById('barChart').getContext('2d');
+        var polarChart = document.getElementById('polarChart').getContext('2d');
 
-        var myChart = new Chart(ctx, {
+        var myBarChart = new Chart(barChart, {
             type: 'bar',
+            data: {
+                labels: ['accepted', 'pending', 'rejected'],
+                datasets: [{
+                    label: '# of Requests',
+                    data: [
+                        <?php echo totalRequestsAccepted(getProfileUserId()); ?>,
+                        <?php echo totalRequestsPending(getProfileUserId()); ?>,
+                        <?php echo totalRequestsRejected(getProfileUserId()); ?>
+                          ],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Requests Chart'
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var myPolarChart = new Chart(polarChart, {
+            type: 'polarArea',
             data: {
                 labels: ['accepted', 'pending', 'rejected'],
                 datasets: [{
