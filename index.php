@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="css/forms.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="owl/owl.carousel.css">
+    <link rel="stylesheet" href="owl/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
 </head>
 
@@ -44,6 +46,132 @@
     </div>
     <!--- End of SearchBar --> 
 
+    <!--- Start Recently Visited Section -->
+    <?php 
+        if( isset($_COOKIE['recentlyVisited']) && !empty($_COOKIE['recentlyVisited']) ){
+        
+                $data = unserialize($_COOKIE['recentlyVisited']);
+                $dataToFetch = array_unique($data);
+
+                if(count($dataToFetch) > 3) {    
+    ?>
+
+        <div id="recentlyVisited" class="py-4 px-5 container">
+            <div class="fixed-background">
+                <div class="row">
+
+                    <div class="col-12">
+                        <h3 class="heading text-center pb-3">Recently you visited</h3>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="os-animation" data-animation="fadeInUp">
+                            <div id="team-slider" class="owl-carousel owl-theme">
+
+                            <?php
+                                global $ConnectingDB;
+                                
+                                foreach ($dataToFetch as $id) {
+
+                                    $sqlRecenlyVisited = "SELECT i.itemId as itemId, i.name as itemName, i.description as description,
+                                    i.dateTime_ as dateTime, c.categoryId as categoryId, c.name as categoryName,
+                                    u.userId as userId, u.username as username, p.name as photoName
+                                    FROM item i
+                                    INNER JOIN category c
+                                    ON i.categoryId = c.categoryId
+                                    INNER JOIN user u
+                                    ON i.userId = u.userId
+                                    INNER JOIN photo p
+                                    ON i.itemId = p.itemId 
+                                    WHERE i.itemId =" . $id;
+                                    
+                                    $stmtRecenlyVisited = $ConnectingDB->query($sqlRecenlyVisited);
+
+                                    if ($stmtRecenlyVisited) {
+                                        $recenlyVisitedRow = $stmtRecenlyVisited->fetch();
+
+                                        $itemId         = $recenlyVisitedRow["itemId"];
+                                        $itemName       = $recenlyVisitedRow["itemName"];
+                                        $description    = $recenlyVisitedRow["description"];
+                                        $dateTime       = $recenlyVisitedRow["dateTime"];
+                                        $categoryId     = $recenlyVisitedRow["categoryId"];
+                                        $categoryName   = $recenlyVisitedRow["categoryName"];
+                                        $userId         = $recenlyVisitedRow["userId"];
+                                        $username       = $recenlyVisitedRow["username"];
+                                        $photoName      = $recenlyVisitedRow["photoName"];
+
+                                        $sqlRatings     = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
+                                        $stmtRatings    = $ConnectingDB->query($sqlRatings);
+                                        $sum = 0;
+                                        $countRatings = 0;
+
+                                        while($ratingRows = $stmtRatings->fetch()){
+                                            $sum += $ratingRows["rating"];
+                                            $countRatings++;
+                                        }
+                                        $rating = ceil( $sum / $countRatings);
+                                ?>
+                                        <div class="card text-center p-1">
+                                            <img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
+                                            <div class="card-body">    
+
+                                                <div>Category: <a title="<?php echo $categoryName; ?>" href="items.php?categoryId=<?php echo $categoryId; ?>&page=1">
+                                                <?php
+                                                    if(strlen($categoryName)>8){$categoryName= substr($categoryName,0,6).'..';}
+                                                    echo $categoryName; 
+                                                 ?></a></div>
+                                                <div><small>Uploaded in <?php echo $dateTime ?></small></div>
+                                                <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                                                <div class="rating">
+                                                    <span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
+
+                                                    <?php  for( $i=5; $i>$rating; $i-- ){  ?>
+                                                        <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
+                                                        id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                                    <?php } ?>
+
+                                                    <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
+                                                        <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                                                        id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                                    <?php } ?>
+
+                                                </div>
+                                                <hr style="margin-top: 0;">
+                                                <p><?php echo $itemName ?>
+                                                </p>
+                                                <button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
+                                                id="openItemModal_<?php echo $itemId; ?>" data-target="#itemModal">
+                                                    Exchange
+                                                </button>
+                                            </div>
+                                        </div>
+                                <?php
+                                    }
+                                }
+
+                                ?>
+                                    
+
+                            </div>
+                            <!--- End Team Slider -->
+                        </div>
+                        <!--- End Animation -->
+                    </div>
+                    <!--- End col-md-12 -->
+
+                </div>
+                <!--- End of Row Light -->
+
+                <div class="fixed-wrap">
+                    <div id="fixed-2"></div>
+                </div>
+
+            </div>
+        </div>
+
+    <?php } } ?>    
+    <!-- End of Recently Visited -->            
+
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 
@@ -51,6 +179,8 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script>
+    <script src="owl/owl.carousel.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/home.js"></script>
     <?php if (isset($_SESSION["loginMessage"]) && $_SESSION["loginMessage"] == true) { ?>

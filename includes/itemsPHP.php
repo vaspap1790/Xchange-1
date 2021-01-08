@@ -171,8 +171,8 @@
 			<hr style="margin-top: 0;">
 			<p><?php echo $itemName ?>
 			</p>
-			<button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-				data-target="#requestModal">
+			<button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
+				data-target="#itemModal" id="openItemModal_<?php echo $itemId; ?>">
 				Exchange
 			</button>
 		</div>

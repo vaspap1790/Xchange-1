@@ -57,8 +57,25 @@
 
     // Item fetch
     if(isset($_POST['fetch_item_id']) ) {
-    
+
+        $response = array();
+
+        if(!isset($_SESSION['recentlyVisited'])){
+            $recentlyVisited = array($_POST['fetch_item_id']);
+            $_SESSION["recentlyVisited"] = $recentlyVisited;
+        }else{
+            array_unshift($_SESSION["recentlyVisited"], $_POST['fetch_item_id']);
+            while(count($_SESSION["recentlyVisited"]) > 15){
+                array_pop($_SESSION["recentlyVisited"]);
+            }
+        }
+
+        $cookie_name   = "recentlyVisited";
+        $cookie_value  = serialize(array_unique($_SESSION["recentlyVisited"]));
+        setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
+
         global $ConnectingDB;
+
         $sql = "SELECT i.itemId as itemId, i.name as itemName, i.description as description,
         i.dateTime_ as dateTime, c.categoryId as categoryId, c.name as categoryName,
         u.userId as userId, u.username as username, p.name as photoName
@@ -73,7 +90,6 @@
 
         $stmt = $ConnectingDB->query($sql);
         $dataRows = $stmt->fetch();
-        $response = array();
 
         $response["itemId"]         = $dataRows["itemId"];
         $response["itemName"]       = $dataRows["itemName"];

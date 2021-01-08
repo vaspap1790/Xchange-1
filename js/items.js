@@ -66,5 +66,5 @@ function toggleFavorite(itemId, userId, action) {
         });
 
     }
-
+    location.reload();
 }

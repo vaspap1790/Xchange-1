@@ -208,3 +208,74 @@ select:focus {
 page-footer {
   background: #e20404;
 }
+
+/* CARDS */
+
+.card {
+  border-radius: 0;
+  border: .1rem solid rgba(0, 0, 0, .075);
+  box-shadow: 0 0 .8rem rgba(0, 0, 0, .075);
+  /* margin: .1rem; */
+  transition: transform .4s ease;
+  font-size: small;
+}
+
+.card:hover {
+  transform: scale(.95);
+}
+
+.card a:hover, a:focus {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.owl-dot.active span, .owl-dot:hover span {
+  background: #5c8e90!important;
+}
+
+/* RATING */
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center
+}
+
+.rating>input {
+  display: none
+}
+
+.rating>label {
+  position: relative;
+  width: 1em;
+  font-size: 1vw;
+  color: #FFD600;
+  cursor: pointer
+}
+
+.rating>label::before {
+  content: "\2605";
+  position: absolute;
+  opacity: 0
+}
+
+.rating>label:hover:before, .rating>label:hover~label:before {
+  opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+  opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+  opacity: 0.4
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 14px
+  }
+  p {
+    font-size: 12px
+  }
+}
