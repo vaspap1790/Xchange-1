@@ -172,11 +172,19 @@
                             <div class="card col-3 p-1">
                                 <div class="card-body">
                                     <div class="rating">
-                                        <input type="radio" name="rating" value="5" id="5"><label style="font-size: 1.5vw;" for="5">☆</label>
-                                        <input type="radio" name="rating" value="4" id="4"><label style="font-size: 1.5vw;" for="4">☆</label>
-                                        <input type="radio" name="rating" value="3" id="3"><label style="font-size: 1.5vw;" for="3">☆</label>
-                                        <input type="radio" name="rating" value="2" id="2"><label style="font-size: 1.5vw;" for="2">☆</label>
-                                        <input type="radio" name="rating" value="1" id="1"><label style="font-size: 1.5vw;" for="1">☆</label>
+
+                                        <?php  for( $i=5; $i>$rating; $i-- ){  ?>
+                                            <input type="radio" disabled name="rating_<?php echo $rater; ?>_<?php echo $i; ?>" value="<?php echo $i; ?>" 
+                                            id="rating_<?php echo $rater; ?>_<?php echo $i; ?>">
+                                            <label style="font-size: 1.7vw;" for="rating_<?php echo $rater; ?>_<?php echo $i; ?>">☆</label>
+                                        <?php } ?>
+
+                                        <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
+                                            <input type="radio" disabled name="rating_<?php echo $rater; ?>_<?php echo $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                                            id="rating_<?php echo $rater; ?>_<?php echo $i; ?>">
+                                            <label style="font-size: 1.7vw;" for="rating_<?php echo $rater; ?>_<?php echo $i; ?>">☆</label>
+                                        <?php } ?>
+                                        
                                     </div>
                                     <div>
                                         rated by 
