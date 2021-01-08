@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="css/mdb.min.css">
     <link rel="stylesheet" type="text/css" href="css/forms.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -208,7 +209,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
 
-                                    <table class="table table-striped table-hover">
+                                    <table id="requestsDataTable" style="width:100%" class="table table-striped table-hover">
 
                                         <thead class="thead-dark">
                                             <tr>
@@ -221,6 +222,7 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
 
                                             <?php
                                                 global $ConnectingDB;
@@ -234,7 +236,6 @@
                                                 WHERE r.ownerId =". $_SESSION["userId"] ." ORDER BY r.requestId desc";                                               
 
                                                 $stmtFetchRequests = $ConnectingDB->query($sqlFetchRequests);
-                                                $sr = 0;
 
                                                 while ($fetchRequestsRows = $stmtFetchRequests->fetch()) {
                                                     $profile_requestId              = $fetchRequestsRows["requestId"];
@@ -244,13 +245,11 @@
                                                     $profile_requestedItemName      = $fetchRequestsRows["requestedItemName"];
                                                     $profile_requestedItemPhotoName = $fetchRequestsRows["requestedItemPhotoName"];
                                                     $profile_status                 = $fetchRequestsRows["status"];
-                                                    $sr++;
                                             ?>
 
-                                            <tbody>
                                                 <tr>
                                                     <td>
-                                                        <?php echo $sr; ?>
+                                                        <?php echo $profile_requestId; ?>
                                                     </td>
                                                     <td>
                                                         <?php
@@ -296,9 +295,10 @@
                                                         </button>
                                                     </td>
                                                 </tr>
-                                            </tbody>
 
                                         <?php } ?>   <!--  Ending of While loop -->
+                                        </tbody>
+
                                     </table>
 
                                 </div><!--  Ending col-12 -->
@@ -325,6 +325,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/custom.js"></script>
