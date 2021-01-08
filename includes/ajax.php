@@ -251,4 +251,35 @@
         }
     }
 
+    //Delete Item
+    if(isset($_POST['deleteItemId']) ) { 
+        
+        header('Content-Type: application/json');
+        global $ConnectingDB;
+        $response = array();
+
+        try{
+            $sqlPhoto = "DELETE FROM photo WHERE itemId=" . $_POST['deleteItemId'];
+            $executePhoto = $ConnectingDB->query($sqlPhoto);
+
+            $sqlFavorite = "DELETE FROM favorite WHERE itemId=" . $_POST['deleteItemId'];
+            $executesqlFavorite = $ConnectingDB->query($sqlFavorite);
+
+            $sqlRequest = "DELETE FROM request WHERE itemOfferedId=" . $_POST['deleteItemId'] . " OR itemRequestedId=" . $_POST['deleteItemId'];
+            $executeRequest = $ConnectingDB->query($sqlRequest);
+
+            $sqlItem = "DELETE FROM item WHERE itemId=" . $_POST['deleteItemId'];
+            $executesIItem = $ConnectingDB->query($sqlItem);
+
+            $response["response"] = "Success";
+            echo json_encode(array($response));
+            exit;
+
+        }catch(Exception $e){
+            $response["response"] = $e->getMessage();
+            echo json_encode(array($response));
+            exit;
+        }
+    }
+
 ?>

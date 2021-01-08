@@ -324,4 +324,34 @@ $('#confirmReject').click(function () {
     });
 })
 
+// Populate Request Modal
+$('.openDeleteItemModal').click(function () {
+    var deleteItemId = $(this).attr('id').split("_")[1];
+    $('#deleteItemId').val(deleteItemId);
+})
+
+// Reject Request
+$('#deleteItem').click(function () {
+
+    var deleteItemId = $('#deleteItemId').val().trim();
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { deleteItemId: deleteItemId },
+        success: function (response) {
+
+            if (response[0]["response"] == "Success") {
+                $('#messageModalTitle').text("Confirm");
+                $('#messageContent').text("Item deleted successfully.");
+            }
+            else {
+                $('#messageModalTitle').text("Error");
+                $('#messageContent').text("Something went wrong. Try again.");
+            }
+
+        }
+    });
+})
+
 

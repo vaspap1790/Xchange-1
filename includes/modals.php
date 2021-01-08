@@ -566,11 +566,12 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
+          <input type="text" id="deleteItemId" style="display:none">
           Are you sure you want to delete the item?
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="submit" name="deleteItem" id="deleteItem" class="btn btn-primary">Yes</button>
+          <button  name="deleteItem" id="deleteItem" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#messageModal">Yes</button>
         </div>
       </div>
     </div>
