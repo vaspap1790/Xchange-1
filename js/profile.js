@@ -10,6 +10,9 @@ $(document).ready(function () {
             { "orderData": 0, "targets": 3 },
             { "className": "dt-center", "targets": "_all" },
             { "orderable": false, "targets": [2, 6] }
-        ]
+        ],
+        "language": {
+            "emptyTable": "No Requests"
+        }
     });
 });
