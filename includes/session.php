@@ -73,4 +73,32 @@
     }
   }
 
+  function errorAddItemMessage(){
+    if(isset($_SESSION["addItemErrorMessage"])){
+
+      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output .= htmlentities($_SESSION["addItemErrorMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["addItemErrorMessage"] = null;
+      $_SESSION["addItemMessage"] = true;
+
+      return $Output;
+    }
+  }
+  
+  function successAddItemMessage(){
+    if(isset($_SESSION["addItemSuccessMessage"])){
+
+      $Output = "<div class=\"alert alert-success\">" ;
+      $Output .= htmlentities($_SESSION["addItemSuccessMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["addItemSuccessMessage"] = null;
+      $_SESSION["addItemMessage"] = true;
+      
+      return $Output;
+    }
+  }
+
 ?>

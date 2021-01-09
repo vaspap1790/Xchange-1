@@ -18,6 +18,11 @@
         $_SESSION['settingsMessage'] = false; 
     }
 
+    // Add Item
+    if(isset($_POST['addItemMessage']) ) { 
+        $_SESSION['addItemMessage'] = false; 
+    }
+
     // Favorite
     if(isset($_POST['favorite']) ) { 
 

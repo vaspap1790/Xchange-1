@@ -16,3 +16,13 @@ $(document).ready(function () {
         }
     });
 });
+
+// Unset session variables
+$('#addItemModal').on('hidden.bs.modal', function () {
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { addItemMessage: 'addItemMessage' }
+    });
+})

@@ -325,7 +325,7 @@
 
     </div>
     <!-- End of Wrapper -->
-    
+
 
     <!-- Modals -->
     <?php require_once("includes/modals.php"); ?>
@@ -333,7 +333,7 @@
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 
-
+    <!--- Script Source Files -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
@@ -342,6 +342,18 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/custom.js"></script>
     <script src="js/profile.js"></script>
+    <?php if (isset($_SESSION["loginMessage"]) && $_SESSION["loginMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#loginModal").modal("show"); }) </script>
+    <?php } ?>
+    <?php if (isset($_SESSION["registerMessage"]) && $_SESSION["registerMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#registerModal").modal("show"); }) </script>
+    <?php } ?>
+    <?php if (isset($_SESSION["settingsMessage"]) && $_SESSION["settingsMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#settingsModal").modal("show"); }) </script>
+    <?php } ?>
+    <?php if (isset($_SESSION["addItemMessage"]) && $_SESSION["addItemMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#addItemModal").modal("show"); }) </script>
+    <?php } ?>
 
     <script>
     $(document).ready(function () {

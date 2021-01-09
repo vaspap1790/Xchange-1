@@ -259,7 +259,7 @@ function getProfileUserId(){
       $stmtPhoto->bindValue(':image',$image);
 
       $ExecutePhoto = $stmtPhoto->execute();
-      move_uploaded_file($_FILES["image"]["tmp_name"],$target);
+      move_uploaded_file($_FILES["image"]["tmp_name"], $target);
     }
   
     if($ExecuteUser){
@@ -270,6 +270,60 @@ function getProfileUserId(){
       redirect_to("index.php");
     }
 
+  }
+?>
+
+<!-- Add Item -->
+<?php 
+  if (isset($_POST["addItem"])) {
+
+    $username      = $_SESSION["username"];  
+    $userId        = $_SESSION["userId"];  
+
+    $name          = $_POST["item_name"];
+    $categoryId    = $_POST["selectItemCategory"];
+    $description   = $_POST["iDescription"];
+
+    $image         = $_FILES["imageItem"]["name"];
+    $target        = "images/uploaded/".basename($_FILES["imageItem"]["name"]);
+
+    date_default_timezone_set("Europe/Athens");
+    $currentTime = time();
+    $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
+
+    global $ConnectingDB;
+
+    $sql = "INSERT INTO item(name, userId, categoryId, description, dateTime_) ";
+    $sql .= "VALUES(:name, :userId, :categoryId, :description, :dateTime)";
+
+    $stmt = $ConnectingDB->prepare($sql);
+
+    $stmt->bindValue(':name', $name);
+    $stmt->bindValue(':userId', $userId);
+    $stmt->bindValue(':categoryId',$categoryId);
+    $stmt->bindValue(':description',$description);
+    $stmt->bindValue(':dateTime',$dateTime);
+
+    $execute=$stmt->execute();
+
+    if($execute){
+
+      if(empty($image)){
+        $image = "noPhoto.png";
+      }
+
+      $id = $ConnectingDB->lastInsertId();
+      $sqlPhoto = "INSERT INTO `PHOTO` (`name`, `userId`, `categoryId`, `itemId`, `datetime_`) VALUES
+      ('$image', null, null, '$id', '$dateTime')";
+      $executePhoto = $ConnectingDB->query($sqlPhoto);
+      move_uploaded_file($_FILES["imageItem"]["tmp_name"], $target);
+
+      $_SESSION["addItemSuccessMessage"] = "New Item added successfully!";
+      redirect_to("profile.php?username=" . $username);
+    }else {
+      $_SESSION["addItemErrorMessage"] = "Something went wrong. Try Again!";
+      redirect_to("profile.php?username=" . $username);
+    }
   }
 ?>
 

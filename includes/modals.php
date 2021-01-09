@@ -435,21 +435,23 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="itemForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post" enctype="multipart/form-data">
+        <form id="itemForm" action="profile.php" method="post" enctype="multipart/form-data">
 
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
-
             <img src="images/uploaded/noPhoto.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
-
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
               <p>Accepted file type .png. Less than 1MB</p> 
               <div style="white-space:nowrap">
-                <label for="imageSelect" class="btn btn-primary">Upload</label>
+                <label for="imageItem" class="btn btn-primary">Upload</label>
                 <input class="custom-file-input" type="File" name="imageItem" id="imageItem" value="">
               </div>
             </div>
-
           </div>
+
+            <?php
+                echo errorAddItemMessage();
+                echo successAddItemMessage();
+            ?>
 
             <div class="form-group">
               <label for="item_name">Title</label>
@@ -467,7 +469,7 @@
                         $itemCategoryName = $itemCategoriesRows["name"];
                     ?>
 
-                      <option value="itemCategory_<?php echo $itemCategoryId; ?>">
+                      <option value="<?php echo $itemCategoryId; ?>">
                           <?php echo $itemCategoryName; ?>
                       </option>
                       <?php } ?>
