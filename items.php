@@ -68,7 +68,7 @@
         <!-- Page Content -->
         <div id="content" class="d-flex flex-column">
 
-            <div class="pl-3">
+            <div class="pl-4">
                 <h3>
                     <span class="btn-group">
                         <button type="button" id="sidebarCollapse" class="btn peach-gradient">
@@ -119,7 +119,7 @@
                 </div>
             </div> -->
 
-            <div class="container-fluid px-4 py-3">
+            <div class="container px-5 py-3">
 
                 <div class="row d-flex flex-row justify-content-start">
                     <?php require_once("includes/itemsPHP.php"); ?>

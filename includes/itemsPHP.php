@@ -11,7 +11,7 @@
         }
     }
 
-    $sqlCount = "SELECT COUNT(*) FROM item i
+    $sqlCount = "SELECT * FROM item i
     INNER JOIN category c
     ON i.categoryId = c.categoryId
     INNER JOIN user u
@@ -114,8 +114,6 @@
     }
 
     while ($dataRows = $stmt->fetch()) {
-
-        $countItems++;
 
         $itemId         = $dataRows["itemId"];
         $itemName       = $dataRows["itemName"];
