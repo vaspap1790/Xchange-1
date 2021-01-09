@@ -379,3 +379,72 @@ function getProfileUserId(){
   }
 ?>
 
+<!-- Leave a Rating -->
+<?php 
+  if (isset($_POST["rate"])) {
+
+    global $ConnectingDB;
+
+    $userRatingId = $_SESSION["userId"];  
+
+    $rating       = $_POST["rating"];
+    $userRatedId  = $_POST["userRatedId"];
+    $username     = $_POST["profile_username"];
+    $comments     = $_POST["comments"];
+
+    date_default_timezone_set("Europe/Athens");
+    $currentTime = time();
+    $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
+
+    $sqlFetchRating = "SELECT * FROM rating WHERE userRatedId=" . $userRatedId . " AND userRatingId=" . $userRatingId;
+    $stmtFetchRating = $ConnectingDB->query($sqlFetchRating);
+    $result = $stmtFetchRating->rowcount();
+
+    if ($result == 1) {
+
+      $sql = "UPDATE rating SET rating=:rating, comments=:comments, dateTime_=:dateTime 
+      WHERE userRatedId=" . $userRatedId . " AND userRatingId=" . $userRatingId;
+  
+      $stmt = $ConnectingDB->prepare($sql);
+  
+      $stmt->bindValue(':rating', $rating);
+      $stmt->bindValue(':comments', $comments);
+      $stmt->bindValue(':dateTime', $dateTime);
+  
+      $execute=$stmt->execute();
+  
+      if($execute){
+        $_SESSION["ratingSuccessMessage"] = "Rating added successfully";
+        redirect_to("profile.php?username=" . $username);
+      }else {
+        $_SESSION["ratingErrorMessage"] = "Something went wrong. Try Again!";
+        redirect_to("profile.php?username=" . $username);
+      }
+
+    }else {
+      
+      $sql = "INSERT INTO rating(rating, comments, userRatedId, userRatingId, dateTime_) ";
+      $sql .= "VALUES(:rating, :comments, :userRatedId, :userRatingId, :dateTime)";
+  
+      $stmt = $ConnectingDB->prepare($sql);
+  
+      $stmt->bindValue(':rating', $rating);
+      $stmt->bindValue(':comments', $comments);
+      $stmt->bindValue(':userRatedId', $userRatedId);
+      $stmt->bindValue(':userRatingId', $userRatingId);
+      $stmt->bindValue(':dateTime', $dateTime);
+  
+      $execute=$stmt->execute();
+  
+      if($execute){
+        $_SESSION["ratingSuccessMessage"] = "Rating added successfully";
+        redirect_to("profile.php?username=" . $username);
+      }else {
+        $_SESSION["ratingErrorMessage"] = "Something went wrong. Try Again!";
+        redirect_to("profile.php?username=" . $username);
+      }
+
+    }
+  }
+?>
+

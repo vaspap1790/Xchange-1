@@ -595,6 +595,10 @@
       </div>
       <div class="modal-body">
       <form id="ratingForm" action="profile.php" method="post">
+          <?php
+              echo errorRatingMessage();
+              echo successRatingMessage();
+          ?>
         <div class="form-group">
           Leave a Rating for <?php echo getProfileUsername();?>
         </div>
@@ -606,9 +610,11 @@
             <input type="radio" name="rating" value="1" id="1"><label style="font-size: 2.2vw;" for="1">☆</label>
         </div>
         <div class="form-group">
-                <label for="comments">Comments</label>
-                <textarea class="form-control rounded-0" id="comments" name="comments" rows="5"></textarea>
-            </div>
+            <label for="comments">Comments</label>
+            <textarea class="form-control rounded-0" id="comments" name="comments" rows="5"></textarea>
+        </div>
+        <input type="text" id="userRatedId" name="userRatedId" hidden="hidden" value="<?php echo getProfileUserId();?>">
+        <input type="text" id="profile_username" name="profile_username" hidden="hidden" value="<?php echo getProfileUsername();?>">
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           <button type="submit" name="rate" id="rate" class="btn btn-primary">Rate</button>

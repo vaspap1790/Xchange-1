@@ -129,4 +129,32 @@
     }
   }
 
+  function errorRatingMessage(){
+    if(isset($_SESSION["ratingErrorMessage"])){
+
+      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output .= htmlentities($_SESSION["ratingErrorMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["ratingErrorMessage"] = null;
+      $_SESSION["ratingMessage"] = true;
+
+      return $Output;
+    }
+  }
+  
+  function successRatingMessage(){
+    if(isset($_SESSION["ratingSuccessMessage"])){
+
+      $Output = "<div class=\"alert alert-success\">" ;
+      $Output .= htmlentities($_SESSION["ratingSuccessMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["ratingSuccessMessage"] = null;
+      $_SESSION["ratingMessage"] = true;
+      
+      return $Output;
+    }
+  }
+
 ?>

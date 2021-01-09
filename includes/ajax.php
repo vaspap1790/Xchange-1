@@ -28,6 +28,11 @@
         $_SESSION['editItemMessage'] = false; 
     }
 
+    // Rating
+    if(isset($_POST['ratingMessage']) ) { 
+        $_SESSION['ratingMessage'] = false; 
+    }
+
     // Favorite
     if(isset($_POST['favorite']) ) { 
 

@@ -35,3 +35,12 @@ $('#editItemModal').on('hidden.bs.modal', function () {
         data: { editItemMessage: 'editItemMessage' }
     });
 })
+
+$('#ratingModal').on('hidden.bs.modal', function () {
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { ratingMessage: 'ratingMessage' }
+    });
+})
