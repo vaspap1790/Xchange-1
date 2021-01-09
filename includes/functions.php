@@ -227,10 +227,6 @@ function getProfileUserId(){
     $image         = $_FILES["image"]["name"];
     $target        = "images/uploaded/".basename($_FILES["image"]["name"]);
 
-    date_default_timezone_set("Europe/Athens");
-    $currentTime = time();
-    $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);
-
     global $ConnectingDB;
 
     $sqlUser = "UPDATE user
@@ -248,9 +244,9 @@ function getProfileUserId(){
     $stmtUser->bindValue(':email', $email);
     $stmtUser->bindValue(':description', $description);
 
-    $ExecuteUser= $stmtUser->execute();
+    $executeUser= $stmtUser->execute();
 
-    if (!empty($_FILES["image"]["name"])) {
+    if (!empty($image)) {
       $sqlPhoto = "UPDATE photo
               SET name =:image
               WHERE userId=" . $_SESSION["userId"];
@@ -258,11 +254,11 @@ function getProfileUserId(){
       $stmtPhoto = $ConnectingDB->prepare($sqlPhoto);
       $stmtPhoto->bindValue(':image',$image);
 
-      $ExecutePhoto = $stmtPhoto->execute();
+      $executePhoto = $stmtPhoto->execute();
       move_uploaded_file($_FILES["image"]["tmp_name"], $target);
     }
   
-    if($ExecuteUser){
+    if($executeUser){
       $_SESSION["settingsSuccessMessage"] = "Settings updated successfully";
       redirect_to("index.php");
     }else {
@@ -324,6 +320,62 @@ function getProfileUserId(){
       $_SESSION["addItemErrorMessage"] = "Something went wrong. Try Again!";
       redirect_to("profile.php?username=" . $username);
     }
+  }
+?>
+
+<!-- Edit Item -->
+<?php 
+  if (isset($_POST["editItem"])) {
+
+    try{
+      $username      = $_SESSION["username"];  
+
+      $itemId        = $_POST["editItemId"];
+      $name          = $_POST["edit_item_name"];
+      $categoryId    = $_POST["edit_selectItemCategory"];
+      $description   = $_POST["edit_iDescription"];
+
+      $image         = $_FILES["editImageItem"]["name"];
+      $target        = "images/uploaded/".basename($_FILES["editImageItem"]["name"]);
+
+      global $ConnectingDB;
+
+      $sql = "UPDATE item SET name=:name, categoryId=:categoryId, description=:description
+      WHERE itemId=" . $itemId;
+
+      $stmt = $ConnectingDB->prepare($sql);
+
+      $stmt->bindValue(':name', $name);
+      $stmt->bindValue(':categoryId', $categoryId);
+      $stmt->bindValue(':description', $description);
+
+      $execute=$stmt->execute();
+
+      $sqlFetchPhotoName = "SELECT name FROM photo WHERE itemId=" . $itemId;
+      $stmtFetchPhotoName = $ConnectingDB->query($sqlFetchPhotoName);
+      $fetchedPhoto= $stmtFetchPhotoName->fetch();
+      $fetchedPhotoName = $fetchedPhoto['name'];
+
+      if($fetchedPhotoName != $image){
+        $sqlPhoto = "UPDATE photo
+        SET name =:image
+        WHERE itemId=" . $itemId;
+
+        $stmtPhoto = $ConnectingDB->prepare($sqlPhoto);
+        $stmtPhoto->bindValue(':image',$image);
+
+        $executePhoto = $stmtPhoto->execute();
+        move_uploaded_file($_FILES["editImageItem"]["tmp_name"], $target);
+      }   
+
+      $_SESSION["editItemSuccessMessage"] = "Item Updated successfully";
+      redirect_to("profile.php?username=" . $username);
+
+    }catch(Exception $e){
+      $_SESSION["editItemErrorMessage"] = $e->getMessage() . " , " . $name . " , " . $itemId;
+      redirect_to("profile.php?username=" . $username);
+    }
+
   }
 ?>
 

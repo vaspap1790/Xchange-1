@@ -101,4 +101,32 @@
     }
   }
 
+  function errorEditItemMessage(){
+    if(isset($_SESSION["editItemErrorMessage"])){
+
+      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output .= htmlentities($_SESSION["editItemErrorMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["editItemErrorMessage"] = null;
+      $_SESSION["editItemMessage"] = true;
+
+      return $Output;
+    }
+  }
+  
+  function successEditItemMessage(){
+    if(isset($_SESSION["editItemSuccessMessage"])){
+
+      $Output = "<div class=\"alert alert-success\">" ;
+      $Output .= htmlentities($_SESSION["editItemSuccessMessage"]);
+      $Output .= "</div>";
+
+      $_SESSION["editItemSuccessMessage"] = null;
+      $_SESSION["editItemMessage"] = true;
+      
+      return $Output;
+    }
+  }
+
 ?>

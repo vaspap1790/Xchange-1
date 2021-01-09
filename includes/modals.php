@@ -101,8 +101,8 @@
     </div>
 </div>
 
-    <!--Confirm Accept Exchange Modal -->
-    <div class="modal fade" id="confirmAcceptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--Confirm Accept Exchange Modal -->
+  <div class="modal fade" id="confirmAcceptModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -123,8 +123,8 @@
     </div>
 </div>
 
-    <!--Confirm Reject Exchange Modal -->
-    <div class="modal fade" id="confirmRejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!--Confirm Reject Exchange Modal -->
+  <div class="modal fade" id="confirmRejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -438,7 +438,7 @@
         <form id="itemForm" action="profile.php" method="post" enctype="multipart/form-data">
 
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
-            <img src="images/uploaded/noPhoto.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
+            <img src="images/uploaded/noPhoto.png" class="z-depth-0" width="100px" height="100px" alt="item image">
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
               <p>Accepted file type .png. Less than 1MB</p> 
               <div style="white-space:nowrap">
@@ -458,7 +458,7 @@
               <input type="text" class="form-control" id="item_name" name="item_name" value="">
             </div>
             <div class="form-group">
-            <label for="selectItemCategory">Select item to offer for exchange</label>
+            <label for="selectItemCategory">Category</label>
                 <select class="form-control" id="selectItemCategory" name="selectItemCategory">
 
                     <?php  
@@ -505,25 +505,27 @@
         <form id="editItemForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post" enctype="multipart/form-data">
 
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
-
-            <img src="images/uploaded/noPhoto.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
-
+            <img src="images/uploaded/noPhoto.png" id="editItemImage" class="z-depth-0" width="100px" height="100px" alt="item image">
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
               <p>Accepted file type .png. Less than 1MB</p> 
               <div style="white-space:nowrap">
-                <label for="imageSelect" class="btn btn-primary">Upload</label>
-                <input class="custom-file-input" type="File" name="editImageItem" id="imageItem" value="">
+                <label for="editImageItem" class="btn btn-primary">Upload</label>
+                <input class="custom-file-input" type="File" name="editImageItem" id="editImageItem" value="">
               </div>
             </div>
-
           </div>
+
+            <?php
+                echo errorEditItemMessage();
+                echo successEditItemMessage();
+            ?>
 
             <div class="form-group">
               <label for="edit_item_name">Title</label>
               <input type="text" class="form-control" id="edit_item_name" name="edit_item_name" value="">
             </div>
             <div class="form-group">
-            <label for="selectItemCategory">Select item to offer for exchange</label>
+            <label for="selectItemCategory">Category</label>
                 <select class="form-control" id="edit_selectItemCategory" name="edit_selectItemCategory">
 
                     <?php  
@@ -534,7 +536,7 @@
                         $itemEditCategoryName = $itemEditCategoriesRows["name"];
                     ?>
 
-                      <option value="edit_itemCategory_<?php echo $itemEditCategoryId; ?>">
+                      <option value="<?php echo $itemEditCategoryId; ?>">
                           <?php echo $itemEditCategoryName; ?>
                       </option>
                       <?php } ?>
@@ -545,6 +547,8 @@
                 <label for="edit_iDescription">Description</label>
                 <textarea class="form-control rounded-0" id="edit_iDescription" name="edit_iDescription" rows="5"></textarea>
             </div>
+            <div class="modal-footer">
+            <input type="text" id="editItemId" name="editItemId" hidden="hidden" value="">
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
               <button type="submit" name="editItem" id="editItem" class="btn btn-primary">Save</button>

@@ -23,6 +23,11 @@
         $_SESSION['addItemMessage'] = false; 
     }
 
+    // Edit Item
+    if(isset($_POST['editItemMessage']) ) { 
+        $_SESSION['editItemMessage'] = false; 
+    }
+
     // Favorite
     if(isset($_POST['favorite']) ) { 
 
@@ -104,6 +109,35 @@
         $response["categoryName"]   = $dataRows["categoryName"];
         $response["userId"]         = $dataRows["userId"];
         $response["username"]       = $dataRows["username"];
+        $response["photoName"]      = $dataRows["photoName"];
+
+        header('Content-Type: application/json');
+        echo json_encode(array($response));
+        exit;
+    
+    }
+
+    // Item fetch to Edit
+    if(isset($_POST['editItemId']) ) {
+
+        $response = array();
+        global $ConnectingDB;
+
+        $sql = "SELECT i.name as name, i.description as description,
+        c.categoryId as categoryId, p.name as photoName
+        FROM item i
+        INNER JOIN category c
+        ON i.categoryId = c.categoryId
+        INNER JOIN photo p
+        ON i.itemId = p.itemId 
+        WHERE i.itemId = " . $_POST['editItemId'];
+
+        $stmt = $ConnectingDB->query($sql);
+        $dataRows = $stmt->fetch();
+
+        $response["name"]           = $dataRows["name"];
+        $response["description"]    = $dataRows["description"];
+        $response["categoryId"]     = $dataRows["categoryId"];
         $response["photoName"]      = $dataRows["photoName"];
 
         header('Content-Type: application/json');

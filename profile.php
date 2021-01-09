@@ -354,6 +354,9 @@
     <?php if (isset($_SESSION["addItemMessage"]) && $_SESSION["addItemMessage"] == true) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#addItemModal").modal("show"); }) </script>
     <?php } ?>
+    <?php if (isset($_SESSION["editItemMessage"]) && $_SESSION["editItemMessage"] == true) { ?>
+    <script type="text/javascript"> $(document).ready(function() { $("#editItemModal").modal("show"); }) </script>
+    <?php } ?>
 
     <script>
     $(document).ready(function () {

@@ -347,13 +347,34 @@ $('#confirmReject').click(function () {
     });
 })
 
-// Populate Request Modal
+// Populate Delete Modal
 $('.openDeleteItemModal').click(function () {
     var deleteItemId = $(this).attr('id').split("_")[1];
     $('#deleteItemId').val(deleteItemId);
 })
 
-// Reject Request
+// Populate EditItem Modal
+$('.openEditItemModal').click(function () {
+
+    var editItemId = $(this).attr('id').split("_")[1];
+    $('#editItemId').val(editItemId);
+
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { editItemId: editItemId },
+        success: function (response) {
+
+            $('#edit_item_name').val(response[0].name);
+            $('#edit_selectItemCategory').val(response[0].categoryId);
+            $('#edit_iDescription').val(response[0].description);
+            $('#editItemImage').attr("src", "images/uploaded/" + response[0].photoName);
+        }
+    });
+})
+
+// Delete Item
 $('#deleteItem').click(function () {
 
     var deleteItemId = $('#deleteItemId').val().trim();
