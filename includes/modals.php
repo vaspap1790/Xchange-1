@@ -491,8 +491,7 @@
 </div>
 
 <!-- Edit Item Modal -->
-<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="editItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -502,7 +501,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="editItemForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post" enctype="multipart/form-data">
+        <form id="editItemForm" action="profile.php" method="post" enctype="multipart/form-data">
 
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
             <img src="images/uploaded/noPhoto.png" id="editItemImage" class="z-depth-0" width="100px" height="100px" alt="item image">
@@ -547,7 +546,6 @@
                 <label for="edit_iDescription">Description</label>
                 <textarea class="form-control rounded-0" id="edit_iDescription" name="edit_iDescription" rows="5"></textarea>
             </div>
-            <div class="modal-footer">
             <input type="text" id="editItemId" name="editItemId" hidden="hidden" value="">
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -596,7 +594,7 @@
         </button>
       </div>
       <div class="modal-body">
-      <form id="ratingForm" action="profile.php?username<?php echo $_SESSION["username"]?>" method="post">
+      <form id="ratingForm" action="profile.php" method="post">
         <div class="form-group">
           Leave a Rating for <?php echo getProfileUsername();?>
         </div>

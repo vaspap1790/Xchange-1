@@ -356,7 +356,7 @@ function getProfileUserId(){
       $fetchedPhoto= $stmtFetchPhotoName->fetch();
       $fetchedPhotoName = $fetchedPhoto['name'];
 
-      if($fetchedPhotoName != $image){
+      if($fetchedPhotoName != $image && !empty($image)){
         $sqlPhoto = "UPDATE photo
         SET name =:image
         WHERE itemId=" . $itemId;
@@ -372,7 +372,7 @@ function getProfileUserId(){
       redirect_to("profile.php?username=" . $username);
 
     }catch(Exception $e){
-      $_SESSION["editItemErrorMessage"] = $e->getMessage() . " , " . $name . " , " . $itemId;
+      $_SESSION["editItemErrorMessage"] = "Something went wrong. Try again";
       redirect_to("profile.php?username=" . $username);
     }
 
