@@ -1,7 +1,6 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
-<?php require_once("includes/modals.php"); ?>
 
 
 <!DOCTYPE html>
@@ -221,6 +220,10 @@
     </div>
     <!-- End of Wrapper -->
 
+
+    <!-- Modals -->
+    <?php require_once("includes/modals.php"); ?>
+    
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 

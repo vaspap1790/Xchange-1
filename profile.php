@@ -6,7 +6,6 @@
         redirect_to("404.php");
     }
 ?>
-<?php require_once("includes/modals.php"); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -324,10 +323,12 @@
         </div>
         <!-- End of Content -->
 
-
-
     </div>
     <!-- End of Wrapper -->
+    
+
+    <!-- Modals -->
+    <?php require_once("includes/modals.php"); ?>
 
     <!--- Footer -->
     <?php require_once("footer.php"); ?>

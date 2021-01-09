@@ -2,7 +2,7 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/indexPHP.php"); ?> 
-<?php require_once("includes/modals.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -171,6 +171,10 @@
 
     <?php } } ?>    
     <!-- End of Recently Visited -->            
+
+    
+    <!-- Modals -->
+    <?php require_once("includes/modals.php"); ?>
 
     <!--- Footer -->
     <?php require_once("footer.php"); ?>

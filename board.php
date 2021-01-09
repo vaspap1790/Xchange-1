@@ -1,7 +1,7 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
-<?php require_once("includes/modals.php"); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,6 +113,11 @@
         </div>
     </section>
 
+
+
+    <!-- Modals -->
+    <?php require_once("includes/modals.php"); ?>
+    
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
 
