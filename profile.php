@@ -405,28 +405,66 @@
                     }]
                 }
             }
-        });
+        });	
 
         var myPolarChart = new Chart(polarChart, {
             type: 'polarArea',
             data: {
-                labels: ['accepted', 'pending', 'rejected'],
+                labels: ['One Star', 'Two Stars', 'Three Stars', 'Four Stars', 'Five Stars'],
                 datasets: [{
-                    label: '# of Requests',
+                    label: '# of Ratings',
                     data: [
-                        <?php echo totalRequestsAccepted(getProfileUserId()); ?>,
-                        <?php echo totalRequestsPending(getProfileUserId()); ?>,
-                        <?php echo totalRequestsRejected(getProfileUserId()); ?>
+                            <?php
+                                global $ConnectingDB;
+
+                                $ones   = 0;
+                                $twos   = 0;
+                                $threes = 0;
+                                $fours  = 0;
+                                $fives  = 0;
+
+                                $sqlFetchRatingsPolar = "SELECT rating
+                                FROM rating  
+                                WHERE userRatedId=". getProfileUserId();                                               
+
+                                $stmtFetchRatingsPolar = $ConnectingDB->query($sqlFetchRatingsPolar);
+
+                                while ($fetchRatingsPolarRows = $stmtFetchRatingsPolar->fetch()) {
+                                    $rating = $fetchRatingsPolarRows["rating"];
+                                    if ($rating == 1){
+                                        $ones++;
+                                    }
+                                    elseif($rating == 2){
+                                        $twos++;
+                                    }
+                                    elseif($rating == 3){
+                                        $threes++;
+                                    }
+                                    elseif($rating == 4){
+                                        $fours++;
+                                    }
+                                    elseif($rating == 5){
+                                        $fives++;
+                                    }
+                                }
+                                echo $ones . "," . $twos . "," . $threes . "," . $fours . "," . $fives;
+                            ?>
                           ],
                     backgroundColor: [
-                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 99, 132, 0.2)'
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
                     ],
                     borderColor: [
-                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
                         'rgba(54, 162, 235, 1)',
-                        'rgba(255, 99, 132, 1)'
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
                     ],
                     borderWidth: 1
                 }]
@@ -435,7 +473,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Requests Chart'
+                    text: 'Ratings Chart'
                 },
                 scales: {
                     yAxes: [{
