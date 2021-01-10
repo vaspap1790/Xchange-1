@@ -5,12 +5,12 @@
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="aboutus.html" target="_blank">About US</a>
+                    <a href="aboutUs.php">About US</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="board.html" target="_blank">Faq</a>
+                    <a href="board.php">Faq</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
