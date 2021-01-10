@@ -216,7 +216,7 @@
                 }
             }
             $countItems = count($countItemsRating);
-        else{
+        }else{
             
             $totalRows = $stmtCount->fetch();
             $countItems = array_shift($totalRows);
