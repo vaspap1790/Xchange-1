@@ -11,7 +11,10 @@
         }
     }
 
-    $sqlCount = "SELECT * FROM item i
+    $sqlCount = "SELECT i.itemId as itemId, i.name as itemName, i.description as description,
+    i.dateTime_ as dateTime, c.categoryId as categoryId, c.name as categoryName,
+    u.userId as userId, u.username as username, p.name as photoName
+    FROM item i
     INNER JOIN category c
     ON i.categoryId = c.categoryId
     INNER JOIN user u
@@ -41,18 +44,14 @@
 
     // Query when pagination is active
     if (isset($_GET["page"])) {
-
         $page = $_GET["page"];
         $numberOfItemsForEachPage = 8;
-
         if($page<1){
             $showPostFrom = 0;
         }else {
             $showPostFrom=($page * $numberOfItemsForEachPage) - $numberOfItemsForEachPage;
         }
-
         $pagination .= "LIMIT " . $showPostFrom . "," . $numberOfItemsForEachPage . " ";
-
     }
 
     // SQL query when Searh button is active
@@ -76,7 +75,36 @@
         $stmtCount = $ConnectingDB->prepare($sqlCount);
         $stmtCount->bindValue(':search', '%' . $search . '%');
         $stmtCount->execute();
-        $countItems = $stmtCount->rowcount();
+
+        if(isset($_GET["rating"])){
+
+            $countItemsRating = array();
+
+            while ($dataRowsCount = $stmtCount->fetch()) {
+
+                $itemId         = $dataRowsCount["itemId"];
+                $userId         = $dataRowsCount["userId"];
+        
+                $sqlRatings     = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
+                $stmtRatings    = $ConnectingDB->query($sqlRatings);
+                $sum = 0;
+                $countRatings = 0;
+        
+                while($ratingRows = $stmtRatings->fetch()){
+                    $sum += $ratingRows["rating"];
+                    $countRatings++;
+                }
+                $rating = ceil( $sum / $countRatings);
+
+                if($rating == $_GET["rating"]){
+                    array_push($countItemsRating, $itemId);
+                }
+            }
+
+            $countItems = count($countItemsRating);
+        }else{
+            $countItems = $stmtCount->rowcount();
+        }
 
         // Fetch Data query with pagination
         if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
@@ -113,7 +141,35 @@
         $stmtCount = $ConnectingDB->prepare($sqlCount);
         $stmtCount->bindValue(':categoryId', $categoryId);
         $stmtCount->execute();
-        $countItems = $stmtCount->rowcount();
+
+        if(isset($_GET["rating"])){
+
+            $countItemsRating = array();
+
+            while ($dataRowsCount = $stmtCount->fetch()) {
+
+                $itemId         = $dataRowsCount["itemId"];
+                $userId         = $dataRowsCount["userId"];
+        
+                $sqlRatings     = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
+                $stmtRatings    = $ConnectingDB->query($sqlRatings);
+                $sum = 0;
+                $countRatings = 0;
+        
+                while($ratingRows = $stmtRatings->fetch()){
+                    $sum += $ratingRows["rating"];
+                    $countRatings++;
+                }
+                $rating = ceil( $sum / $countRatings);
+
+                if($rating == $_GET["rating"]){
+                    array_push($countItemsRating, $itemId);
+                }
+            }
+            $countItems = count($countItemsRating);
+        }else{
+            $countItems = $stmtCount->rowcount();
+        }
 
         // Fetch Data query with pagination
         if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
@@ -134,8 +190,37 @@
 
         // Count query before pagination
         $stmtCount = $ConnectingDB->query($sqlCount);
-        $totalRows = $stmtCount->fetch();
-        $countItems = array_shift($totalRows);
+
+        if(isset($_GET["rating"])){
+
+            $countItemsRating = array();
+
+            while ($dataRowsCount = $stmtCount->fetch()) {
+
+                $itemId         = $dataRowsCount["itemId"];
+                $userId         = $dataRowsCount["userId"];
+        
+                $sqlRatings     = "SELECT rating FROM rating WHERE userRatedId = '$userId'";
+                $stmtRatings    = $ConnectingDB->query($sqlRatings);
+                $sum = 0;
+                $countRatings = 0;
+        
+                while($ratingRows = $stmtRatings->fetch()){
+                    $sum += $ratingRows["rating"];
+                    $countRatings++;
+                }
+                $rating = ceil( $sum / $countRatings);
+
+                if($rating == $_GET["rating"]){
+                    array_push($countItemsRating, $itemId);
+                }
+            }
+            $countItems = count($countItemsRating);
+        else{
+            
+            $totalRows = $stmtCount->fetch();
+            $countItems = array_shift($totalRows);
+        }
 
         // Fetch Data query with pagination
         $sql .= $sorting;
@@ -166,45 +251,91 @@
         }
         $rating = ceil( $sum / $countRatings);
 
-?>
+        if(isset($_GET["rating"])){
+            if($rating == $_GET["rating"]){
+            ?>
 
-	<div class="card text-center col-3 p-1">
-		<img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
-		<div class="card-body">   
+                <div class="card text-center col-3 p-1">
+                        <img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
+                        <div class="card-body">   
+ 
+                            <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a> 
 
-            <?php if (confirm_Login()){ 
-                if(in_array($itemId, $favorites)){ ?>    
-                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
-            <?php } else { ?>
-                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
-            <?php } }?>    
+                            <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
+                            <div><small>Uploaded in <?php echo $dateTime ?></small></div>
+                            <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                            <div class="rating">
+                                <span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
 
-			<div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
-			<div><small>Uploaded in <?php echo $dateTime ?></small></div>
-			<div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
-			<div class="rating">
-				<span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
+                                <?php  for( $i=5; $i>$rating; $i-- ){  ?>
+                                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
+                                    id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                <?php } ?>
 
-                <?php  for( $i=5; $i>$rating; $i-- ){  ?>
-                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
-                    id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
-                <?php } ?>
+                                <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
+                                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                                    id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                <?php } ?>
 
-                <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
-                    <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
-                    id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
-                <?php } ?>
+                            </div>
+                            <hr style="margin-top: 0;">
+                            <p><?php echo $itemName ?>
+                            </p>
+                            <button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#itemModal" id="openItemModal_<?php echo $itemId; ?>">
+                                Exchange
+                            </button>
+                        </div>
+                    </div>
+                
+            <?php 
+            }
+        }
+        else{ 
+            ?>
+                <div class="card text-center col-3 p-1">
+                    <img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
+                    <div class="card-body">   
 
-			</div>
-			<hr style="margin-top: 0;">
-			<p><?php echo $itemName ?>
-			</p>
-			<button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
-				data-target="#itemModal" id="openItemModal_<?php echo $itemId; ?>">
-				Exchange
-			</button>
-		</div>
-	</div>
+                        <?php if (confirm_Login()){ 
+                            if(in_array($itemId, $favorites)){ ?>    
+                            <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
+                        <?php } else { ?>
+                            <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
+                        <?php } }?>    
 
-<?php } ?>
+                        <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
+                        <div><small>Uploaded in <?php echo $dateTime ?></small></div>
+                        <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                        <div class="rating">
+                            <span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
+
+                            <?php  for( $i=5; $i>$rating; $i-- ){  ?>
+                                <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
+                                id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                            <?php } ?>
+
+                            <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
+                                <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
+                                id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
+                            <?php } ?>
+
+                        </div>
+                        <hr style="margin-top: 0;">
+                        <p><?php echo $itemName ?>
+                        </p>
+                        <button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
+                            data-target="#itemModal" id="openItemModal_<?php echo $itemId; ?>">
+                            Exchange
+                        </button>
+                    </div>
+                </div>
+
+            <?php 
+        }
+    }  
+            ?>
+
+
+
 

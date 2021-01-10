@@ -51,12 +51,20 @@
                             $categoryId = $DataRows["categoryId"];
                             $categoryName = $DataRows["name"];
                         ?>
-                        <li><a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"
-                        title = "<?php echo $categoryName;?>"> 
-                            <?php
-                                echo $categoryName; 
-                            ?> 
-                        </a></li>
+                        <li>
+                            <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"
+                            title = "<?php echo $categoryName;?>"> 
+                                <?php
+                                    echo $categoryName; 
+                                ?> 
+                                <?php 
+                                    if(isset($_GET["categoryId"]) && $_GET["categoryId"] == $categoryId){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
+                            </a>
+                        </li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -64,8 +72,21 @@
                     <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
                         class="dropdown-toggle">Filter Owner Rating</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu2">
+                            <?php 
+                                if(isset($_GET["rating"])){
+                                    $parameters = explode("&", $_SERVER['QUERY_STRING']);
+                                    foreach ($parameters as $key => $value) {
+                                        if(str_contains($value, 'rating')) {
+                                            unset($parameters[$key]);
+                                        }
+                                    }
+                                    $queryStringRating = implode("&", $parameters);
+                                }else{
+                                    $queryStringRating = $_SERVER['QUERY_STRING'];
+                                }
+                            ?>
                         <li>
-                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=1">
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $queryStringRating; ?>&rating=1">
                                 <div class="rating">
                                     <input type="radio" disabled name="rating1" value="5" id="1_5"><label style="font-size: 1.7vw;" for="1_5">☆</label>
                                     <input type="radio" disabled name="rating1" value="4" id="1_4"><label style="font-size: 1.7vw;" for="1_4">☆</label>
@@ -73,10 +94,16 @@
                                     <input type="radio" disabled name="rating1" value="2" id="1_2"><label style="font-size: 1.7vw;" for="1_2">☆</label>
                                     <input type="radio" disabled checked name="rating1" value="1" id="1_1"><label style="font-size: 1.7vw;" for="1_1">☆</label>
                                 </div>
+                                <?php 
+                                    if(isset($_GET["rating"]) && $_GET["rating"] == 1){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
                             </a>
                         </li>
                         <li>
-                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=2">
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $queryStringRating; ?>&rating=2">
                                 <div class="rating">
                                     <input type="radio" disabled name="rating2" value="5" id="r2_5"><label style="font-size: 1.7vw;" for="r2_5">☆</label>
                                     <input type="radio" disabled name="rating2" value="4" id="r2_4"><label style="font-size: 1.7vw;" for="r2_4">☆</label>
@@ -84,10 +111,16 @@
                                     <input type="radio" disabled checked name="rating2" value="2" id="r2_2"><label style="font-size: 1.7vw;" for="r2_2">☆</label>
                                     <input type="radio" disabled name="rating2" value="1" id="r2_1"><label style="font-size: 1.7vw;" for="r2_1">☆</label>
                                 </div>
+                                <?php 
+                                    if(isset($_GET["rating"]) && $_GET["rating"] == 2){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
                             </a>
                         </li>
                         <li>
-                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=3">
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $queryStringRating; ?>&rating=3">
                                 <div class="rating">
                                     <input type="radio" disabled name="rating3" value="5" id="3_5"><label style="font-size: 1.7vw;" for="3_5">☆</label>
                                     <input type="radio" disabled name="rating3" value="4" id="3_4"><label style="font-size: 1.7vw;" for="3_4">☆</label>
@@ -95,10 +128,16 @@
                                     <input type="radio" disabled name="rating3" value="2" id="3_2"><label style="font-size: 1.7vw;" for="3_2">☆</label>
                                     <input type="radio" disabled name="rating3" value="1" id="3_1"><label style="font-size: 1.7vw;" for="3_1">☆</label>
                                 </div>
+                                <?php 
+                                    if(isset($_GET["rating"]) && $_GET["rating"] == 3){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
                             </a>
                         </li>
                         <li>
-                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=4">
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $queryStringRating; ?>&rating=4">
                                 <div class="rating">
                                     <input type="radio" disabled name="rating4" value="5" id="4_5"><label style="font-size: 1.7vw;" for="4_5">☆</label>
                                     <input type="radio" disabled checked name="rating4" value="4" id="4_4"><label style="font-size: 1.7vw;" for="4_4">☆</label>
@@ -106,17 +145,29 @@
                                     <input type="radio" disabled name="rating4" value="2" id="4_2"><label style="font-size: 1.7vw;" for="4_2">☆</label>
                                     <input type="radio" disabled name="rating4" value="1" id="4_1"><label style="font-size: 1.7vw;" for="4_1">☆</label>
                                 </div>
+                                <?php 
+                                    if(isset($_GET["rating"]) && $_GET["rating"] == 4){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
                             </a>
                         </li>
                         <li>
-                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=5">
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $queryStringRating; ?>&rating=5">
                                 <div class="rating">
-                                    <input type="radio" disabled name="rating5" value="5" id="5_5"><label style="font-size: 1.7vw;" for="5_5">☆</label>
-                                    <input type="radio" disabled checked name="rating5" value="4" id="5_4"><label style="font-size: 1.7vw;" for="5_4">☆</label>
+                                    <input type="radio" disabled checked name="rating5" value="5" id="5_5"><label style="font-size: 1.7vw;" for="5_5">☆</label>
+                                    <input type="radio" disabled name="rating5" value="4" id="5_4"><label style="font-size: 1.7vw;" for="5_4">☆</label>
                                     <input type="radio" disabled name="rating5" value="3" id="5_3"><label style="font-size: 1.7vw;" for="5_3">☆</label>
                                     <input type="radio" disabled name="rating5" value="2" id="5_2"><label style="font-size: 1.7vw;" for="5_2">☆</label>
                                     <input type="radio" disabled name="rating5" value="1" id="5_1"><label style="font-size: 1.7vw;" for="5_1">☆</label>
                                 </div>
+                                <?php 
+                                    if(isset($_GET["rating"]) && $_GET["rating"] == 5){ ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                            <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                        </svg>
+                                <?php } ?>
                             </a>
                         </li>
 
@@ -131,9 +182,9 @@
                                     unset($parameters[$key]);
                                 }
                             }
-                            $queryStr = implode("&", $parameters);
+                            $queryStringFavorites = implode("&", $parameters);
                             ?>
-                            <a href="items.php?<?php echo $queryStr; ?>&favorites=0">Show Only Favorites 
+                            <a href="items.php?<?php echo $queryStringFavorites; ?>&favorites=0">Show Only Favorites 
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                                 </svg>
@@ -145,8 +196,8 @@
                                         unset($parameters[$key]);
                                     }
                                 }
-                                $queryStr = implode("&", $parameters);?>
-                            <a href="items.php?<?php echo $queryStr; ?>&favorites=1">Show Only Favorites</a>
+                                $queryStringFavorites = implode("&", $parameters);?>
+                            <a href="items.php?<?php echo $queryStringFavorites; ?>&favorites=1">Show Only Favorites</a>
                         <?php } ?>
                         </li>
                 <?php } ?>
