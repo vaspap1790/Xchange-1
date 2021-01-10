@@ -40,28 +40,117 @@
             </div>
 
             <ul class="list-unstyled components">
-                <!-- <p>Dummy Heading</p>
-                <li>
-                    <a href="#">About</a>
-                </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false"
-                        class="dropdown-toggle">Pages</a>
+                        class="dropdown-toggle">Filter Categories</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
+                        <?php
+                        $sqlCategories = "SELECT categoryId,name FROM category";
+                        $stmtCategories = $ConnectingDB->query($sqlCategories);
+                        while ($DataRows = $stmtCategories->fetch()) {
+                            $categoryId = $DataRows["categoryId"];
+                            $categoryName = $DataRows["name"];
+                        ?>
+                        <li><a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"
+                        title = "<?php echo $categoryName;?>"> 
+                            <?php
+                                echo $categoryName; 
+                            ?> 
+                        </a></li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
-                </li> -->
+                    <a href="#pageSubmenu2" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Filter Owner Rating</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu2">
+                        <li>
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=1">
+                                <div class="rating">
+                                    <input type="radio" disabled name="rating1" value="5" id="1_5"><label style="font-size: 1.7vw;" for="1_5">☆</label>
+                                    <input type="radio" disabled name="rating1" value="4" id="1_4"><label style="font-size: 1.7vw;" for="1_4">☆</label>
+                                    <input type="radio" disabled name="rating1" value="3" id="1_3"><label style="font-size: 1.7vw;" for="1_3">☆</label>
+                                    <input type="radio" disabled name="rating1" value="2" id="1_2"><label style="font-size: 1.7vw;" for="1_2">☆</label>
+                                    <input type="radio" disabled checked name="rating1" value="1" id="1_1"><label style="font-size: 1.7vw;" for="1_1">☆</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=2">
+                                <div class="rating">
+                                    <input type="radio" disabled name="rating2" value="5" id="r2_5"><label style="font-size: 1.7vw;" for="r2_5">☆</label>
+                                    <input type="radio" disabled name="rating2" value="4" id="r2_4"><label style="font-size: 1.7vw;" for="r2_4">☆</label>
+                                    <input type="radio" disabled name="rating2" value="3" id="r2_3"><label style="font-size: 1.7vw;" for="r2_3">☆</label>
+                                    <input type="radio" disabled checked name="rating2" value="2" id="r2_2"><label style="font-size: 1.7vw;" for="r2_2">☆</label>
+                                    <input type="radio" disabled name="rating2" value="1" id="r2_1"><label style="font-size: 1.7vw;" for="r2_1">☆</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=3">
+                                <div class="rating">
+                                    <input type="radio" disabled name="rating3" value="5" id="3_5"><label style="font-size: 1.7vw;" for="3_5">☆</label>
+                                    <input type="radio" disabled name="rating3" value="4" id="3_4"><label style="font-size: 1.7vw;" for="3_4">☆</label>
+                                    <input type="radio" disabled checked name="rating3" value="3" id="3_3"><label style="font-size: 1.7vw;" for="3_3">☆</label>
+                                    <input type="radio" disabled name="rating3" value="2" id="3_2"><label style="font-size: 1.7vw;" for="3_2">☆</label>
+                                    <input type="radio" disabled name="rating3" value="1" id="3_1"><label style="font-size: 1.7vw;" for="3_1">☆</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=4">
+                                <div class="rating">
+                                    <input type="radio" disabled name="rating4" value="5" id="4_5"><label style="font-size: 1.7vw;" for="4_5">☆</label>
+                                    <input type="radio" disabled checked name="rating4" value="4" id="4_4"><label style="font-size: 1.7vw;" for="4_4">☆</label>
+                                    <input type="radio" disabled name="rating4" value="3" id="4_3"><label style="font-size: 1.7vw;" for="4_3">☆</label>
+                                    <input type="radio" disabled name="rating4" value="2" id="4_2"><label style="font-size: 1.7vw;" for="4_2">☆</label>
+                                    <input type="radio" disabled name="rating4" value="1" id="4_1"><label style="font-size: 1.7vw;" for="4_1">☆</label>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="d-flex justify-content-start" href="items.php?<?php echo $_SERVER['QUERY_STRING'] ?>&rating=5">
+                                <div class="rating">
+                                    <input type="radio" disabled name="rating5" value="5" id="5_5"><label style="font-size: 1.7vw;" for="5_5">☆</label>
+                                    <input type="radio" disabled checked name="rating5" value="4" id="5_4"><label style="font-size: 1.7vw;" for="5_4">☆</label>
+                                    <input type="radio" disabled name="rating5" value="3" id="5_3"><label style="font-size: 1.7vw;" for="5_3">☆</label>
+                                    <input type="radio" disabled name="rating5" value="2" id="5_2"><label style="font-size: 1.7vw;" for="5_2">☆</label>
+                                    <input type="radio" disabled name="rating5" value="1" id="5_1"><label style="font-size: 1.7vw;" for="5_1">☆</label>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <?php if(confirm_Login()){ ?>
+                    <li>
+                        <?php if(isset($_GET["favorites"]) && $_GET["favorites"] == 1){
+                            $parameters = explode("&", $_SERVER['QUERY_STRING']);
+                            foreach ($parameters as $key => $value) {
+                                if(str_contains($value, 'favorites')) {
+                                    unset($parameters[$key]);
+                                }
+                            }
+                            $queryStr = implode("&", $parameters);
+                            ?>
+                            <a href="items.php?<?php echo $queryStr; ?>&favorites=0">Show Only Favorites 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+                                    <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                </svg>
+                            </a>
+                        <?php }elseif ( !isset($_GET["favorites"]) || $_GET["favorites"] == 0 ){ 
+                                $parameters = explode("&", $_SERVER['QUERY_STRING']);
+                                foreach ($parameters as $key => $value) {
+                                    if(str_contains($value, 'favorites')) {
+                                        unset($parameters[$key]);
+                                    }
+                                }
+                                $queryStr = implode("&", $parameters);?>
+                            <a href="items.php?<?php echo $queryStr; ?>&favorites=1">Show Only Favorites</a>
+                        <?php } ?>
+                        </li>
+                <?php } ?>
+
             </ul>
         </nav>
 
