@@ -50,8 +50,8 @@
     
     <!-- Container  -->
     <div class="container-fluid">
-        <h1><?php echo $error_title; ?>/</h1>
-        <h5><?php echo $error_message; ?>/</h5>
+        <h1><?php echo $error_title; ?></h1>
+        <h5><?php echo $error_message; ?></h5>
     </div>
 
 
