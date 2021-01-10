@@ -2,6 +2,27 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 
+<?php
+
+    $error = $_SERVER["REDIRECT_STATUS"];
+
+    $error_title = '';
+    $error_message = '';
+
+    if($error == 404){
+        $error_title = 'Page not Found';
+        $error_message = 'This requested URL was not found on this server';
+    }
+    if($error == 403){
+        $error_title = 'Forbidden';
+        $error_message = 'You don;t have persimssion to access this url on this server';
+    }
+    if($error == 500){
+        $error_title = 'Internal Server Error';
+        $error_message = 'The server encountered an internal error or misconfiguration and was unable to complete you request';
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +50,8 @@
     
     <!-- Container  -->
     <div class="container-fluid">
-        <h1>Page Not Found 404</h1>
+        <h1><?php echo $error_title; ?>/</h1>
+        <h5><?php echo $error_message; ?>/</h5>
     </div>
 
 
