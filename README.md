@@ -4,10 +4,13 @@ Webapp for exchanging items - for Masters Coursework
 Put the name of the folder of your project instead of Xchange for the next instructions
 
 _Error Handling_
+
 Create a '.htaccess' file in your htdocs directory with this content:
 
 ErrorDocument 404 /Xchange/error.php
+
 ErrorDocument 403 /Xchange/error.php
+
 ErrorDocument 500 /Xchange/error.php
 
 _DataBase Configuration_
