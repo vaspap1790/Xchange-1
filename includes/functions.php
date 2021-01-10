@@ -8,16 +8,18 @@
     exit();
   }
 
-  function login_Attempt($UserName,$Password){
+  function login_Attempt($UserName,$password){
     global $ConnectingDB;
-    $sql = "SELECT * FROM USER WHERE username=:userName AND password=:passWord LIMIT 1";
+    $sql = "SELECT * FROM USER WHERE username=:userName LIMIT 1";
     $stmt = $ConnectingDB->prepare($sql);
     $stmt->bindValue(':userName',$UserName);
-    $stmt->bindValue(':passWord',$Password);
     $stmt->execute();
-    $Result = $stmt->rowcount();
-    if ($Result==1) {
-      return $Found_Account=$stmt->fetch();
+    $result = $stmt->rowcount();
+    if ($result==1) {
+      $found_Account=$stmt->fetch();
+      if(password_verify($password, $found_Account["password"])) {
+        return $found_Account;
+      }
     }else {
       return null;
     }
@@ -176,6 +178,7 @@ function getProfileUserId(){
     $username        = $_POST["rUsername"];
     $email           = $_POST["email"];
     $password        = $_POST["rPassword"];
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     date_default_timezone_set("Europe/Athens");
     $currentTime = time();
@@ -193,7 +196,7 @@ function getProfileUserId(){
       $stmt = $ConnectingDB->prepare($sql);
       $stmt->bindValue(':username',$username);
       $stmt->bindValue(':email',$email);
-      $stmt->bindValue(':password',$password);
+      $stmt->bindValue(':password',$hashed_password);
       $stmt->bindValue(':dateTime',$dateTime);
       $Execute=$stmt->execute();
 
