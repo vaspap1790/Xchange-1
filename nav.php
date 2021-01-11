@@ -85,8 +85,9 @@
 
     <!-- Start of Right Part of Navbar -->
     <div>
+
       <!-- Welcome message -->
-      <div class="text-right small">
+      <div class="text-right small hideNotif">
           <?php  
             if(confirm_Login()){  
             ?>  
@@ -114,7 +115,7 @@
             $pendingRequestsCount = $stmtPendingRequests->rowcount();
         ?> 
         
-          <li class="nav-item">
+          <li class="nav-item hideNotif">
             <div class="btn-group dropleft">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuRequests" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php echo $pendingRequestsCount ?>
@@ -184,6 +185,7 @@
         </li>
 
       </ul>
+
     </div>
     <!-- End of Rifht Part of Navbar -->
 

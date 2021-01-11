@@ -24,6 +24,9 @@ a, a:hover, a:focus {
     background: #fafafa;
     color: #000;
     transition: all 0.3s;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
 }
 
 #sidebar .sidebar-header {
@@ -70,18 +73,6 @@ ul ul a {
     margin-left: -250px;
 }
 
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
-}
-
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    min-height: 100vh;
-}
-
 #sidebarCollapse {
     display: inline-block;
 }
@@ -102,5 +93,11 @@ ul ul a {
     }
     p {
         font-size: 12px
+    }
+}
+
+@media(max-width: 660px) {
+    .hideNav {
+        margin-left: -250px;
     }
 }

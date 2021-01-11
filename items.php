@@ -34,7 +34,7 @@
     <div class="customWrapper pt-3">
 
         <!-- Sidebar -->
-        <nav id="sidebar">
+        <nav id="sidebar" class="hideNav">
             <div class="sidebar-header">
                 <h3>Filters</h3>
             </div>
@@ -206,7 +206,7 @@
         </nav>
 
         <!-- Page Content -->
-        <div id="content" class="d-flex flex-column">
+        <div id="content" class="d-flex flex-column" style="width:80vw;">
 
             <div class="pl-4">
                 <h3>
@@ -259,7 +259,7 @@
                 </div>
             </div> -->
 
-            <div class="container px-5 py-3">
+            <div class="container px-5 py-3" style="max-width:80vw; min-width:80vw;">
 
                 <div class="row d-flex flex-row justify-content-start">
                     <?php require_once("includes/itemsPHP.php"); ?>
@@ -270,7 +270,7 @@
             <!-- End of Container -->
 
             <!-- Pagination -->
-            <nav class="mt-2">
+            <nav class="mt-2 ml-5">
                 <ul class="pagination pagination-lg">
 
                     <!-- Backward Button -->
