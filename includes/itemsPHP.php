@@ -265,16 +265,16 @@
                             <div><small>Uploaded in <?php echo $dateTime ?></small></div>
                             <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
                             <div class="rating">
-                                <span class="ratingCount" style="font-size: 1.4vw;">(<?php echo $countRatings; ?>) </span>
+                                <span style="font-size: 13px; margin-top:2.2px; margin-left:5px;">(<?php echo $countRatings; ?>) </span>
 
                                 <?php  for( $i=5; $i>$rating; $i-- ){  ?>
                                     <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
-                                    id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                    id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 19px;" for="rating<?php echo $itemId . $i; ?>">☆</label>
                                 <?php } ?>
 
                                 <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
                                     <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
-                                    id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                    id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 19px;" for="rating<?php echo $itemId . $i; ?>">☆</label>
                                 <?php } ?>
 
                             </div>
@@ -308,16 +308,16 @@
                         <div><small>Uploaded in <?php echo $dateTime ?></small></div>
                         <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
                         <div class="rating">
-                            <span class="ratingCount" style="font-size: 1.4vw;">(<?php echo $countRatings; ?>) </span>
+                            <span style="font-size: 13px; margin-top:2.2px; margin-left:5px;">(<?php echo $countRatings; ?>) </span>
 
                             <?php  for( $i=5; $i>$rating; $i-- ){  ?>
                                 <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
-                                id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 19px;" for="rating<?php echo $itemId . $i; ?>">☆</label>
                             <?php } ?>
 
                             <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
                                 <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
-                                id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 1.7vw;" for="rating<?php echo $itemId . $i; ?>">☆</label>
+                                id="rating<?php echo $itemId . $i; ?>"><label style="font-size: 19px;" for="rating<?php echo $itemId . $i; ?>">☆</label>
                             <?php } ?>
 
                         </div>

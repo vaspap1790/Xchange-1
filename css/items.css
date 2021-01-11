@@ -100,4 +100,10 @@ ul ul a {
     .hideNav {
         margin-left: -250px;
     }
+    #sidebarCollapse {
+        display: none;
+    }
+    #content {
+        margin-left: 10%;
+    }
 }

@@ -285,10 +285,3 @@ page-footer {
     display: none;
   }
 }
-
-@media(min-width: 991px) {
-  .ratingCount {
-    font-size: 0.8vw !important;
-    margin-top: 1.2vh !important;
-  }
-}
