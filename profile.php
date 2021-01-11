@@ -82,7 +82,7 @@
             <h4 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">
                 <?php echo $profileUsername; ?>
                 <div class="rating d-flex row-reverse justify-content-center" style="display:inline">
-                    <span style="font-size: medium; margin-top: 2.7%;">(<?php echo $countProfileRatings; ?>) </span>
+                    <span style="font-size: 1.4vw;" class="ratingCount">(<?php echo $countProfileRatings; ?>) </span>
 
                     <?php  for( $i=5; $i>$ratingProfile; $i-- ){  ?>
                         <input type="radio" disabled name="rating<?php echo $i; ?>" value="<?php echo $i; ?>" 

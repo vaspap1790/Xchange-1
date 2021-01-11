@@ -121,22 +121,8 @@
                                                     echo $categoryName; 
                                                  ?></a></div>
                                                 <div><small>Uploaded in <?php echo $dateTime ?></small></div>
-                                                <div>by<?php echo $rating; ?> <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
-                                                <div class="rating">
-                                                    <span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
-
-                                                    <?php  for( $i=5; $i>$rating; $i-- ){  ?>
-                                                        <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" value="<?php echo $i; ?>" 
-                                                        id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
-                                                    <?php } ?>
-
-                                                    <?php  for( $i=$rating; $i>=1; $i-- ){  ?>
-                                                        <input type="radio" disabled name="rating<?php echo $itemId . $i; ?>" checked="checked" value="<?php echo $i; ?>" 
-                                                        id="rating<?php echo $itemId . $i; ?>"><label for="rating<?php echo $itemId . $i; ?>">☆</label>
-                                                    <?php } ?>
-
-                                                </div>
-                                                <hr style="margin-top: 0;">
+                                                <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                                                <hr class="mt-2">
                                                 <p><?php echo $itemName ?>
                                                 </p>
                                                 <button type="button" class="openItemModal btn btn-info btn-sm" data-toggle="modal"
