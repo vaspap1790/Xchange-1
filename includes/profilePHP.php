@@ -42,7 +42,7 @@
 
 ?>
 
-	<div class="card text-center col-3 p-1">
+	<div class="card text-center col-sm-12 col-md-6 col-lg-3 p-1">
 		<img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
 		<div class="card-body">   
 

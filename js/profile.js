@@ -9,7 +9,9 @@ $(document).ready(function () {
             },
             { "orderData": 0, "targets": 3 },
             { "className": "dt-center", "targets": "_all" },
-            { "orderable": false, "targets": [2, 6] }
+            { "orderable": false, "targets": [2, 6] },
+            { responsivePriority: 1, targets: [1, 6] },
+            { responsivePriority: 2, targets: 5 }
         ],
         "language": {
             "emptyTable": "No Requests"

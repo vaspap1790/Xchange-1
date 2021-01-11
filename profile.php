@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.dataTables.min.css">
     <link rel="stylesheet" href="css/mdb.min.css">
     <link rel="stylesheet" type="text/css" href="css/forms.css">
     <link rel="stylesheet" href="css/nav.css">
@@ -34,10 +35,10 @@
     <?php require_once("nav.php"); ?>
 
     <!-- Start of Wrapper -->
-    <div class="customWrapper pt-3">
+    <div class="customWrapper pt-3 d-flex flex-column flex-lg-row">
 
         <!---Sidebar -->
-        <div class="w3-container w3-padding-64" id="about">
+        <div class="w3-container w3-padding-64 pb-0 pt-0 pt-lg-5 col-xs-12 col-lg-2" id="about">
 
             <?php
 
@@ -99,10 +100,10 @@
                     <span class="badge badge-pill badge-danger"><?php echo totalRequestsRejected(getProfileUserId()); ?></span> 
                 </div>
             </h4>
-            <h4><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
-            <h4><?php echo $profileEmail; ?></h4>
+            <h4 class="text-center"><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
+            <h4 class="text-center"><?php echo $profileEmail; ?></h4>
 
-            <p><?php echo $profileDescription; ?></p>
+            <p class="text-center"><?php echo $profileDescription; ?></p>
 
             <?php if (check_if_logged_user_profile()){ ?>
                 <h3><a data-toggle="modal" data-target="#addItemModal" class="btn btn-danger">Add New Item</a></h3>
@@ -114,8 +115,7 @@
 
 
         <!-- Page Content -->
-
-        <div class="container mt-5 p-1">
+        <div class="container p-1 mt-xs-0 mt-lg-5 col-xs-12 col-lg-10 px-5">
         
             <ul class="nav nav-tabs">
                 <li class="nav-item">
@@ -138,7 +138,7 @@
 
                 <div class="tab-pane active" id="tab1">
                     <div class="container-fluid px-4 py-3 mt-3">
-                        <div class="row d-flex flex-row justify-content-start">
+                        <div class="row d-flex flex-row justify-content-start px-xl-5">
                             <?php require_once("includes/profilePHP.php"); ?>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                                     $comments             = $fetchRatingsRows["comments"];
                             ?>
 
-                            <div class="card col-3 p-1">
+                            <div class="card col-sm-12 col-md-6 col-lg-3 p-1">
                                 <div class="card-body">
                                     <div class="rating">
 
@@ -214,7 +214,7 @@
 
                     <div class="tab-pane" id="tab4">
 
-                        <section class="container py-2 mb-4">
+                        <section class="container-fluid pt-3 mb-4">
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -338,6 +338,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
     <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
     <script src="https://use.fontawesome.com/releases/v5.9.0/js/all.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="js/custom.js"></script>

@@ -121,7 +121,7 @@
                                                     echo $categoryName; 
                                                  ?></a></div>
                                                 <div><small>Uploaded in <?php echo $dateTime ?></small></div>
-                                                <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                                                <div>by<?php echo $rating; ?> <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
                                                 <div class="rating">
                                                     <span style="font-size: x-small; margin-top: 1.6%;">(<?php echo $countRatings; ?>) </span>
 
