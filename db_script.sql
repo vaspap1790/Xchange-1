@@ -213,7 +213,7 @@ CREATE TABLE `REQUEST` (
 -- Data for table REQUEST
 --
 
-INSERT INTO `REQUEST` (`requestId`, `datetime_`, `itemOfferedId`, `itemRequestedId`, `requesterId`, `ownerId`, `status`, message`) VALUES
+INSERT INTO `REQUEST` (`requestId`, `datetime_`, `itemOfferedId`, `itemRequestedId`, `requesterId`, `ownerId`, `status`, `message`) VALUES
 (1, '2020-12-30 23:54:07', '1' ,'4', '1', '3', 'pending', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
 (2, '2020-12-31 23:54:07', '2' ,'5', '1', '3', 'pending', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
 (3, '2020-12-31 23:54:07', '6' ,'10', '1', '3', 'pending', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
