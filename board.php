@@ -25,23 +25,25 @@
 
     <!---Navbar -->
     <?php require_once("nav.php"); ?>
-
-    <section class="accordion-section clearfix mt-3" aria-label="Question Accordions">
+    
+    <br><br><br><br>
+    <section class="accordion-section clearfix" aria-label="Question Accordions">
         <div class="container">
 
-            <h2>Frequently Asked Questions </h2>
+            <h2 class="mb-4">Frequently Asked Questions </h2>
+            <br>
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
-                    <div class="panel-heading p-3 mb-3" role="tab" id="heading0">
-                        <h3 class="panel-title">
+                    <div class="panel-heading p-3 mb-3" style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading0">
+                        <h5 class="panel-title" >
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse0" aria-expanded="true" aria-controls="collapse0">
                                 What are the benefits of exchange?
                             </a>
-                        </h3>
+                        </h5>
                     </div>
                     <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
-                        <div class="panel-body px-3 mb-4">
+                        <div class="panel-body px-3 mb-4" >
                             <p>With xchange, you and your visitors will benefit from a finely-tuned technology stack
                                 that drives the highest levels of site performance, speed and engagement - and
                                 contributes more to your bottom line. Our users fell in love
@@ -60,7 +62,7 @@
                 </div>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading p-3 mb-3" role="tab" id="heading1">
+                    <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading1">
                         <h3 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse1" aria-expanded="true" aria-controls="collapse1">
@@ -76,7 +78,7 @@
                 </div>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading p-3 mb-3" role="tab" id="heading2">
+                    <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading2">
                         <h3 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse2" aria-expanded="true" aria-controls="collapse2">
@@ -93,7 +95,7 @@
                 </div>
 
                 <div class="panel panel-default">
-                    <div class="panel-heading p-3 mb-3" role="tab" id="heading3">
+                    <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading3">
                         <h3 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse3" aria-expanded="true" aria-controls="collapse3">
@@ -112,7 +114,7 @@
 
         </div>
     </section>
-
+    <br>
 
 
     <!-- Modals -->

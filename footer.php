@@ -4,26 +4,26 @@
         <div class="row text-center d-flex justify-content-center pt-5 mb-3">
             <!-- Grid column -->
             <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <a href="aboutUs.php">About US</a>
+            <h6 class="text-uppercase font-weight-bold ">
+                    <a href="aboutUs.php" type="button" target="">About US</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <a href="board.php">Faq</a>
+            <h6 class="text-uppercase font-weight-bold ">
+                    <a href="board.php" type="button" target="">Faq</a>
                 </h6>
             </div>
             <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
+            <h6 class="text-uppercase font-weight-bold ">
                 <a  target="_blank" type="button" data-target="#contactModal" data-toggle="modal">Contact</a>
                 </h6>
             </div>
         </div>
         <!-- Grid row-->
-        <hr class="rgba-white-light" style="margin: 0 15%;">
+        <hr class="rgba-white-light" >
         <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
             <!-- Grid column -->
-            <div class="col-md-8 col-12 mt-5">
+            <div class="col-md-8 col-12 mt-5" style="margin-bottom:10px">
                 <p style="font-family: 'Raleway', sans-serif; line-height: 1.7rem">At <span
                         style="color: #d9534f;"><b>Xchange</b></span>, we breathe new life into one-of-a-kind items. Our
                     quality will shatter your idea of "thrift", and our unbelievable selection of everyday items will
@@ -33,13 +33,9 @@
             </div>
         </div>
         <!-- Grid row-->
-        <hr class="clearfix rgba-white-light" style="margin: 10% 15% 5%;">
-        <div class="row pb-3" style="margin: 5% 35% 10% ;">
+        <hr class="clearfix rgba-white-light" style="margin:0">
+        <div class="row pb-3" style="margin-bottom:10px">
             <!-- Grid column -->
-            <div class="col-md-12">
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row-->
         </div>
     </div>
 </footer>

@@ -2,6 +2,7 @@ body {
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
+    margin-top: 70px;
 }
 
 h2 {
@@ -16,12 +17,13 @@ h2 {
 }
 
 .accordion-section .panel-default>.panel-heading {
-    border: 0;
+    top: 100%;
     background: #f4f4f4;
     padding: 0;
 }
 
 .accordion-section .panel-default .panel-title a {
+    top: 100%;
     display: block;
     font-style: italic;
     font-size: 1.5rem;

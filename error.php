@@ -49,9 +49,12 @@
     <br><br><br><br><br><br>
     
     <!-- Container  -->
-    <div class="container-fluid">
-        <h1><?php echo $error_title; ?></h1>
-        <h5><?php echo $error_message; ?></h5>
+    <div class="container d-flex flex-column justify-content-center my-auto mx-auto" style="height: 60vh;">
+        <div class="d-flex justify-content-center mb-1">
+            <img src="images/uploaded/error.png" style="width:30vw;"/>
+        </div>
+        <h1 class="d-flex justify-content-center"><?php echo $error_title; ?></h1>
+        <h5 class="d-flex justify-content-center"><?php echo $error_message; ?></h5>
     </div>
 
 

@@ -56,12 +56,12 @@
                 if(count($dataToFetch) > 3) {    
     ?>
 
-        <div id="recentlyVisited" class="py-4 px-5 container">
+        <div id="recentlyVisited" class="py-4 px-5 container mt-1">
             <div class="fixed-background">
                 <div class="row">
 
                     <div class="col-12">
-                        <h3 class="heading text-center pb-3">Recently you visited</h3>
+                    <h3 class="heading text-center pb-3" style= "color: white;"><i>Recently you visited</i></h3>
                     </div>
 
                     <div class="col-md-12">

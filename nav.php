@@ -2,7 +2,7 @@
 <nav id="nav-placeholder" class="mb-1 navbar navbar-expand-lg navbar-dark fixed-top" style="background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);">
 
   <!-- Start of Left Part of Navbar-->
-  <a class="navbar-brand" href="#">Xchange</a><link rel="shortcuticon" href="images/icons/favicon.ico" />
+  <a class="navbar-brand" href="#"></a><link rel="shortcuticon" href="images/icons/favicon.ico" />
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,9 +16,8 @@
     <ul class="navbar-nav mr-auto">
 
       <!-- Home -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home
-          <span class="sr-only">(current)</span>
+      <li class="nav-brand" >
+        <a class="nav-brand" href="index.php"><img src="images/icons/favicon.ico" alt = "" width="55" height="50">
         </a>
       </li>
 
@@ -77,7 +76,6 @@
 
       <!-- Forum -->
       <li class="nav-item">
-        <a class="nav-link" href="#">Forum</a>
       </li>
     </ul>
     <!-- End of Central Part of Navbar -->
