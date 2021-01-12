@@ -3,7 +3,7 @@
 <?php require_once("includes/session.php"); ?>
 <?php
     if (strcmp(getProfileUsername(), "No parameter") == 0){
-        redirect_to("404.php");
+        redirect_to("index.php");
     }
 ?>
 
