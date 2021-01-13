@@ -1,14 +1,17 @@
 <?php
 
-    $favorites = array();
     global $ConnectingDB;
 
+    $favorites = array();
+    $excludeLoggedUserItems = "";
+
     if (confirm_Login()){
-        $sqlFavorites  = "SELECT f.itemId FROM favorite f WHERE f.userId=" . $_SESSION["userId"];
+        $sqlFavorites  = "SELECT f.itemId FROM favorite f WHERE f.userId= " . $_SESSION["userId"];
         $stmtFavorites = $ConnectingDB->query($sqlFavorites);
         while ($favoritesRows = $stmtFavorites->fetch()) {
             array_push($favorites, $favoritesRows["itemId"]);
         }
+        $excludeLoggedUserItems = " AND i.userId != " . $_SESSION['userId'] . " ";
     }
 
     $sqlCount = "SELECT i.itemId as itemId, i.name as itemName, i.description as description,
@@ -40,7 +43,13 @@
         $sqlFavorite = "INNER JOIN favorite f on i.itemId = f.itemId WHERE f.userId =" . $_SESSION['userId'] . " ";
         $sqlCount   .= $sqlFavorite;
         $sql        .= $sqlFavorite;
+    }else{
+        $sqlCount   .= "WHERE 1=1 ";
+        $sql        .= "WHERE 1=1 ";
     }
+
+    $sqlCount  .= $excludeLoggedUserItems;
+    $sql       .= $excludeLoggedUserItems;
 
     // Query when pagination is active
     if (isset($_GET["page"])) {
@@ -60,17 +69,10 @@
         $search = $_GET["search"];
 
         // Count query before pagination
-        if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
-            $sqlCount .= "AND i.description LIKE :search
-            OR i.name LIKE :search
-            OR c.name LIKE :search
-            OR u.username LIKE :search ";
-        }else{
-            $sqlCount .= "WHERE i.description LIKE :search
-            OR i.name LIKE :search
-            OR c.name LIKE :search
-            OR u.username LIKE :search ";
-        }
+        $sqlCount .= "AND i.description LIKE :search
+        OR i.name LIKE :search
+        OR c.name LIKE :search
+        OR u.username LIKE :search ";
 
         $stmtCount = $ConnectingDB->prepare($sqlCount);
         $stmtCount->bindValue(':search', '%' . $search . '%');
@@ -107,17 +109,10 @@
         }
 
         // Fetch Data query with pagination
-        if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
-            $sql .= "AND i.description LIKE :search
-            OR i.name LIKE :search
-            OR c.name LIKE :search
-            OR u.username LIKE :search ";
-        }else{
-            $sql .= "WHERE i.description LIKE :search
-            OR i.name LIKE :search
-            OR c.name LIKE :search
-            OR u.username LIKE :search ";
-        }
+        $sql .= "AND i.description LIKE :search
+        OR i.name LIKE :search
+        OR c.name LIKE :search
+        OR u.username LIKE :search ";
 
         $sql .= $sorting;
         $sql .= $pagination;
@@ -133,11 +128,8 @@
         $categoryId = $_GET["categoryId"];
 
         // Count query before pagination
-        if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
-            $sqlCount .= "AND c.categoryId LIKE :categoryId ";
-        }else{
-            $sqlCount .= "WHERE c.categoryId LIKE :categoryId ";
-        }
+        $sqlCount .= "AND c.categoryId LIKE :categoryId "; 
+        
         $stmtCount = $ConnectingDB->prepare($sqlCount);
         $stmtCount->bindValue(':categoryId', $categoryId);
         $stmtCount->execute();
@@ -172,11 +164,8 @@
         }
 
         // Fetch Data query with pagination
-        if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
-            $sql .= "AND c.categoryId LIKE :categoryId ";
-        }else{
-            $sql .= "WHERE c.categoryId LIKE :categoryId ";
-        }
+        $sql .= "AND c.categoryId LIKE :categoryId ";
+        
         $sql .= $sorting;
         $sql .= $pagination;
 
