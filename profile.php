@@ -2,7 +2,9 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php
-    if ((strcmp(getProfileUsername(), "No parameter") == 0) || (strcmp(getProfileUsername(), "") == 0)){
+    if ((strcmp(getProfileUsername(), "No parameter") == 0) 
+    || (strcmp(getProfileUsername(), "") == 0) 
+    || !checkUsernameAvailability(getProfileUsername())){
         redirect_to("index.php");
     }
 ?>

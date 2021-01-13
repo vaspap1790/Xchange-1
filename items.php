@@ -1,7 +1,20 @@
 <?php require_once("includes/db.php"); ?>
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
-
+<?php
+    if (
+        (isset($_GET['categoryId']) && (!is_numeric($_GET['categoryId']) || !checkCategoryIdAvailability($_GET['categoryId'])))
+    ||  (isset($_GET['page']) && !is_numeric($_GET['page']))
+    ||  (isset($_GET['favorites']) && (!is_numeric($_GET['favorites']) || ( $_GET['favorites'] != 0 && $_GET['favorites'] != 1)))
+    ||  (isset($_GET['rating']) && (!is_numeric($_GET['rating']) || (  $_GET['rating'] != 1 
+                                                                    && $_GET['rating'] != 2 
+                                                                    && $_GET['rating'] != 3
+                                                                    && $_GET['rating'] != 4 
+                                                                    && $_GET['rating'] != 5)))
+    ){
+        redirect_to("index.php");
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -239,25 +252,6 @@
                     ?>
                 </h3>
             </div>
-
-            <!-- <div class="px-3 py-1 d-flex flex-row justify-content-between align-items-center">
-                <div class="d-flex flex-row  align-items-center">
-                    <span class="mr-2">Sorting</span>
-                    <select class="browser-default custom-select">
-                        <option selected value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
-                <div class="d-flex flex-row  align-items-center">
-                    <span class="mr-2">Showing</span>
-                    <select class="browser-default custom-select">
-                        <option selected value="1">10</option>
-                        <option value="2">20</option>
-                        <option value="3">50</option>
-                    </select>
-                </div>
-            </div> -->
 
             <div class="container px-5 py-3" style="max-width:80vw; min-width:80vw;">
 

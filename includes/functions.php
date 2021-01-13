@@ -53,7 +53,7 @@
   function getProfileUsername(){
     $searchParameters          = explode("&", $_SERVER['QUERY_STRING']);
     $firstSearchParameter      = explode("=", $searchParameters[0]);
-    if(isset($firstSearchParameter[1]) ){
+    if(isset($firstSearchParameter[1])){
         $firstSearchParameterValue = $firstSearchParameter[1];
     }else{
         $firstSearchParameterValue = "No parameter";
@@ -92,6 +92,20 @@ function getProfileUserId(){
     $sql    = "SELECT username FROM user WHERE username=:username";
     $stmt   = $ConnectingDB->prepare($sql);
     $stmt->bindValue(':username',$username);
+    $stmt->execute();
+    $Result = $stmt->rowcount();
+    if ($Result == 1) {
+      return true;
+    }else {
+      return false;
+    }
+  }
+
+  function checkCategoryIdAvailability($categoryId){
+    global $ConnectingDB;
+    $sql    = "SELECT categoryId FROM category WHERE categoryId=:categoryId";
+    $stmt   = $ConnectingDB->prepare($sql);
+    $stmt->bindValue(':categoryId',$categoryId);
     $stmt->execute();
     $Result = $stmt->rowcount();
     if ($Result == 1) {
