@@ -46,3 +46,34 @@ $('#ratingModal').on('hidden.bs.modal', function () {
         data: { ratingMessage: 'ratingMessage' }
     });
 })
+
+// Preview Upload Photo
+function previewAddItemPhoto(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#photoAddItemPreview')
+                .attr('src', e.target.result)
+                .width(50)
+                .height(50);
+            $('#photoAddItemPreview').show();
+
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function previewEditItemPhoto(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#photoEditItemPreview')
+                .attr('src', e.target.result)
+                .width(50)
+                .height(50);
+            $('#photoEditItemPreview').show();
+
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

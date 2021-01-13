@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-    // Validation of forms using JQuery Validator
     $("#loginForm").validate({
         rules: {
             username: {
@@ -176,6 +175,22 @@ $(document).ready(function () {
     });
 
 });
+
+// Preview Upload Photo
+function previewUserPhoto(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#photoUserPreview')
+                .attr('src', e.target.result)
+                .width(50)
+                .height(50);
+            $('#photoUserPreview').show();
+
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}
 
 // Unset session variables
 $('#loginModal').on('hidden.bs.modal', function () {

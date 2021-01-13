@@ -496,8 +496,9 @@
                 <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
                   <p>Accepted file type .png. Less than 1MB</p> 
                   <div style="white-space:nowrap">
+                    <img id="photoUserPreview" src="#" style="display:none" alt="your image" />
                     <label for="imageSelect" class="btn btn-primary">Upload</label>
-                    <input class="custom-file-input" type="File" name="image" id="imageSelect" value="">
+                    <input class="custom-file-input" type="File" name="image" onchange="previewUserPhoto(this);" id="imageSelect" value="">
                   </div>
                 </div>
 
@@ -557,8 +558,9 @@
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
               <p>Accepted file type .png. Less than 1MB</p> 
               <div style="white-space:nowrap">
+                <img id="photoAddItemPreview" src="#" style="display:none" alt="your image" />
                 <label for="imageItem" class="btn btn-primary">Upload</label>
-                <input class="custom-file-input" type="File" name="imageItem" id="imageItem" value="">
+                <input class="custom-file-input" type="File" name="imageItem" id="imageItem" onchange="previewAddItemPhoto(this);" value="">
               </div>
             </div>
           </div>
@@ -623,8 +625,9 @@
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
               <p>Accepted file type .png. Less than 1MB</p> 
               <div style="white-space:nowrap">
+                <img id="photoEditItemPreview" src="#" style="display:none" alt="your image" />
                 <label for="editImageItem" class="btn btn-primary">Upload</label>
-                <input class="custom-file-input" type="File" name="editImageItem" id="editImageItem" value="">
+                <input class="custom-file-input" type="File" name="editImageItem" id="editImageItem" onchange="previewEditItemPhoto(this);" value="">
               </div>
             </div>
           </div>
