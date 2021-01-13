@@ -11,6 +11,8 @@ CREATE TABLE `USER` (
     lastname varchar(50),
 	password varchar(255) NOT NULL,
 	dateTime_ varchar(19),
+	country varchar(100),
+	address varchar(100),
 	description varchar(500),
     PRIMARY KEY (userId)
 );
@@ -19,14 +21,14 @@ CREATE TABLE `USER` (
 -- Data for table User
 --
 
-INSERT INTO `USER` (`userId`, `email`, `username`, `firstname`, `lastname`, `password`, `dateTime_`, `description`) VALUES
-(1, 'esgiefe@gmail.com', 'eefe1', 'Ezgi', 'Efe', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:52:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(2, 'dimpappas@gmail.com', 'jimpri3st', 'Dimitris', 'Pappas', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:53:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(3, 'vaspap1790@gmail.com', 'vaspap1790', 'Vasilis', 'Papadimitrakopoulos', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(4, 'bla@gmail.com', 'bla', 'Bla', 'BlaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
-(5, 'blabla@gmail.com', 'blabla', 'Blabla', 'BlablaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting '),
-(6, 'techbla@gmail.com', 'techbla', 'Techbla', 'TechblaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting '),
-(7, 'artbla@gmail.com', 'artbla', 'Artbla', 'ArtblaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
+INSERT INTO `USER` (`userId`, `email`, `username`, `firstname`, `lastname`, `password`, `dateTime_`, `country`, `address`, `description`) VALUES
+(1, 'esgiefe@gmail.com', 'eefe1', 'Ezgi', 'Efe', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:52:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(2, 'dimpappas@gmail.com', 'jimpri3st', 'Dimitris', 'Pappas', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:53:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(3, 'vaspap1790@gmail.com', 'vaspap1790', 'Vasilis', 'Papadimitrakopoulos', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(4, 'bla@gmail.com', 'bla', 'Bla', 'BlaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+(5, 'blabla@gmail.com', 'blabla', 'Blabla', 'BlablaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting '),
+(6, 'techbla@gmail.com', 'techbla', 'Techbla', 'TechblaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting '),
+(7, 'artbla@gmail.com', 'artbla', 'Artbla', 'ArtblaLast', '$2y$10$kRiekRuvQvwRJgvWoa0RKu54n30seWJmopCa6uaUUmGFJ5UAHM3NW', '2020-12-30 23:54:07', 'Greece','Solomou 14, Athens', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.');
 
 --
 -- Table structure for table CATEGORY
