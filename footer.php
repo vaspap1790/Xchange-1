@@ -23,7 +23,7 @@
         <hr class="rgba-white-light" >
         <div class="row d-flex text-center justify-content-center mb-md-0 mb-4">
             <!-- Grid column -->
-            <div class="col-md-8 col-12 mt-5" style="margin-bottom:10px">
+            <div class="col-md-8 col-12 mt-2 mb-2">
                 <p style="font-family: 'Raleway', sans-serif; line-height: 1.7rem">At <span
                         style="color: #d9534f;"><b>Xchange</b></span>, we breathe new life into one-of-a-kind items. Our
                     quality will shatter your idea of "thrift", and our unbelievable selection of everyday items will

@@ -158,6 +158,7 @@
     <?php } } ?>    
     <!-- End of Recently Visited -->            
 
+    <br><br><br>
     
     <!-- Modals -->
     <?php require_once("includes/modals.php"); ?>

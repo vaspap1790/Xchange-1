@@ -1,3 +1,7 @@
 body {
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
 }
+
+.rgba-white-light, .rgba-white-light:after {
+    background-color: rgb(255, 255, 255);
+}

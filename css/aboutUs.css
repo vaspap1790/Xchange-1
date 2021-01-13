@@ -34,6 +34,10 @@ p {
     font-size: 1rem;
 }
 
+.rgba-white-light, .rgba-white-light:after {
+    background-color: rgb(255, 255, 255);
+}
+
 @media screen and (max-width: 768px) {
     .col-sm-4 {
         text-align: center;
