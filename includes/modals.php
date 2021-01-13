@@ -284,6 +284,32 @@
   </div>
 </div>
 
+<!-- Consent Cookies Modal -->
+<div class="modal fade" id="consentCookies" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="consentCookiesLabel">This Website Useses Cookies</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <form id="consentCookiesForm" action="index.php" method="post">
+        <div class="form-group">
+          We use cookies to personalise content
+        </div>
+        <div class="modal-footer">
+          <button type="submit" name="consentCookiesAllow" id="consentCookiesAllow" class="btn btn-primary">Allow</button>
+          <button type="submit" name="consentCookiesDeny" id="consentCookiesDeny" class="btn btn-primary">Don't Allow</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Register Modal -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">

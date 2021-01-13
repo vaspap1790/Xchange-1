@@ -75,19 +75,22 @@
 
         $response = array();
 
-        if(!isset($_SESSION['recentlyVisited'])){
-            $recentlyVisited = array($_POST['fetch_item_id']);
-            $_SESSION["recentlyVisited"] = $recentlyVisited;
-        }else{
-            array_unshift($_SESSION["recentlyVisited"], $_POST['fetch_item_id']);
-            while(count($_SESSION["recentlyVisited"]) > 15){
-                array_pop($_SESSION["recentlyVisited"]);
+        if(isset($_SESSION["consentCookies"]) && $_SESSION["consentCookies"] == 1){
+            
+            if(!isset($_SESSION['recentlyVisited'])){
+                $recentlyVisited = array($_POST['fetch_item_id']);
+                $_SESSION["recentlyVisited"] = $recentlyVisited;
+            }else{
+                array_unshift($_SESSION["recentlyVisited"], $_POST['fetch_item_id']);
+                while(count($_SESSION["recentlyVisited"]) > 15){
+                    array_pop($_SESSION["recentlyVisited"]);
+                }
             }
+    
+            $cookie_name   = "recentlyVisited";
+            $cookie_value  = serialize(array_unique($_SESSION["recentlyVisited"]));
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
         }
-
-        $cookie_name   = "recentlyVisited";
-        $cookie_value  = serialize(array_unique($_SESSION["recentlyVisited"]));
-        setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
 
         global $ConnectingDB;
 

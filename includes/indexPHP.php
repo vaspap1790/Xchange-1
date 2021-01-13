@@ -6,3 +6,15 @@
   }
 
 ?>
+
+<!-- Consent Cookies -->
+<?php 
+
+  if (isset($_POST["consentCookiesAllow"])) {
+    $_SESSION["consentCookies"] = 1;
+  }
+  if (isset($_POST["consentCookiesDeny"])) {
+    $_SESSION["consentCookies"] = 0;
+  }
+
+?>
