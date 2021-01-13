@@ -301,8 +301,8 @@
           We use cookies to personalise content
         </div>
         <div class="modal-footer">
+          <button type="submit" name="consentCookiesDeny" id="consentCookiesDeny" class="btn btn-secondary">Don't Allow</button>
           <button type="submit" name="consentCookiesAllow" id="consentCookiesAllow" class="btn btn-primary">Allow</button>
-          <button type="submit" name="consentCookiesDeny" id="consentCookiesDeny" class="btn btn-primary">Don't Allow</button>
         </div>
       </form>
       </div>

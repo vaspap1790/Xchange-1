@@ -39,6 +39,19 @@
     <link rel="stylesheet" type="text/css" href="css/forms.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        footer.page-footer a {
+            color: #3B78AE;
+        }
+
+        footer.page-footer {
+            color: #3B78AE;
+        }
+
+        a:not([href]):not([tabindex]) {
+            color: #3B78AE;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +62,7 @@
     <br><br><br><br><br><br>
     
     <!-- Container  -->
-    <div class="container d-flex flex-column justify-content-center my-auto mx-auto" style="height: 60vh;">
+    <div class="container d-flex flex-column justify-content-center my-auto mx-auto" style="height: 50vh;">
         <div class="d-flex justify-content-center mb-1">
             <img src="images/uploaded/error.png" style="width:30vw;"/>
         </div>

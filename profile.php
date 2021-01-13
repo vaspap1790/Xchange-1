@@ -2,7 +2,7 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php
-    if (strcmp(getProfileUsername(), "No parameter") == 0){
+    if ((strcmp(getProfileUsername(), "No parameter") == 0) || (strcmp(getProfileUsername(), "") == 0)){
         redirect_to("index.php");
     }
 ?>
@@ -58,6 +58,8 @@
                     $profileEmail              = $profileRows['email'];
                     $profileDescription        = $profileRows['description'];
                     $profilePhotoName          = $profileRows['photoName'];
+                    $profileCountry            = $profileRows['country'];
+                    $profileAddress            = $profileRows['address'];
                   }
 
                 $sqlProfileRatings     = "SELECT rating FROM rating WHERE userRatedId = '$profileUserId'";
@@ -103,6 +105,7 @@
             <h4 class="text-center"><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
             <h4 class="text-center"><?php echo $profileEmail; ?></h4>
 
+            <p class="text-center"><i><?php echo $profileCountry; ?>, <?php echo $profileAddress; ?></i></p>
             <p class="text-center"><?php echo $profileDescription; ?></p>
 
             <?php if (check_if_logged_user_profile()){ ?>
