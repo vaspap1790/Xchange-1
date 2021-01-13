@@ -49,31 +49,69 @@ $('#ratingModal').on('hidden.bs.modal', function () {
 
 // Preview Upload Photo
 function previewAddItemPhoto(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#photoAddItemPreview')
-                .attr('src', e.target.result)
-                .width(50)
-                .height(50);
-            $('#photoAddItemPreview').show();
 
-        };
-        reader.readAsDataURL(input.files[0]);
+    if (input.files && input.files[0]) {
+
+        if (input.files[0].size < 3000000) {
+
+            if (input.files[0].type == "image/png" || input.files[0].type == "image/jpeg") {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#photoAddItemPreview')
+                        .attr('src', e.target.result)
+                        .width(50)
+                        .height(50);
+                    $('#photoAddItemPreview').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+
+                $('#addItemAccepted').removeClass("error");
+                $('#addItem').prop("disabled", false);
+
+            } else {
+                $('#addItemAccepted').addClass("error");
+                $('#addItem').prop("disabled", true);
+            }
+
+        } else {
+            $('#addItemAccepted').addClass("error");
+            $('#addItem').prop("disabled", true);
+        }
+
     }
 }
 
 function previewEditItemPhoto(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#photoEditItemPreview')
-                .attr('src', e.target.result)
-                .width(50)
-                .height(50);
-            $('#photoEditItemPreview').show();
 
-        };
-        reader.readAsDataURL(input.files[0]);
+    if (input.files && input.files[0]) {
+
+        if (input.files[0].size < 3000000) {
+
+            if (input.files[0].type == "image/png" || input.files[0].type == "image/jpeg") {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#photoEditItemPreview')
+                        .attr('src', e.target.result)
+                        .width(50)
+                        .height(50);
+                    $('#photoEditItemPreview').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+
+                $('#editItemAccepted').removeClass("error");
+                $('#editItem').prop("disabled", false);
+
+            } else {
+                $('#editItemAccepted').addClass("error");
+                $('#editItem').prop("disabled", true);
+            }
+
+        } else {
+            $('#editItemAccepted').addClass("error");
+            $('#editItem').prop("disabled", true);
+        }
+
     }
 }

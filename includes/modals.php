@@ -494,7 +494,7 @@
                 <?php } ?> 
 
                 <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-                  <p>Accepted file type .png. Less than 1MB</p> 
+                  <p id="userAccepted">Accepted file type png, jpeg. Less than 3MB</p> 
                   <div style="white-space:nowrap">
                     <img id="photoUserPreview" src="#" style="display:none" alt="your image" />
                     <label for="imageSelect" class="btn btn-primary">Upload</label>
@@ -556,7 +556,7 @@
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
             <img src="images/uploaded/noPhoto.png" class="z-depth-0" width="100px" height="100px" alt="item image">
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-              <p>Accepted file type .png. Less than 1MB</p> 
+              <p id="addItemAccepted">Accepted file type png, jpeg. Less than 3MB</p> 
               <div style="white-space:nowrap">
                 <img id="photoAddItemPreview" src="#" style="display:none" alt="your image" />
                 <label for="imageItem" class="btn btn-primary">Upload</label>
@@ -623,7 +623,7 @@
           <div class="d-flex align-items-start py-3 mb-4 border-bottom"> 
             <img src="images/uploaded/noPhoto.png" id="editItemImage" class="z-depth-0" width="100px" height="100px" alt="item image">
             <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
-              <p>Accepted file type .png. Less than 1MB</p> 
+              <p id="editItemAccepted">Accepted file type png, jpeg. Less than 3MB</p> 
               <div style="white-space:nowrap">
                 <img id="photoEditItemPreview" src="#" style="display:none" alt="your image" />
                 <label for="editImageItem" class="btn btn-primary">Upload</label>

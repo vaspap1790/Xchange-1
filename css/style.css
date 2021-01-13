@@ -201,7 +201,7 @@ select:focus {
 }
 
 .error {
-  color: #F00;
+  color: #F00 !important;
   background-color: #FFF;
 }
 

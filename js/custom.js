@@ -178,17 +178,36 @@ $(document).ready(function () {
 
 // Preview Upload Photo
 function previewUserPhoto(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#photoUserPreview')
-                .attr('src', e.target.result)
-                .width(50)
-                .height(50);
-            $('#photoUserPreview').show();
 
-        };
-        reader.readAsDataURL(input.files[0]);
+    if (input.files && input.files[0]) {
+
+        if (input.files[0].size < 3000000) {
+
+            if (input.files[0].type == "image/png" || input.files[0].type == "image/jpeg") {
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#photoUserPreview')
+                        .attr('src', e.target.result)
+                        .width(50)
+                        .height(50);
+                    $('#photoUserPreview').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+
+                $('#userAccepted').removeClass("error");
+                $('#submitSettings').prop("disabled", false);
+
+            } else {
+                $('#userAccepted').addClass("error");
+                $('#submitSettings').prop("disabled", true);
+            }
+
+        } else {
+            $('#userAccepted').addClass("error");
+            $('#submitSettings').prop("disabled", true);
+        }
+
     }
 }
 
