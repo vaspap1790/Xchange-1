@@ -56,7 +56,7 @@
                 if(count($dataToFetch) > 3) {    
     ?>
 
-        <div id="recentlyVisited" class="py-4 px-5 container mt-1">
+        <div id="recentlyVisited" class="py-4 px-5 container mt-1" style="max-width:80vw; min-width:80vw;">
             <div class="fixed-background">
                 <div class="row">
 
@@ -158,7 +158,6 @@
     <?php } } ?>    
     <!-- End of Recently Visited -->            
 
-    <br><br><br>
     
     <!-- Modals -->
     <?php require_once("includes/modals.php"); ?>
