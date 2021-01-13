@@ -259,7 +259,12 @@
                         <img class="card-img-top" src="images/uploaded/<?php echo $photoName ?>" alt="" width="260" height="195">
                         <div class="card-body">   
  
-                            <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a> 
+                            <?php if (confirm_Login()){ 
+                                if(in_array($itemId, $favorites)){ ?>    
+                                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'unfavorite')" style ="font-size: 35px;">&#9829;</a>
+                            <?php } else { ?>
+                                <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
+                            <?php } }?>    
 
                             <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
                             <div><small>Uploaded in <?php echo $dateTime ?></small></div>
