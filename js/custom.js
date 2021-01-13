@@ -462,3 +462,41 @@ $('#deleteItem').click(function () {
 })
 
 
+function toggleFavorite(itemId, userId, action) {
+
+    const whiteHeart = '\u2661';
+    const blackHeart = '\u2665';
+
+    if (action == "favorite") {
+
+        $("#heart" + itemId).text(blackHeart);
+        $("#heart" + itemId).css({
+            fontSize: 35
+        });
+        $("#heart" + itemId).attr("onclick", "toggleFavorite(" + itemId + "," + userId + "," + "'unfavorite')");
+
+        $.ajax({
+            type: "POST",
+            url: 'includes/ajax.php',
+            dataType: 'json',
+            data: { favorite: 'favorite', itemId: itemId, userId: userId }
+        });
+
+    } else if (action == "unfavorite") {
+
+        $("#heart" + itemId).text(whiteHeart);
+        $("#heart" + itemId).css({
+            fontSize: 35
+        });
+        $("#heart" + itemId).attr("onclick", "toggleFavorite(" + itemId + "," + userId + "," + "'favorite')");
+
+        $.ajax({
+            type: "POST",
+            url: 'includes/ajax.php',
+            dataType: 'json',
+            data: { unfavorite: 'unfavorite', itemId: itemId, userId: userId }
+        });
+
+    }
+    location.reload();
+}
