@@ -1,7 +1,7 @@
 # xchange
 Webapp for exchanging items - for Masters Coursework 
 
-Put the name of the folder of your  folder instead of Xchange for the next instructions:
+Put the name of the folder of your folder instead of Xchange for the next instructions:
 
 _Error Handling_
 
@@ -20,13 +20,17 @@ Run the initialisation script that is on 'db_script.sql' file
 on the SQl Command window of your database in phpMyAdmin
 
 In 'xampp/htdocs/Xchange/includes/db.php file
-put your parameters for username,password, data base name and 
-host(host and port that your db server is running - default 127.0.0.1:3306) 
-which you can configure in my.ini file which you can access by pressing 'Config' in MySQL
+put your parameters for username,password, database name and 
+host(host and port that your db server is running - default for XAMPP is 127.0.0.1:3306) 
+which you can configure in 'my.ini' file. 
+You can access 'my.ini' file by pressing 'Config' in MySQL
 in XAMPP Control Panel.
 
-Password for existing users : 12345 (application)
-Better use vaspap1790 that has more dummy data.
+
+_Users_
+
+Password for database users : 12345 (application)
+Better use vaspap1790 that has more dummy data
 
 
 _Mail Configuration_
@@ -38,7 +42,7 @@ smtp_port=587
 sendmail_from = xchangedve@gmail.com
 sendmail_path = "\"C:\xampp\sendmail\sendmail.exe\" -t"
 
-xampp/sendmail/sendmail.ini
+Then you have to set the following parameters in 'xampp/sendmail/sendmail.ini' file:
 
 smtp_server=smtp.gmail.com
 smtp_port=587
@@ -47,5 +51,5 @@ auth_username= xchangedve@gmail.com
 auth_password= Findwhatevertheweather
 
 You can check in xchangedve@gmail.com with password:Findwhatevertheweather 
-that the mail has benn sent
+that the mail has benn sent and received
 
