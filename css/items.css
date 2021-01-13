@@ -22,7 +22,7 @@ a, a:hover, a:focus {
 
 #sidebar {
     background: #fafafa;
-    color: #000;
+    color: #3B78AE;
     transition: all 0.3s;
     min-width: 250px;
     max-width: 250px;
@@ -55,13 +55,13 @@ a, a:hover, a:focus {
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
     color: #fff;
-    background: #c9c3a7;
+    background: #e0ebe5;
 }
 
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #c9c3a7;
+    background: #e0ebe5;
 }
 
 .customWrapper {
@@ -85,6 +85,18 @@ ul ul a {
 
 .owl-dot.active span, .owl-dot:hover span {
     background: #5c8e90!important;
+}
+
+footer.page-footer a {
+    color: #3B78AE;
+}
+
+footer.page-footer {
+    color: #3B78AE;
+}
+
+a:not([href]):not([tabindex]) {
+    color: #3B78AE;
 }
 
 @media only screen and (max-width: 600px) {

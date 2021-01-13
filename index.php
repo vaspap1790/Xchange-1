@@ -38,7 +38,7 @@
             <form id="searchForm" action="index.php" method="post" class="form-inline active-pink-4">
                 <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
                     aria-label="Search" name="search">
-                    <button type="submit" name="submitSearch" id="submitSearch" class="btn peach-gradient">
+                    <button type="submit" name="submitSearch" id="submitSearch" class="btn btn-sm peach-gradient">
                         <i class="fas fa-search" aria-hidden="true"></i>
                     </button>
             </form>

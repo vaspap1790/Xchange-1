@@ -35,27 +35,26 @@
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
                     <div class="panel-heading p-3 mb-3" style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading0">
-                        <h5 class="panel-title" >
+                        <h6 class="panel-title" >
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse0" aria-expanded="true" aria-controls="collapse0">
                                 What are the benefits of exchange?
                             </a>
-                        </h5>
+                        </h6>
                     </div>
                     <div id="collapse0" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading0">
                         <div class="panel-body px-3 mb-4" >
-                            <p>With xchange, you and your visitors will benefit from a finely-tuned technology stack
-                                that drives the highest levels of site performance, speed and engagement - and
-                                contributes more to your bottom line. Our users fell in love
-                                with:
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                Duis aute irure dolor in reprehenderit 
+                                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+                                sunt in culpa qui officia deserunt mollit anim id est laborum
                             </p>
                             <ul>
-                                <li>Light speed deployment on the most secure and stable cloud infrastructure available
-                                    on the market.</li>
-                                <li>Scalability – pay for what you need today and add-on options as you grow.</li>
-                                <li>All of the bells and whistles of other enterprise CMS options but without the design
-                                    limitations - this CMS simply lets you realize your creative visions.</li>
-                                <li>Amazing support backed by a team of Solodev pros – here when you need them.</li>
+                                <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</li>
+                                <li>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</li>
+                                <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</li>
+                                <li>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</li>
                             </ul>
                         </div>
                     </div>
@@ -63,50 +62,51 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading1">
-                        <h3 class="panel-title">
+                        <h6 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse1" aria-expanded="true" aria-controls="collapse1">
                                 How easy is it to find products and xchange?
                             </a>
-                        </h3>
+                        </h6>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
                         <div class="panel-body px-3 mb-4">
-                            <p>Exchange is extremely easy. </p>
+                            <p> Inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
                         </div>
                     </div>
                 </div>
 
                 <div class="panel panel-default">
                     <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading2">
-                        <h3 class="panel-title">
+                        <h6 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse2" aria-expanded="true" aria-controls="collapse2">
                                 What is the uptime for ?
                             </a>
-                        </h3>
+                        </h6>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading2">
                         <div class="panel-body px-3 mb-4">
-                            <p>Using Amazon AWS technology which is an industry leader for reliability you will be able
-                                to experience an uptime in the vicinity of 99.95%.</p>
+                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                                 sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="panel panel-default">
                     <div class="panel-heading p-3 mb-3"style="background: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%); border-radius:100px;" role="tab" id="heading3">
-                        <h3 class="panel-title">
+                        <h6 class="panel-title">
                             <a class="collapsed" role="button" title="" data-toggle="collapse" data-parent="#accordion"
                                 href="#collapse3" aria-expanded="true" aria-controls="collapse3">
                                 Can xchange handle multiple products for exchange?
                             </a>
-                        </h3>
+                        </h6>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading3">
                         <div class="panel-body px-3 mb-4">
-                            <p>Yes, Solodev CMS is built to handle the needs of any size company. With our Multi-Site
-                                Management, you will be able to easily manage all of your websites.</p>
+                            <p>Porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi 
+                                tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem
+                                ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
                         </div>
                     </div>
                 </div>

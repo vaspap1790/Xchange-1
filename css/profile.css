@@ -5,6 +5,18 @@ body {
     margin-top: 100px;
 }
 
+footer.page-footer a {
+    color: #3B78AE;
+}
+
+footer.page-footer {
+    color: #3B78AE;
+}
+
+a:not([href]):not([tabindex]) {
+    color: #3B78AE;
+}
+
 .checked {
     color: peachpuff;
 }

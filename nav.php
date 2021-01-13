@@ -17,8 +17,13 @@
 
       <!-- Home -->
       <li class="nav-brand" >
-        <a class="nav-brand" href="index.php"><img src="images/icons/favicon.ico" alt = "" width="55" height="50">
+        <a class="nav-brand" href="index.php"><img src="images/icons/favicon.ico" alt="logo" width="55" height="50">
         </a>
+      </li>
+
+      <!-- Title -->
+      <li class="nav-item hideNotif">
+        <a class="nav-link" href="index.php">Xchange</a>
       </li>
 
       <!-- Watchlist -->
@@ -74,9 +79,7 @@
         </div>
       </li>
 
-      <!-- Forum -->
-      <li class="nav-item">
-      </li>
+
     </ul>
     <!-- End of Central Part of Navbar -->
 
@@ -119,7 +122,7 @@
                   <?php echo $pendingRequestsCount ?>
                   <i class="fas fa-envelope"></i>
                 </a>
-                <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuRequests">
+                <div class="dropdown-menu dropdown-default" style="background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);" aria-labelledby="navbarDropdownMenuRequests">
                   <?php
                     while ($pendingRequestsRows = $stmtPendingRequests->fetch()) {
                       $requestId              = $pendingRequestsRows["requestId"];
@@ -162,7 +165,7 @@
           </a>
 
           <!-- Login-Register or MyProfile-Logout-Setings -->
-          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" aria-labelledby="avatarDropdown">
+          <div class="dropdown-menu dropdown-menu-lg-right dropdown-secondary" style="background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);" aria-labelledby="avatarDropdown">
 
             <?php  if(confirm_Login()){  ?>  
             <a class="dropdown-item" href="profile.php?username=<?php echo $_SESSION['username']; ?>">My Profile</a>
