@@ -310,6 +310,87 @@
   </div>
 </div>
 
+<!-- Terms And Policies Modal -->
+<div class="modal fade bd-example-modal-lg" id="termsPoliciesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document" style="overflow-y:initial !important;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsPoliciesLabel">Xchange Terms and Conditions</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="height:80vh; overflow-y:auto;">
+
+        <h1><small>Terms and conditions</small></h1>
+        <p style="text-align:justify;">
+          <small>These terms and conditions (&quot;Agreement&quot;) set forth the general terms and conditions of your use of the
+           <a target="_blank" rel="nofollow" href="index.php">xchange.com</a> website (&quot;Website&quot; or &quot;Service&quot;) 
+           and any of its related products and services (collectively, &quot;Services&quot;). This Agreement is legally binding between
+            you (&quot;User&quot;, &quot;you&quot; or &quot;your&quot;) and this Website operator (&quot;Operator&quot;, &quot;we&quot;, &quot;us&quot; or &quot;our&quot;).
+             By accessing and using the Website and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. 
+             If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement,
+              in which case the terms &quot;User&quot;, &quot;you&quot; or &quot;your&quot; shall refer to such entity. If you do not have such authority, 
+              or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Website and Services. 
+              You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, 
+              and it governs your use of the Website and Services.
+          </small>
+        </p>
+        <h2><small>Accounts and membership</small></h2>
+        <p style="text-align:justify;">
+          <small>
+          If you create an account on the Website, you are responsible for maintaining the security of your account
+           and you are fully responsible for all activities that occur under the account and any other actions taken in connection with it.
+            We may, but have no obligation to, monitor and review new accounts before you may sign in and start using the Services.
+             Providing false contact information of any kind may result in the termination of your account. You must immediately notify us
+              of any unauthorized uses of your account or any other breaches of security. We will not be liable for any acts or omissions by you,
+               including any damages of any kind incurred as a result of such acts or omissions.
+          </small>
+        </p>
+        <h2><small>Links to other resources</small></h2>
+        <p style="text-align:justify;">
+          <small>
+          Although the Website and Services may link to other resources (such as websites, mobile applications, etc.),
+           we are not, directly or indirectly, implying any approval, association, sponsorship, endorsement, or affiliation 
+           with any linked resource, unless specifically stated herein. We are not responsible for examining or evaluating, 
+           and we do not warrant the offerings of, any businesses or individuals or the content of their resources. We do not 
+           assume any responsibility or liability for the actions, products, services, and content of any other third parties. 
+           You should carefully review the legal statements and other conditions of use of any resource which you access through 
+           a link on the Website and Services. Your linking to any other off-site resources is at your own risk.
+          </small>
+        </p>
+        <h2><small>Changes and amendments</small></h2>
+        <p style="text-align:justify;">
+          <small>
+          We reserve the right to modify this Agreement or its terms relating to the Website and Services at any time,
+           effective upon posting of an updated version of this Agreement on the Website. When we do, we will post a 
+           notification on the main page of the Website. Continued use of the Website and Services after any such changes 
+           shall constitute your consent to such changes. 
+           Policy was created with <a style="color:inherit" target="_blank" href="https://www.websitepolicies.com/blog/sample-terms-conditions-template">WebsitePolicies</a>.
+          </small>
+        </p>
+        <h2><small>Acceptance of these terms</small></h2>
+        <p style="text-align:justify;">
+          <small>
+          You acknowledge that you have read this Agreement and agree to all its terms and conditions.
+         By accessing and using the Website and Services you agree to be bound by this Agreement. 
+         If you do not agree to abide by the terms of this Agreement, you are not authorized to access or use the Website and Services.
+          </small>
+         </p>
+        <h2><small>Contacting us</small></h2>
+        <p style="text-align:justify;"><small>If you would like to contact us to understand more about this Agreement or wish to contact us concerning any matter relating to it, you may send an email to xcha&#110;ge&#100;&#118;e&#64;&#103;m&#97;&#105;l.&#99;o&#109;</small></p>
+        <p style="text-align:justify;"><small>This document was last updated on January 13, 2021</small></p>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Register Modal -->
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -345,7 +426,15 @@
             <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
               placeholder="Enter Password">
           </div>
-          <div class="modal-footer">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="termsCheck" name="termsCheck[]">
+              <label class="form-check-label" for="termsCheck">
+                <a class="text-start" type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" style="text-decoration:underline; color:blue;"
+                  data-target="#termsPoliciesModal"> Agree with our Terms and Conditions
+                </a>
+              </label>
+          </div>
+          <div class="modal-footer mt-3">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="submit" name="submitRegister" id="submitRegister" class="btn btn-primary">Save</button>
           </div>

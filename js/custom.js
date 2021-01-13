@@ -57,6 +57,9 @@ $(document).ready(function () {
                 minlength: 5,
                 maxlength: 50,
                 equalTo: "#rPassword"
+            },
+            'termsCheck[]': {
+                required: true
             }
         },
         messages: {
@@ -80,6 +83,9 @@ $(document).ready(function () {
                 minlength: "Password must be at least at least 5 characters long",
                 equalTo: "Please enter the same Password",
                 maxlength: "Password must be 50 characters long maximum"
+            },
+            'termsCheck[]': {
+                required: "Please Agree to our Terms and Conditions to register"
             }
         },
         errorClass: 'error',
