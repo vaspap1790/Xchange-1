@@ -73,7 +73,12 @@
                     $sumProfile += $ratingProfileRows["rating"];
                     $countProfileRatings++;
                 }
-                $ratingProfile = ceil( $sumProfile / $countProfileRatings);
+                $result = $stmtProfileRatings->rowcount();
+                if ($result > 0) {
+                    $ratingProfile = ceil( $sumProfile / $countProfileRatings);
+                }else {
+                    $ratingProfile = 0;
+                }
             ?>
 
             <?php if (!check_if_logged_user_profile()){ ?>
