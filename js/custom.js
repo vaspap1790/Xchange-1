@@ -174,6 +174,29 @@ $(document).ready(function () {
         }
     });
 
+    // Populate countries in settings modal
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { getCountry: 'getCountry' },
+        success: function (response) {
+            var userCountry = response[0].country;
+            $.ajax({
+                type: "GET",
+                url: "https://restcountries.eu/rest/v2/all?fields=name",
+                dataType: "json",
+                success: function (data) {
+                    $.each(data, function (i, obj) {
+                        var div_data = "<option value='" + obj.name + "'>" + obj.name + "</option>";
+                        $(div_data).appendTo('#country');
+                    });
+                    $('#country option[value="' + userCountry + '"]').attr('selected', 'selected');
+                }
+            });
+        }
+    });
+
 });
 
 // Preview Upload Photo

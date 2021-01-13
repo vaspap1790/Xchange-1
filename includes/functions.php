@@ -227,6 +227,8 @@ function getProfileUserId(){
     $username      = $_POST["sUsername"];
     $email         = $_POST["sEmail"];
     $description   = $_POST["sDescription"];
+    $country       = $_POST["country"];
+    $address       = $_POST["address"];
     $image         = $_FILES["image"]["name"];
     $target        = "images/uploaded/".basename($_FILES["image"]["name"]);
 
@@ -237,6 +239,8 @@ function getProfileUserId(){
           lastname=:lastname, 
           username=:username, 
           email=:email, 
+          country=:country, 
+          address=:address, 
           description=:description
     WHERE userId=" . $_SESSION["userId"];
 
@@ -245,6 +249,8 @@ function getProfileUserId(){
     $stmtUser->bindValue(':lastname', $lastname);
     $stmtUser->bindValue(':username', $username);
     $stmtUser->bindValue(':email', $email);
+    $stmtUser->bindValue(':country', $country);
+    $stmtUser->bindValue(':address', $address);
     $stmtUser->bindValue(':description', $description);
 
     $executeUser= $stmtUser->execute();

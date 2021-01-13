@@ -470,6 +470,7 @@
                 $usernameToBeUpdated       = $DataRows['username'];
                 $emailToBeUpdated          = $DataRows['email'];
                 $descriptionToBeUpdated    = $DataRows['description'];
+                $addressToBeUpdated        = $DataRows['address'];
               }
           ?>
 
@@ -519,6 +520,14 @@
                 <div class="form-group">
                   <label for="sEmail">Email Address</label>
                   <input type="email" class="form-control" id="sEmail" aria-describedby="emailHelp" name="sEmail" value="<?php echo $emailToBeUpdated;?>">
+                </div>
+                <div class="form-group">
+                  <label for="country">Country</label>
+                  <select class="form-control" id="country" name="country"></select>
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" id="address" name="address" value="<?php echo $addressToBeUpdated;?>">
                 </div>
                 <div class="form-group">
                     <label for="sDescription">Description</label>

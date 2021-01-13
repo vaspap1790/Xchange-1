@@ -154,6 +154,27 @@
     
     }
 
+    // Get user Country for Settings Modal
+    if(isset($_POST['getCountry']) ) {
+
+        $response = array();
+        global $ConnectingDB;
+
+        $sql = "SELECT country
+        FROM user
+        WHERE userId = " . $_SESSION['userId'];
+
+        $stmt = $ConnectingDB->query($sql);
+        $dataRows = $stmt->fetch();
+
+        $response["country"] = $dataRows["country"];
+
+        header('Content-Type: application/json');
+        echo json_encode(array($response));
+        exit;
+    
+    }
+
     //Exchange
     if(isset($_POST['item_toExchange_id']) ) { 
 

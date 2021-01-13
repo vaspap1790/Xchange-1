@@ -164,8 +164,13 @@
 
     <!--- Footer -->
     <?php require_once("footer.php"); ?>
+    
+                                <?php $userCountry = 'Greece';?>
 
     <!--- Script Source Files -->
+    <script>
+        var userCountry = <?php echo $userCountry;?>;
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.validate.js"></script>
