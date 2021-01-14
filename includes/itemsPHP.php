@@ -215,6 +215,15 @@
         $stmt = $ConnectingDB->query($sql);
     }
 
+    if($countItems == 0){
+    ?>
+
+    <h6><i style="color:#3B78AE">No Items match these search criteria</i></h6>
+
+
+    <?php
+    }else{
+
     while ($dataRows = $stmt->fetch()) {
 
         $itemId         = $dataRows["itemId"];
@@ -332,6 +341,7 @@
             <?php 
         }
     }  
+    }
             ?>
 
 
