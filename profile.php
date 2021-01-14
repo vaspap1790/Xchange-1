@@ -170,7 +170,15 @@
                                 INNER JOIN photo p ON u.userId = p.userId
                                 WHERE r.userRatedId =". getProfileUserId() ." ORDER BY r.userRatingId desc";                                               
 
-                                $stmtFetchRatings = $ConnectingDB->query($sqlFetchRatings);
+                                $stmtFetchRatings      = $ConnectingDB->query($sqlFetchRatings);
+                                $numberOfFetchedRatings = $stmtFetchRatings->rowcount();
+
+                                if($numberOfFetchedRatings == 0){
+                            ?>
+                                    <h6><i class="ml-5" style="color:#3B78AE">No Ratings yet..</i></h6>
+
+                            <?php 
+                                }else{
 
                                 while ($fetchRatingsRows = $stmtFetchRatings->fetch()) {
                                     $ratingId             = $fetchRatingsRows["ratingId"];
@@ -208,7 +216,7 @@
                                 </div>
                             </div>
 
-                            <?php } ?>   <!--  Ending of While loop -->
+                            <?php } } ?>   <!--  Ending of While loop -->
 
                         </div>
                     </div>

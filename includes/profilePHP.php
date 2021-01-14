@@ -27,6 +27,14 @@
 
     $sqlProfileItems .= $sorting;
     $stmtProfileItems = $ConnectingDB->query($sqlProfileItems);
+    $numberOfFetchedItems = $stmtProfileItems->rowcount();
+
+    if($numberOfFetchedItems == 0){
+?>
+        <h6><i style="color:#3B78AE">No Items uploaded yet..</i></h6>
+
+<?php 
+    }else{
 
     while ($profileItemsRows = $stmtProfileItems->fetch()) {
 
@@ -87,5 +95,5 @@
 		</div>
 	</div>
 
-<?php } ?>
+<?php } }?>
 
