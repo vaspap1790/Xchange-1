@@ -254,6 +254,11 @@ $('#settingsModal').on('hidden.bs.modal', function () {
     });
 })
 
+$('#requestModal').on('hidden.bs.modal', function () {
+    $('#acceptRequest').hide();
+    $('#rejectRequest').hide();
+})
+
 $('#messageModal').on('hidden.bs.modal', function () {
     location.reload();
 })
@@ -329,6 +334,11 @@ $('.openRequestModal').click(function () {
                 $('#fetch_message').text('"' + response[0].message + '"');
             } else {
                 $('#fetch_message').text('Nothing');
+            }
+
+            if (response[0].mode == "action") {
+                $('#acceptRequest').show();
+                $('#rejectRequest').show();
             }
 
             $('#owned_itemName').text(response[0].ownedItem.itemName);

@@ -191,7 +191,7 @@ function getProfileUserId(){
 
     $username        = $_POST["rUsername"];
     $email           = $_POST["email"];
-    $email       = $_POST["rPassword"];
+    $password        = $_POST["rPassword"];
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     date_default_timezone_set("Europe/Athens");
@@ -201,7 +201,7 @@ function getProfileUserId(){
     if (checkUsernameAvailability($username)) {
       $_SESSION["retrievedUsername"]    = $username;
       $_SESSION["retrievedEmail"]       = $email;
-      $_SESSION["retrievedPassword"]    = $email;
+      $_SESSION["retrievedPassword"]    = $password;
       $_SESSION["registerErrorMessage"] = "Username already exists. Try another one";
       redirect_to("index.php");
     }else{

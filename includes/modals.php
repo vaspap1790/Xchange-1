@@ -122,8 +122,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button  name="acceptRequest" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#confirmAcceptModal">Accept</button>
-                <button  name="rejectRequest" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#confirmRejectModal">Reject</button>
+                <button  name="acceptRequest" style="display:none" id="acceptRequest" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#confirmAcceptModal">Accept</button>
+                <button  name="rejectRequest" style="display:none" id="rejectRequest" class="btn btn-danger" data-dismiss="modal" data-toggle="modal" data-target="#confirmRejectModal">Reject</button>
             </div>
         </div>
     </div>

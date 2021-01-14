@@ -295,7 +295,11 @@
                                                         <?php echo $profile_requestDateTime; ?>
                                                     </td>
                                                     <td>
-                                                        <a href="profile.php?username=<?php echo $profile_requester; ?>">
+                                                        <a 
+                                                        <?php if ($_SESSION['userId'] == $profile_requesterId) {?>
+                                                        class="badge badge-pill badge-warning"
+                                                        <?php } ?>
+                                                        href="profile.php?username=<?php echo $profile_requester; ?>">
                                                             <?php
                                                                 if(strlen($profile_requester)>10){$profile_requester= substr($profile_requester,0,10).'..';}
                                                                     echo $profile_requester ;

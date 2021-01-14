@@ -243,60 +243,79 @@
         $ownedItem = array();
         $offeredItem = array();
 
-        $sqlOwnedItem = "SELECT i.name as itemName, i.description as description, i.dateTime_ as dateTime, 
-        c.name as categoryName, c.categoryId as categoryId, p.name as photoName, r.message as message
-        FROM request r
-        INNER JOIN item i
-        ON r.itemRequestedId = i.itemId
-        INNER JOIN category c
-        ON i.categoryId = c.categoryId
-        INNER JOIN photo p
-        ON i.itemId = p.itemId 
-        WHERE r.requestId = " . $_POST['requestId'];
+        try{
+            $sqlOwnedItem = "SELECT i.name as itemName, i.description as description, i.dateTime_ as dateTime, 
+            c.name as categoryName, c.categoryId as categoryId, p.name as photoName, r.message as message
+            FROM request r
+            INNER JOIN item i
+            ON r.itemRequestedId = i.itemId
+            INNER JOIN category c
+            ON i.categoryId = c.categoryId
+            INNER JOIN photo p
+            ON i.itemId = p.itemId 
+            WHERE r.requestId = " . $_POST['requestId'];
 
-        $stmtOwnedItem = $ConnectingDB->query($sqlOwnedItem);
-        $ownedItemRows = $stmtOwnedItem->fetch();
+            $stmtOwnedItem = $ConnectingDB->query($sqlOwnedItem);
+            $ownedItemRows = $stmtOwnedItem->fetch();
 
-        $ownedItem["itemName"]       = $ownedItemRows["itemName"];
-        $ownedItem["description"]    = $ownedItemRows["description"];
-        $ownedItem["dateTime"]       = $ownedItemRows["dateTime"];
-        $ownedItem["categoryId"]     = $ownedItemRows["categoryId"];
-        $ownedItem["categoryName"]   = $ownedItemRows["categoryName"];
-        $ownedItem["photoName"]      = $ownedItemRows["photoName"];
+            $ownedItem["itemName"]       = $ownedItemRows["itemName"];
+            $ownedItem["description"]    = $ownedItemRows["description"];
+            $ownedItem["dateTime"]       = $ownedItemRows["dateTime"];
+            $ownedItem["categoryId"]     = $ownedItemRows["categoryId"];
+            $ownedItem["categoryName"]   = $ownedItemRows["categoryName"];
+            $ownedItem["photoName"]      = $ownedItemRows["photoName"];
 
-        $message                     = $ownedItemRows["message"];
+            $message                     = $ownedItemRows["message"];
 
-        $sqlOfferedItem = "SELECT i.name as itemName, i.description as description,
-        i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, u.username as username,
-        p.name as photoName
-        FROM request r
-        INNER JOIN item i
-        ON r.itemOfferedId = i.itemId
-        INNER JOIN category c
-        ON i.categoryId = c.categoryId
-        INNER JOIN user u
-        ON r.requesterId = u.userId 
-        INNER JOIN photo p
-        ON i.itemId = p.itemId 
-        WHERE r.requestId = " . $_POST['requestId'];
+            $sqlOfferedItem = "SELECT i.name as itemName, i.description as description,
+            i.dateTime_ as dateTime, c.name as categoryName, c.categoryId as categoryId, u.username as username, r.requesterId as requesterId,
+            p.name as photoName, r.status as status 
+            FROM request r
+            INNER JOIN item i
+            ON r.itemOfferedId = i.itemId
+            INNER JOIN category c
+            ON i.categoryId = c.categoryId
+            INNER JOIN user u
+            ON r.requesterId = u.userId 
+            INNER JOIN photo p
+            ON i.itemId = p.itemId 
+            WHERE r.requestId = " . $_POST['requestId'];
 
-        $stmtOfferedItem = $ConnectingDB->query($sqlOfferedItem);
-        $offeredItemRows = $stmtOfferedItem->fetch();
+            $stmtOfferedItem = $ConnectingDB->query($sqlOfferedItem);
+            $offeredItemRows = $stmtOfferedItem->fetch();
 
-        $offeredItem["itemName"]       = $offeredItemRows["itemName"];
-        $offeredItem["description"]    = $offeredItemRows["description"];
-        $offeredItem["dateTime"]       = $offeredItemRows["dateTime"];
-        $offeredItem["categoryId"]     = $offeredItemRows["categoryId"];
-        $offeredItem["categoryName"]   = $offeredItemRows["categoryName"];
-        $offeredItem["uploadedBy"]     = $offeredItemRows["username"];
-        $offeredItem["photoName"]      = $offeredItemRows["photoName"];
+            $requesterId     = $offeredItemRows["requesterId"];
+            $status          = $offeredItemRows["status"];
 
-        $response["ownedItem"]   = $ownedItem;
-        $response["offeredItem"] = $offeredItem;
-        $response["message"]     = $message;
+            if($_SESSION['userId'] == $requesterId || $status != 'pending'){
+                $mode = "view";
+            }else{
+                $mode = "action";
+            }
 
-        echo json_encode(array($response));
-        exit;
+            $offeredItem["itemName"]       = $offeredItemRows["itemName"];
+            $offeredItem["description"]    = $offeredItemRows["description"];
+            $offeredItem["dateTime"]       = $offeredItemRows["dateTime"];
+            $offeredItem["categoryId"]     = $offeredItemRows["categoryId"];
+            $offeredItem["categoryName"]   = $offeredItemRows["categoryName"];
+            $offeredItem["uploadedBy"]     = $offeredItemRows["username"];
+            $offeredItem["photoName"]      = $offeredItemRows["photoName"];
+
+            $response["ownedItem"]   = $ownedItem;
+            $response["offeredItem"] = $offeredItem;
+            $response["message"]     = $message;
+            $response["mode"]        = $mode;
+            $response["bla"]        = $_SESSION['userId'];
+            $response["bla2"]        = $requesterId ;
+
+            echo json_encode(array($response));
+            exit;
+
+        }catch(Exception $e){
+            $response["response"] = "Something wrong happened. Try again";
+            echo json_encode(array($response));
+            exit;
+        }
 
     }
 
@@ -331,7 +350,7 @@
             exit;
 
         }catch(Exception $e){
-            $response["response"] = $e->getMessage();
+            $response["response"] = "Something wrong happened. Try again";
             echo json_encode(array($response));
             exit;
         }
