@@ -177,6 +177,16 @@ $(document).ready(function () {
 
 });
 
+$('#clearUserPhoto').click(function () {
+    $.ajax({
+        type: "POST",
+        url: 'includes/ajax.php',
+        dataType: 'json',
+        data: { setSettingsMessage: 'setSettingsMessage' }
+    });
+    $('#imageSelect').replaceWith($('#imageSelect').val('').clone(true));
+});
+
 // Preview Upload Photo
 function previewUserPhoto(input) {
 
@@ -198,15 +208,18 @@ function previewUserPhoto(input) {
 
                 $('#userAccepted').removeClass("error");
                 $('#submitSettings').prop("disabled", false);
+                $('#clearUserPhoto').prop("disabled", false);
 
             } else {
                 $('#userAccepted').addClass("error");
                 $('#submitSettings').prop("disabled", true);
+                $('#clearUserPhoto').prop("disabled", false);
             }
 
         } else {
             $('#userAccepted').addClass("error");
             $('#submitSettings').prop("disabled", true);
+            $('#clearUserPhoto').prop("disabled", false);
         }
 
     }
@@ -236,7 +249,7 @@ $('#settingsModal').on('hidden.bs.modal', function () {
         type: "POST",
         url: 'includes/ajax.php',
         dataType: 'json',
-        data: { settingsMessage: 'settingsMessage' }
+        data: { unSetSettingsMessage: 'unSetSettingsMessage' }
     });
 })
 

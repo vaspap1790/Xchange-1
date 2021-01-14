@@ -506,7 +506,9 @@
                 <img src="images/profile/defaultAvatar.png" class="rounded-circle z-depth-0" width="100px" height="100px" alt="avatar image">
                 <?php } ?> 
 
-                <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b>
+                <div class="pl-sm-4 pl-2" id="img-section"> <b>Profile Photo</b> 
+                <button style="display:inline !important; padding:.2rem .4rem; font-size:.64rem" disabled 
+                class="btn btn-sm btn-secondary" id="clearUserPhoto">Clear</button>
                   <p id="userAccepted">Accepted file type png, jpeg. Less than 3MB</p> 
                   <div style="white-space:nowrap">
                     <img id="photoUserPreview" src="#" style="display:none" alt="your image" />

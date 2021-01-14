@@ -17,7 +17,11 @@
     }
 
     // Settings
-    if(isset($_POST['settingsMessage']) ) { 
+    if(isset($_POST['setSettingsMessage']) ) {
+        $_SESSION['settingsMessage'] = true; 
+    }
+
+    if(isset($_POST['unSetSettingsMessage']) ) {
         $_SESSION['settingsMessage'] = false; 
     }
 
