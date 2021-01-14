@@ -15,14 +15,14 @@ ErrorDocument 500 /Xchange/error.php
 
 _DataBase Configuration_
 
-Create a database
+Create a database called 'xchangedb' in your phpMyAdmin 
 Run the initialisation script that is on 'sql/db_script.sql' file 
 on the SQl Command window of your database in phpMyAdmin
 This script will also enter some dummy data
 If you don't want dummy data you can run 'sql/db_script_no_dummy_data.sql'
 
 In 'xampp/htdocs/Xchange/includes/db.php file
-put your parameters for username,password, database name and 
+put your parameters for username,password, database(if you have different name) name and 
 host(host and port that your db server is running - default for XAMPP is 127.0.0.1:3306) 
 which you can configure in 'my.ini' file. 
 You can access 'my.ini' file by pressing 'Config' in MySQL
