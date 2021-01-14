@@ -364,6 +364,8 @@ function getProfileUserId(){
       $image         = $_FILES["editImageItem"]["name"];
       $target        = "images/uploaded/".basename($_FILES["editImageItem"]["name"]);
 
+      $_SESSION['editItemId'] = $itemId;
+
       global $ConnectingDB;
 
       $sql = "UPDATE item SET name=:name, categoryId=:categoryId, description=:description
@@ -398,7 +400,7 @@ function getProfileUserId(){
       redirect_to("profile.php?username=" . $username);
 
     }catch(Exception $e){
-      $_SESSION["editItemErrorMessage"] = "Something went wrong. Try again";
+      $_SESSION["editItemErrorMessage"] = $e->getMessage();
       redirect_to("profile.php?username=" . $username);
     }
 

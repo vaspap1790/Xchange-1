@@ -363,10 +363,22 @@
     <script type="text/javascript"> $(document).ready(function() { $("#settingsModal").modal("show"); }) </script>
     <?php } ?>
     <?php if (isset($_SESSION["addItemMessage"]) && $_SESSION["addItemMessage"] == true) { ?>
-    <script type="text/javascript"> $(document).ready(function() { $("#addItemModal").modal("show"); }) </script>
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            $('#item_name').val(<?php echo $_SESSION['newItemName']; ?>);
+            $('#selectItemCategory').val(<?php echo $_SESSION['newItemCategoryId']; ?>);
+            $('#iDescription').val(<?php echo $_SESSION['newItemDescription']; ?>);
+            $("#addItemModal").modal("show"); 
+        }) 
+    </script>
     <?php } ?>
     <?php if (isset($_SESSION["editItemMessage"]) && $_SESSION["editItemMessage"] == true) { ?>
-    <script type="text/javascript"> $(document).ready(function() { $("#editItemModal").modal("show"); }) </script>
+    <script type="text/javascript"> 
+        $(document).ready(function() { 
+            populateEditItemModal(<?php echo $_SESSION["editItemId"]; ?>);
+            $("#editItemModal").modal("show"); 
+        }) 
+    </script>
     <?php } ?>
     <?php if (isset($_SESSION["ratingMessage"]) && $_SESSION["ratingMessage"] == true) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#ratingModal").modal("show"); }) </script>

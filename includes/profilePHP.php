@@ -56,7 +56,10 @@
             <?php } ?>
    
 
-			<div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
+            <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1" title="<?php echo $categoryName; ?>"><?php 
+                if(strlen($categoryName)>8){$categoryName= substr($categoryName,0,6).'..';}
+                echo $categoryName;  
+            ?></a></div>
             <div><small>Uploaded in <?php echo $dateTime ?></small></div>
             
 			<hr style="margin-top: 0;">

@@ -26,13 +26,29 @@
     }
 
     // Add Item
-    if(isset($_POST['addItemMessage']) ) { 
+    if(isset($_POST['setAddItemMessage']) ) { 
+        $_SESSION['addItemMessage']       = true; 
+        $_SESSION['newItemName']          = $_POST['newItemName'];
+        $_SESSION['newItemCategoryId']    = $_POST['newItemCategoryId'];
+        $_SESSION['newItemDescription']   = $_POST['newItemDescription'];
+    }
+
+    if(isset($_POST['unSetAddItemMessage']) ) { 
         $_SESSION['addItemMessage'] = false; 
+        $_SESSION['newItemName']          = null;
+        $_SESSION['newItemCategoryId']    = null;
+        $_SESSION['newItemDescription']   = null;
     }
 
     // Edit Item
-    if(isset($_POST['editItemMessage']) ) { 
+    if(isset($_POST['setEditItemMessage']) ) { 
+        $_SESSION['editItemMessage'] = true; 
+        $_SESSION['editItemId']      = $_POST['editedItemId'];
+    }
+
+    if(isset($_POST['unSetEditItemMessage']) ) { 
         $_SESSION['editItemMessage'] = false; 
+        $_SESSION['editItemId']      = null;
     }
 
     // Rating

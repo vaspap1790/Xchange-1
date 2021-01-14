@@ -177,6 +177,7 @@ $(document).ready(function () {
 
 });
 
+// Clear Upload Photo
 $('#clearUserPhoto').click(function () {
     $.ajax({
         type: "POST",
@@ -397,33 +398,6 @@ $('#confirmReject').click(function () {
                 $('#messageContent').text("Something went wrong. Try again.");
             }
 
-        }
-    });
-})
-
-// Populate Delete Modal
-$('.openDeleteItemModal').click(function () {
-    var deleteItemId = $(this).attr('id').split("_")[1];
-    $('#deleteItemId').val(deleteItemId);
-})
-
-// Populate EditItem Modal
-$('.openEditItemModal').click(function () {
-
-    var editItemId = $(this).attr('id').split("_")[1];
-    $('#editItemId').val(editItemId);
-
-    $.ajax({
-        type: "POST",
-        url: 'includes/ajax.php',
-        dataType: 'json',
-        data: { editItemId: editItemId },
-        success: function (response) {
-
-            $('#edit_item_name').val(response[0].name);
-            $('#edit_selectItemCategory').val(response[0].categoryId);
-            $('#edit_iDescription').val(response[0].description);
-            $('#editItemImage').attr("src", "images/uploaded/" + response[0].photoName);
         }
     });
 })

@@ -108,6 +108,12 @@ a:not([href]):not([tabindex]) {
     }
 }
 
+.aCard {
+    color: #007bff !important;
+    text-decoration: none !important;
+    background-color: transparent !important;
+}
+
 @media(max-width: 660px) {
     .hideNav {
         margin-left: -250px;

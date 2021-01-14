@@ -253,9 +253,12 @@
                                 <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
                             <?php } }?>    
 
-                            <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
+                            <div>Category: <a class="aCard" href="items.php?categoryId=<?php echo $categoryId; ?>&page=1" title="<?php echo $categoryName; ?>"><?php 
+                                if(strlen($categoryName)>8){$categoryName= substr($categoryName,0,6).'..';}
+                                echo $categoryName;  
+                            ?></a></div>
                             <div><small>Uploaded in <?php echo $dateTime ?></small></div>
-                            <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                            <div>by <a class="aCard" href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
                             <div class="rating">
                                 <span style="font-size: 13px; margin-top:2.2px; margin-left:5px;">(<?php echo $countRatings; ?>) </span>
 
@@ -296,9 +299,12 @@
                             <a id="heart<?php echo $itemId?>" onclick="toggleFavorite(<?php echo $itemId?>,<?php echo $_SESSION['userId']?>,'favorite')" style ="font-size: 35px;">&#9825;</a>
                         <?php } }?>    
 
-                        <div>Category: <a href="items.php?categoryId=<?php echo $categoryId; ?>&page=1"><?php echo $categoryName; ?></a></div>
+                        <div>Category: <a class="aCard" href="items.php?categoryId=<?php echo $categoryId; ?>&page=1" title="<?php echo $categoryName; ?>"><?php 
+                            if(strlen($categoryName)>8){$categoryName= substr($categoryName,0,6).'..';}
+                            echo $categoryName; 
+                        ?></a></div>
                         <div><small>Uploaded in <?php echo $dateTime ?></small></div>
-                        <div>by <a href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
+                        <div>by <a class="aCard" href="profile.php?username=<?php echo $username; ?>"> <?php echo $username; ?> </a></div>
                         <div class="rating">
                             <span style="font-size: 13px; margin-top:2.2px; margin-left:5px;">(<?php echo $countRatings; ?>) </span>
 
