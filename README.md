@@ -16,8 +16,10 @@ ErrorDocument 500 /Xchange/error.php
 _DataBase Configuration_
 
 Create a database
-Run the initialisation script that is on 'db_script.sql' file 
+Run the initialisation script that is on 'sql/db_script.sql' file 
 on the SQl Command window of your database in phpMyAdmin
+This script will also enter some dummy data
+If you don't want dummy data you can run 'sql/db_script_no_dummy_data.sql'
 
 In 'xampp/htdocs/Xchange/includes/db.php file
 put your parameters for username,password, database name and 
@@ -27,11 +29,11 @@ You can access 'my.ini' file by pressing 'Config' in MySQL
 in XAMPP Control Panel.
 
 
-_Users_
+_Dummy Data_
 
-Password for database users : 12345 (application)
-Better use vaspap1790 that has more dummy data
-
+Password for inserted users : 12345 (application)
+Use vaspap1790 that has more dummy data
+Categories that have dummy data: Books and Computer/Tables & Networking
 
 _Mail Configuration_
 
