@@ -69,10 +69,9 @@
         $search = $_GET["search"];
 
         // Count query before pagination
-        $sqlCount .= "AND i.description LIKE :search
+        $sqlCount .= "AND (i.description LIKE :search
         OR i.name LIKE :search
-        OR c.name LIKE :search
-        OR u.username LIKE :search ";
+        OR c.name LIKE :search) ";
 
         $stmtCount = $ConnectingDB->prepare($sqlCount);
         $stmtCount->bindValue(':search', '%' . $search . '%');
@@ -109,14 +108,13 @@
         }
 
         // Fetch Data query with pagination
-        $sql .= "AND i.description LIKE :search
+        $sql .= "AND (i.description LIKE :search
         OR i.name LIKE :search
-        OR c.name LIKE :search
-        OR u.username LIKE :search ";
+        OR c.name LIKE :search) ";
 
         $sql .= $sorting;
         $sql .= $pagination;
-
+        $_SESSION['debug'] = $sql;
         $stmt = $ConnectingDB->prepare($sql);
         $stmt->bindValue(':search', '%' . $search . '%');
         $stmt->execute();
