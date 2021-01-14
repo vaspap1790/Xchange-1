@@ -75,7 +75,7 @@
 
         $response = array();
 
-        if(isset($_SESSION["consentCookies"]) && $_SESSION["consentCookies"] == 1){
+        if(isset($_COOKIE["consentCookies"]) && $_COOKIE["consentCookies"] == 1){
             
             if(!isset($_SESSION['recentlyVisited'])){
                 $recentlyVisited = array($_POST['fetch_item_id']);
@@ -175,7 +175,7 @@
     
     }
 
-    //Exchange
+    // Exchange
     if(isset($_POST['item_toExchange_id']) ) { 
 
         header('Content-Type: application/json');
@@ -209,7 +209,7 @@
 
     }
 
-    //Fetch Request
+    // Fetch Request
     if(isset($_POST['requestId']) ) { 
 
         header('Content-Type: application/json');
@@ -275,7 +275,7 @@
 
     }
 
-    //Accept Request
+    // Accept Request
     if(isset($_POST['requestToAcceptId']) ) { 
 
         header('Content-Type: application/json');
@@ -312,7 +312,7 @@
         }
     }
 
-    //Reject Request
+    // Reject Request
     if(isset($_POST['requestToRejectId']) ) { 
         
         header('Content-Type: application/json');
@@ -335,7 +335,7 @@
         }
     }
 
-    //Delete Item
+    // Delete Item
     if(isset($_POST['deleteItemId']) ) { 
         
         header('Content-Type: application/json');

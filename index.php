@@ -48,7 +48,9 @@
 
     <!--- Start Recently Visited Section -->
     <?php 
-        if( isset($_COOKIE['recentlyVisited']) && !empty($_COOKIE['recentlyVisited']) ){
+        if( (isset($_COOKIE["consentCookies"]) && $_COOKIE["consentCookies"] == 1) &&
+            (isset($_COOKIE['recentlyVisited']) && !empty($_COOKIE['recentlyVisited'])) 
+        ){
         
                 $data = unserialize($_COOKIE['recentlyVisited']);
                 $dataToFetch = array_unique($data);
@@ -187,7 +189,7 @@
     <?php if (isset($_SESSION["settingsMessage"]) && $_SESSION["settingsMessage"] == true) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#settingsModal").modal("show"); }) </script>
     <?php } ?>
-    <?php if (!isset($_SESSION["consentCookies"])) { ?>
+    <?php if (!isset($_COOKIE["consentCookies"])) { ?>
     <script type="text/javascript"> $(document).ready(function() { $("#consentCookies").modal("show"); }) </script>
     <?php } ?>
     <!--- End of Script Source Files -->

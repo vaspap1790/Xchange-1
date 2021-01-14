@@ -11,10 +11,14 @@
 <?php 
 
   if (isset($_POST["consentCookiesAllow"])) {
-    $_SESSION["consentCookies"] = 1;
+    $cookie_name   = "consentCookies";
+    $cookie_value  = 1;
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
   }
   if (isset($_POST["consentCookiesDeny"])) {
-    $_SESSION["consentCookies"] = 0;
+    $cookie_name   = "consentCookies";
+    $cookie_value  = 0;
+    setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
   }
 
 ?>
