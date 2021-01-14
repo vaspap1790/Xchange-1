@@ -234,6 +234,7 @@ $('#loginModal').on('hidden.bs.modal', function () {
         dataType: 'json',
         data: { loginMessage: 'loginMessage' }
     });
+    $('#loginMessage').remove();
 })
 
 $('#registerModal').on('hidden.bs.modal', function () {
@@ -243,6 +244,7 @@ $('#registerModal').on('hidden.bs.modal', function () {
         dataType: 'json',
         data: { registerMessage: 'registerMessage' }
     });
+    $('#registerMessage').remove();
 })
 
 $('#settingsModal').on('hidden.bs.modal', function () {
@@ -252,6 +254,7 @@ $('#settingsModal').on('hidden.bs.modal', function () {
         dataType: 'json',
         data: { unSetSettingsMessage: 'unSetSettingsMessage' }
     });
+    $('#settingsMessage').remove();
 })
 
 $('#requestModal').on('hidden.bs.modal', function () {
@@ -262,6 +265,19 @@ $('#requestModal').on('hidden.bs.modal', function () {
 $('#messageModal').on('hidden.bs.modal', function () {
     location.reload();
 })
+
+$('#addItemModal').on('hidden.bs.modal', function () {
+    $('#addItemMessage').remove();
+})
+
+$('#editItemModal').on('hidden.bs.modal', function () {
+    $('#editItemMessage').remove();
+})
+
+$('#ratingModal').on('hidden.bs.modal', function () {
+    $('#ratingMessage').remove();
+})
+
 
 // Item modal
 $('.openItemModal').click(function () {

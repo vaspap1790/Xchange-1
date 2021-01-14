@@ -334,7 +334,7 @@
             $ownerId           = $fetchedRequest["ownerId"];
             $itemRequestedId   = $fetchedRequest["itemRequestedId"];
             $requesterId       = $fetchedRequest["requesterId"];
-            $itemOfferedId      = $fetchedRequest["itemOfferedId"];
+            $itemOfferedId     = $fetchedRequest["itemOfferedId"];
 
             $sqlUpdateRequest = "UPDATE request SET status ='accepted' WHERE requestId =" . $_POST['requestToAcceptId'];
             $executeUpdateRequest = $ConnectingDB->query($sqlUpdateRequest);

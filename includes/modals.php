@@ -792,7 +792,7 @@
         <input type="text" id="userRatedId" name="userRatedId" hidden="hidden" value="<?php echo getProfileUserId();?>">
         <input type="text" id="profile_username" name="profile_username" hidden="hidden" value="<?php echo getProfileUsername();?>">
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="submit" name="rate" id="rate" class="btn btn-primary">Rate</button>
         </div>
       </form>

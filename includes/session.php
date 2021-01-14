@@ -6,7 +6,7 @@
   function errorLoginMessage(){
     if(isset($_SESSION["loginErrorMessage"])){
       
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='loginMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["loginErrorMessage"]);
       $Output .= "</div>";
 
@@ -20,7 +20,7 @@
   function errorRegisterMessage(){
     if(isset($_SESSION["registerErrorMessage"])){
 
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='registerMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["registerErrorMessage"]);
       $Output .= "</div>";
 
@@ -34,7 +34,7 @@
   function successRegisterMessage(){
     if(isset($_SESSION["registerSuccessMessage"])){
 
-      $Output = "<div class=\"alert alert-success\">" ;
+      $Output = "<div id='registerMessage' class=\"alert alert-success\">" ;
       $Output .= htmlentities($_SESSION["registerSuccessMessage"]);
       $Output .= "</div>";
 
@@ -48,7 +48,7 @@
   function errorSettingsMessage(){
     if(isset($_SESSION["settingsErrorMessage"])){
 
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='settingsMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["settingsErrorMessage"]);
       $Output .= "</div>";
 
@@ -62,7 +62,7 @@
   function successSettingsMessage(){
     if(isset($_SESSION["settingsSuccessMessage"])){
 
-      $Output = "<div class=\"alert alert-success\">" ;
+      $Output = "<div id='settingsMessage' class=\"alert alert-success\">" ;
       $Output .= htmlentities($_SESSION["settingsSuccessMessage"]);
       $Output .= "</div>";
 
@@ -76,7 +76,7 @@
   function errorAddItemMessage(){
     if(isset($_SESSION["addItemErrorMessage"])){
 
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='addItemMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["addItemErrorMessage"]);
       $Output .= "</div>";
 
@@ -90,7 +90,7 @@
   function successAddItemMessage(){
     if(isset($_SESSION["addItemSuccessMessage"])){
 
-      $Output = "<div class=\"alert alert-success\">" ;
+      $Output = "<div id='addItemMessage' class=\"alert alert-success\">" ;
       $Output .= htmlentities($_SESSION["addItemSuccessMessage"]);
       $Output .= "</div>";
 
@@ -104,7 +104,7 @@
   function errorEditItemMessage(){
     if(isset($_SESSION["editItemErrorMessage"])){
 
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='editItemMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["editItemErrorMessage"]);
       $Output .= "</div>";
 
@@ -118,7 +118,7 @@
   function successEditItemMessage(){
     if(isset($_SESSION["editItemSuccessMessage"])){
 
-      $Output = "<div class=\"alert alert-success\">" ;
+      $Output = "<div id='editItemMessage' class=\"alert alert-success\">" ;
       $Output .= htmlentities($_SESSION["editItemSuccessMessage"]);
       $Output .= "</div>";
 
@@ -132,7 +132,7 @@
   function errorRatingMessage(){
     if(isset($_SESSION["ratingErrorMessage"])){
 
-      $Output = "<div class=\"alert alert-danger\">" ;
+      $Output = "<div id='ratingMessage' class=\"alert alert-danger\">" ;
       $Output .= htmlentities($_SESSION["ratingErrorMessage"]);
       $Output .= "</div>";
 
@@ -146,7 +146,7 @@
   function successRatingMessage(){
     if(isset($_SESSION["ratingSuccessMessage"])){
 
-      $Output = "<div class=\"alert alert-success\">" ;
+      $Output = "<div id='ratingMessage' class=\"alert alert-success\">" ;
       $Output .= htmlentities($_SESSION["ratingSuccessMessage"]);
       $Output .= "</div>";
 
