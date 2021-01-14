@@ -10,7 +10,10 @@
 
     // Register
     if(isset($_POST['registerMessage']) ) { 
-        $_SESSION['registerMessage'] = false; 
+        $_SESSION["retrievedUsername"]  = null;
+        $_SESSION["retrievedEmail"]     = null;
+        $_SESSION["retrievedPassword"]  = null;
+        $_SESSION['registerMessage']    = false; 
     }
 
     // Settings

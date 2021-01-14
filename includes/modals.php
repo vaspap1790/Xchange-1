@@ -410,21 +410,33 @@
           ?>
           <div class="form-group">
             <label for="rUsername">Username</label>
-            <input type="text" class="form-control" id="rUsername" name="rUsername" placeholder="Enter Username">
+            <input type="text" class="form-control" id="rUsername" name="rUsername" placeholder="Enter Username"
+            <?php if(isset($_SESSION['retrievedUsername'])){ ?>
+            value="<?php echo $_SESSION['retrievedUsername']; ?>"
+            <?php } ?>
+            >
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email"
-              placeholder="Enter Email">
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter Email"
+            <?php if(isset($_SESSION['retrievedEmail'])){ ?>
+            value="<?php echo $_SESSION['retrievedEmail']; ?>"
+            <?php } ?>
+            >
           </div>
           <div class="form-group">
             <label for="rPassword">Password</label>
-            <input type="password" class="form-control" id="rPassword" placeholder="Enter Password" name="rPassword">
+            <input type="password" class="form-control" id="rPassword" placeholder="Enter Password" name="rPassword"
+            <?php if(isset($_SESSION['retrievedPassword'])){ ?>
+            value="<?php echo $_SESSION['retrievedPassword']; ?>"
+            <?php } ?>>
           </div>
           <div class="form-group">
             <label for="confirmPassword">Confirm Password</label>
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
-              placeholder="Enter Password">
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Enter Password"
+            <?php if(isset($_SESSION['retrievedPassword'])){ ?>
+            value="<?php echo $_SESSION['retrievedPassword']; ?>"
+            <?php } ?>>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="termsCheck" name="termsCheck[]">
