@@ -368,17 +368,15 @@
         $response = array();
 
         try{
-            $sqlPhoto = "DELETE FROM photo WHERE itemId=" . $_POST['deleteItemId'];
-            $executePhoto = $ConnectingDB->query($sqlPhoto);
 
-            $sqlFavorite = "DELETE FROM favorite WHERE itemId=" . $_POST['deleteItemId'];
-            $executesqlFavorite = $ConnectingDB->query($sqlFavorite);
+            $sqlRequestOffered = "DELETE FROM request WHERE itemOfferedId=" . $_POST['deleteItemId'] . " AND status = 'pending'";
+            $executeRequestOffered = $ConnectingDB->query($sqlRequestOffered);
 
-            $sqlRequest = "DELETE FROM request WHERE itemOfferedId=" . $_POST['deleteItemId'] . " OR itemRequestedId=" . $_POST['deleteItemId'];
-            $executeRequest = $ConnectingDB->query($sqlRequest);
+            $sqlRequestRequested = "UPDATE request SET status='rejected' WHERE itemRequestedId=" . $_POST['deleteItemId'] . "  AND status = 'pending'";
+            $executeRequestRequested = $ConnectingDB->query($sqlRequestRequested);
 
-            $sqlItem = "DELETE FROM item WHERE itemId=" . $_POST['deleteItemId'];
-            $executesIItem = $ConnectingDB->query($sqlItem);
+            $sqlItem = "UPDATE item SET deleted=1 WHERE itemId=" . $_POST['deleteItemId'];
+            $executesItem = $ConnectingDB->query($sqlItem);
 
             $response["response"] = "Success";
             echo json_encode(array($response));

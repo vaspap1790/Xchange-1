@@ -744,7 +744,10 @@
       <div class="modal-body">
         <div class="form-group">
           <input type="text" id="deleteItemId" style="display:none">
-          Are you sure you want to delete the item?
+          <p>Are you sure you want to delete the item?</p> 
+          <p><i>You will not be able to restore it!</p></i>
+          <p><i>Pending requests for the item will be rejected.</p></i>
+          <p><i>Pending requests in which you offer the item will be deleted.</p></i>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

@@ -36,7 +36,7 @@
     <?php require_once("nav.php"); ?>
 
     <!--- Start of SearchBar -->
-    <div class="search-wrapper">
+    <div class="search-wrapper" >
         <div>
             <h1><b>Find whatever the weather!</h1>
         </div>
@@ -51,6 +51,8 @@
         </div>
     </div>
     <!--- End of SearchBar --> 
+    
+    <br><br>
 
     <!--- Start Recently Visited Section -->
     <?php 

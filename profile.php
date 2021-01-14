@@ -264,7 +264,7 @@
                                                 INNER JOIN user u ON r.requesterId = u.userId 
                                                 INNER JOIN item i ON i.itemId = r.itemRequestedId
                                                 INNER JOIN photo p ON i.itemId = p.itemId
-                                                WHERE r.ownerId =". $_SESSION["userId"] ." ORDER BY r.requestId desc";                                               
+                                                WHERE r.ownerId =". $_SESSION["userId"] ." OR r.requesterId=" . $_SESSION["userId"] ." ORDER BY r.requestId desc";                                               
 
                                                 $stmtFetchRequests = $ConnectingDB->query($sqlFetchRequests);
 

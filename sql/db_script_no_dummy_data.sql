@@ -40,6 +40,7 @@ CREATE TABLE `ITEM` (
 	dateTime_ varchar(19),
 	userId int NOT NULL,
 	categoryId int NOT NULL,
+	deleted TINYINT(1) default 0,
 	PRIMARY KEY (itemId),
 	foreign key (userId) references USER (userId),
 	foreign key (categoryId) references CATEGORY (categoryId)

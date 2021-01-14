@@ -40,12 +40,12 @@
     $pagination = "";
 
     if(isset($_GET["favorites"]) && $_GET["favorites"] == 1 && confirm_Login()){
-        $sqlFavorite = "INNER JOIN favorite f on i.itemId = f.itemId WHERE f.userId =" . $_SESSION['userId'] . " ";
+        $sqlFavorite = "INNER JOIN favorite f on i.itemId = f.itemId WHERE f.userId =" . $_SESSION['userId'] . " AND i.deleted=0 ";
         $sqlCount   .= $sqlFavorite;
         $sql        .= $sqlFavorite;
     }else{
-        $sqlCount   .= "WHERE 1=1 ";
-        $sql        .= "WHERE 1=1 ";
+        $sqlCount   .= "WHERE 1=1 AND i.deleted=0 ";
+        $sql        .= "WHERE 1=1 AND i.deleted=0 ";
     }
 
     $sqlCount  .= $excludeLoggedUserItems;

@@ -21,7 +21,7 @@
     ON i.userId = u.userId
     INNER JOIN photo p
     ON i.itemId = p.itemId 
-    WHERE u.username='" . getProfileUsername() . "'";
+    WHERE u.username='" . getProfileUsername() . "' AND i.deleted=0 ";
 
     $sorting = "ORDER BY i.itemId desc ";
 
