@@ -14,11 +14,13 @@
     $cookie_name   = "consentCookies";
     $cookie_value  = 1;
     setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
+    $_SESSION["justAnweredCookies"] = 1;
   }
   if (isset($_POST["consentCookiesDeny"])) {
     $cookie_name   = "consentCookies";
     $cookie_value  = 0;
     setcookie($cookie_name, $cookie_value, time() + (86400 * 3), "/"); // 86400 = 1 day
+    $_SESSION["justAnweredCookies"] = 1;
   }
 
 ?>

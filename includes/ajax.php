@@ -53,7 +53,9 @@
 
     // Rating
     if(isset($_POST['ratingMessage']) ) { 
-        $_SESSION['ratingMessage'] = false; 
+        $_SESSION['ratingMessage']    = false; 
+        $_SESSION['newRating']        = null;
+        $_SESSION['newRatingComment'] = null;
     }
 
     // Favorite

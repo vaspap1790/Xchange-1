@@ -23,8 +23,36 @@
 
                 <div class="modal-footer mt-2">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="requestExchange" data-dismiss="modal" data-toggle="modal" class="btn btn-primary" data-target="#exchangeModal">Ask</button>
+                    <button id="requestExchange" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" 
+                    <?php if(confirm_Login()){ ?>
+                     data-target="#exchangeModal"
+                    <?php }else{ ?>
+                    data-target="#loginRequired"
+                    <?php } ?>
+                    >Ask</button>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Message Modal -->
+<div class="modal fade" id="loginRequired" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginRequiredTitle">Not authorized action</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                You have to be registered and logged in to perform that action
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#itemModal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Log in</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#registerModal">Register</button>
             </div>
         </div>
     </div>

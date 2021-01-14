@@ -112,14 +112,17 @@
             <h4 class="text-center"><?php echo $profileFirstname; ?> <?php echo $profileLastname; ?></h4>
             <h4 class="text-center"><?php echo $profileEmail; ?></h4>
 
-            <p class="text-center"><i><?php echo $profileCountry; ?>, <?php echo $profileAddress; ?></i></p>
+            <p class="text-center"><i><?php echo $profileCountry; ?> <?php echo $profileAddress; ?></i></p>
             <p class="text-center"><?php echo $profileDescription; ?></p>
 
+            <?php if (confirm_Login()){?>
             <?php if (check_if_logged_user_profile()){ ?>
                 <h3><a data-toggle="modal" data-target="#addItemModal" class="btn btn-danger">Add New Item</a></h3>
             <?php } else { ?>
                 <h3><a data-toggle="modal" data-target="#ratingModal" class="btn btn-danger">Leave a Rating</a></h3>
             <?php } ?>
+            <?php } ?>
+
         </div>
         <!---End of Sidebar -->
 
@@ -381,7 +384,13 @@
     </script>
     <?php } ?>
     <?php if (isset($_SESSION["ratingMessage"]) && $_SESSION["ratingMessage"] == true) { ?>
-    <script type="text/javascript"> $(document).ready(function() { $("#ratingModal").modal("show"); }) </script>
+    <script type="text/javascript"> 
+        $(document).ready(function() {
+            $('#<?php echo $_SESSION["newRating"]; ?>').attr('checked', 'checked');
+            $('#comments').val('<?php echo $_SESSION["newRatingComments"]; ?>');
+            $("#ratingModal").modal("show"); 
+        }) 
+    </script>
     <?php } ?>
 
     <script>

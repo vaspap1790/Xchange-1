@@ -420,6 +420,9 @@ function getProfileUserId(){
     $username     = $_POST["profile_username"];
     $comments     = $_POST["comments"];
 
+    $_SESSION['newRating']         = $rating;
+    $_SESSION['newRatingComments'] = $comments;
+
     date_default_timezone_set("Europe/Athens");
     $currentTime = time();
     $dateTime = strftime("%Y-%m-%d %H:%M:%S", $currentTime);

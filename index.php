@@ -2,6 +2,12 @@
 <?php require_once("includes/functions.php"); ?>
 <?php require_once("includes/session.php"); ?>
 <?php require_once("includes/indexPHP.php"); ?> 
+<?php
+    if(isset($_SESSION["justAnweredCookies"]) && $_SESSION["justAnweredCookies"] == 1){
+        $_SESSION["justAnweredCookies"] = null;
+        redirect_to("index.php");
+    }
+?>
 
 
 <!DOCTYPE html>
