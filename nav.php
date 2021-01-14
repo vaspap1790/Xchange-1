@@ -40,7 +40,7 @@
               FROM favorite f 
               INNER JOIN item i ON f.itemId = i.itemId
               INNER JOIN photo p ON i.itemId = p.itemId  
-              WHERE f.userId=" . $_SESSION["userId"];
+              WHERE f.userId=" . $_SESSION["userId"] . " AND i.deleted=0";
               $stmtFavoriteItems = $ConnectingDB->query($sqlFavoriteItems);
 
               while ($favoriteItemsRows = $stmtFavoriteItems->fetch()) {
