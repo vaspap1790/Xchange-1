@@ -245,7 +245,12 @@
             $sum += $ratingRows["rating"];
             $countRatings++;
         }
-        $rating = ceil( $sum / $countRatings);
+        $result = $stmtRatings->rowcount();
+        if ($result > 0) {
+            $rating = ceil( $sum / $countRatings);
+        }else {
+            $rating = 0;
+        }
 
         if(isset($_GET["rating"])){
             if($rating == $_GET["rating"]){
