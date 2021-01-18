@@ -1,7 +1,7 @@
-# xchange
+# Xchange
 Webapp for exchanging items - for Masters Coursework 
 
-Backend Technologies : PHP, MySQL - XAMPP 
+Backend Technologies : PHP, MySQL (XAMPP) - 
 Frontend Technologies: Html, CSS, JQuery, Bootstrap
 
 _Manual_
