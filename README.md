@@ -1,6 +1,7 @@
 # xchange
 Webapp for exchanging items - for Masters Coursework 
-PHP, MySQL, Html, CSS, JQuery, Bootstrap
+Backend Technologies : PHP, MySQL - XAMPP 
+Frontend Technologies: Html, CSS, JQuery, Bootstrap
 
 Put the name of the folder of your folder instead of Xchange for the next instructions:
 
